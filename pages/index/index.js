@@ -42,6 +42,30 @@ Page({
         }
       })
     }
+
+    var url = app.apiUrl + '/advertisement'
+    var params = {
+      PageSize: 20,
+      PageIndex: 1,
+      SkipCount: 2,
+      MaxResultCount: 20
+    }
+      wx.request({
+          url: url,
+          method: 'GET',
+          data: params,
+          header: { 'Content-Type': 'application/json' },
+          success: function (res) {
+              console.log(res.data);
+          },
+          fail: function (res) {
+              console.log(res.data);
+          },
+          complete: function (res) {
+              console.log(res.data);
+          }
+      })
+
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -50,5 +74,17 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+    /**
+    * 接口调用成功处理
+    */
+    successFun: function (res, selfObj) {
+        console.log('failFun', res)
+    },
+    /**
+     * 接口调用失败处理
+     */
+    failFun: function (res, selfObj) {
+        console.log('failFun', res)
+    },
 })

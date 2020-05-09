@@ -1,37 +1,37 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/product/product",
-    "pages/intention/intention",
-    "pages/system/system"
-  ],
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "/images/index.png",
-        "selectedIconPath": "/images/index_select.png"
-      },
-      {
-        "pagePath": "pages/product/product",
-        "text": "产品",
-        "iconPath": "/images/product.png",
-        "selectedIconPath": "/images/index_select.png"
-      },
-      {
-        "pagePath": "pages/intention/intention",
-        "text": "意向",
-        "iconPath": "/images/intention.png",
-        "selectedIconPath": "/images/intention_select.png"
-      },
-      {
-        "pagePath": "pages/system/system",
-        "text": "我的主页",
-        "iconPath": "/images/me.png",
-        "selectedIconPath": "/images/me_select.png"
-      }
-    ]
-  },
-  "sitemapLocation": "sitemap.json"
+    "pages": [
+        "pages/index/index",
+        "pages/product/product",
+        "pages/intention/intention",
+        "pages/system/system"
+    ],
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "/images/index.png",
+                "selectedIconPath": "/images/index_select.png"
+            },
+            {
+                "pagePath": "pages/product/product",
+                "text": "产品",
+                "iconPath": "/images/product.png",
+                "selectedIconPath": "/images/index_select.png"
+            },
+            {
+                "pagePath": "pages/intention/intention",
+                "text": "意向",
+                "iconPath": "/images/intention.png",
+                "selectedIconPath": "/images/intention_select.png"
+            },
+            {
+                "pagePath": "pages/system/system",
+                "text": "我的主页",
+                "iconPath": "/images/me.png",
+                "selectedIconPath": "/images/me_select.png"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json"
 }
