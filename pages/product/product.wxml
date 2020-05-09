@@ -1,2 +1,11 @@
-<!--pages/product/product.wxml-->
-<text>pages/product/product.wxml</text>
+<!-- 产品页列表 -->
+<view class="section">
+  <view class="tui-table-view">
+    <view wx:for="{{list}}" wx:key="list">
+      <view class="tui-col-3">
+        <view><image src="{{item.src}}"></image>></view>
+        <view>{{item.title}}111</view>
+      </view>
+    </view>
+  </view>
+</view>
