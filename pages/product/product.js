@@ -8,11 +8,27 @@ Page({
 
   },
 
+
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    /** 页面一加载就访问服务器接口，加载初始页面 */
+    wx.request({
+      url: 'http://www.hengyishun.cn/login/login', //仅为示例，并非真实的接口地址
 
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log('调用接口测试。。。'),
+        wx.showToast({
+          title: '成功！',
+          icon:'success'
+        })
+      }
+    })
   },
 
   /**
