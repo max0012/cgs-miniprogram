@@ -1,4 +1,4 @@
-let rootUrl = "http://app.imcfp.com";//具体接口域名根据你的实际情况填写
+let rootUrl = "http://app.imcfp.com/api/app/";//具体接口域名根据你的实际情况填写
 //get请求
 function getData(url, data, cb) {
     wx.request({
