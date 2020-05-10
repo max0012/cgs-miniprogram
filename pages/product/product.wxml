@@ -1,11 +1,24 @@
 <!-- 产品页列表 -->
-<view class="section">
+<!-- <view class="section">
   <view class="tui-table-view">
-    <view wx:for="{{list}}" wx:key="list">
+    <view wx:for="{{list}}" wx:for-item="item" wx:key="list">
       <view class="tui-col-3">
-        <view><image src="{{item.src}}"></image>></view>
-        <view>{{item.title}}111</view>
+        <view><image src="{{item.coverUrl}}"></image>></view>
+        <view>{{item.name}}111</view>
       </view>
     </view>
   </view>
+</view> -->
+
+<view class="container">
+   <view class="weui-grids">
+      <view class="weui-grid" wx:for="{{list}}" wx:key="list">
+         <view class='weui-grid__bg' data-id="{{item.id}}" data-type="{{item.type}}" bindtap="imgclick">
+            <view class="weui-grid__icon">
+              <image src=" {{item.coverUrl}}" mode="scaleToFill" />
+            </view>
+           <text class="weui-grid__label">{{item.name}}</text>
+          </view>
+      </view>
+   </view>
 </view>
