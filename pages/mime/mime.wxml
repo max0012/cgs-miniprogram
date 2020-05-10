@@ -1,0 +1,15 @@
+<view class="container mime">
+    <!--上部信息-->
+    <view class="user flex-wrp">
+        <image class="avatar" mode="aspectFit" src="https://wx.qlogo.cn/mmhead/PiajxSqBRaEIzMqK9QicxelZqlXBoY3uC5cibPFkibicUwgC2k2ialXRdRlg/0" background-size="cover"></image>
+        <view class="user-info flex-item">
+            <text class="userinfo-nickname">李镇年</text>
+            <button class="level" size="mini" hover-stop-propagation="true">高级理财师</button>
+            <view class="job-number"><text>工号：123456</text></view>
+        </view>
+    </view>
+
+    <!--我的账户-->
+    <view class="my-accout">
+    </view>
+</view>

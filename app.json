@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/product/product",
     "pages/intention/intention",
-    "pages/system/system",
+    "pages/mime/mime",
     "pages/login/login",
     "pages/product/gouwu/gouwu",
     "pages/product/baoxian/baoxian",
@@ -34,8 +34,8 @@
         "selectedIconPath": "/images/intention_select.png"
       },
       {
-        "pagePath": "pages/system/system",
-        "text": "我的主页",
+        "pagePath": "pages/mime/mime",
+        "text": "我的",
         "iconPath": "/images/me.png",
         "selectedIconPath": "/images/me_select.png"
       }

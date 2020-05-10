@@ -58,8 +58,8 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/product/product",
-					"pathName": "pages/product/product",
+					"name": "我的",
+					"pathName": "pages/mime/mime",
 					"query": "",
 					"scene": null
 				}
