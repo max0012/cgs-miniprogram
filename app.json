@@ -3,7 +3,8 @@
         "pages/index/index",
         "pages/product/product",
         "pages/intention/intention",
-        "pages/system/system"
+        "pages/system/system",
+        "pages/login/login"
     ],
     "tabBar": {
         "list": [
