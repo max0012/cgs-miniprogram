@@ -20,7 +20,7 @@
         </view>
         <view>
           <view class="div3">
-            <view><text class="redText">{{item.netWorth}}</text></view>
+            <view><text class="redText">{{item.upperPrice}}元</text></view>
             <text>商品价格</text>
           </view>
           <view class="div3">

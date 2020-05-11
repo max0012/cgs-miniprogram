@@ -1,45 +1,54 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/product/product",
-    "pages/intention/intention",
-    "pages/mime/mime",
-    "pages/login/login",
-    "pages/product/gouwu/gouwu",
-    "pages/product/baoxian/baoxian",
-    "pages/product/chexian/chexian",
-    "pages/product/daikuan/daikuan",
-    "pages/product/tuiguang/tuiguang",
-    "pages/product/simu/simu",
-    "pages/product/gouwu/details"
-  ],
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "/images/index.png",
-        "selectedIconPath": "/images/index_select.png"
-      },
-      {
-        "pagePath": "pages/product/product",
-        "text": "产品",
-        "iconPath": "/images/product.png",
-        "selectedIconPath": "/images/index_select.png"
-      },
-      {
-        "pagePath": "pages/intention/intention",
-        "text": "意向",
-        "iconPath": "/images/intention.png",
-        "selectedIconPath": "/images/intention_select.png"
-      },
-      {
-        "pagePath": "pages/mime/mime",
-        "text": "我的",
-        "iconPath": "/images/me.png",
-        "selectedIconPath": "/images/me_select.png"
-      }
-    ]
-  },
-  "sitemapLocation": "sitemap.json"
+        "pages/index/index",
+        "pages/product/product",
+        "pages/intention/intention",
+        "pages/mime/mime",
+        "pages/login/login",
+        "pages/product/gouwu/gouwu",
+        "pages/product/baoxian/baoxian",
+        "pages/product/chexian/chexian",
+        "pages/product/daikuan/daikuan",
+        "pages/product/tuiguang/tuiguang",
+        "pages/product/simu/simu",
+        "pages/product/gouwu/details"
+    ],
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "/images/index.png",
+                "selectedIconPath": "/images/index_select.png"
+            },
+            {
+                "pagePath": "pages/product/product",
+                "text": "产品",
+                "iconPath": "/images/product.png",
+                "selectedIconPath": "/images/index_select.png"
+            },
+            {
+                "pagePath": "pages/intention/intention",
+                "text": "意向",
+                "iconPath": "/images/intention.png",
+                "selectedIconPath": "/images/intention_select.png"
+            },
+            {
+                "pagePath": "pages/mime/mime",
+                "text": "我的",
+                "iconPath": "/images/me.png",
+                "selectedIconPath": "/images/me_select.png"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json",
+    "window": {
+        "sitemapLocation": "sitemap.json",
+        "navigationBarBackgroundColor": "#FFFFFF",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "",
+        "backgroundColor": "#eeeeee",
+        "backgroundTextStyle": "light",
+        "enablePullDownRefresh": false
+    }
 }
