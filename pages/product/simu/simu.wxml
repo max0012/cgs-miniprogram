@@ -1,2 +1,38 @@
-<!--pages/product/simu/simu.wxml-->
-<text>pages/product/simu/simu.wxml</text>
+<!--购物页列表-->
+<view >
+
+  <view wx:for="{{list}}">
+      <view class="list" data-id="{{item.id}}" bindtap="divClick">
+        <view calss="mainImg">
+          <image src=" {{item.coverUrl}}" />
+        </view>
+        <view>
+          <image src=" {{item.productBrand.coverUrl}}" />
+          <text>{{item.productBrand.name}}</text>
+        </view>
+        <view>
+          <text>{{item.name}}</text>
+        </view>
+        <view>
+          <text>营销成功：{{item.countSale}}</text>
+        </view>
+        <view>
+          <text>{{item.intro}}</text>
+        </view>
+        <view>
+          <view class="div3">
+            <view><text class="redText">{{item.earning}}</text></view>
+            <text>累计收益</text>
+          </view>
+          <view class="div3">
+            <view><text class="redText">{{item.netWorth}}</text></view>
+            <text>最新净值{{item.netWorthTime}}</text>
+          </view>
+          <view class="div3">
+            <view><text class="redText">{{item.commissionText}}</text></view>
+            <text>营销佣金</text>
+          </view>
+        </view>
+      </view>
+  </view>
+</view>

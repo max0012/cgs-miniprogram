@@ -25,7 +25,7 @@
             <text>商品价格</text>
           </view>
           <view class="div3">
-            <view><text class="redText">登录后查看</text></view>
+            <view><text class="redText">{{item.commissionText}}</text></view>
             <text>营销佣金</text>
           </view>
           <view class="div3">

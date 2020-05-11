@@ -32,7 +32,7 @@ Page({
         })
     },
 
-    //点击进入商品详情页
+    //点击进入推广产品详情页
     divClick: function (e) {
         //得到页面数据
         var data_id = e.currentTarget.dataset.id

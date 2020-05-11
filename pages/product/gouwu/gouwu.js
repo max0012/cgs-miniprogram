@@ -13,6 +13,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        //设置页面顶部titile
         var data_name = options.data_name
         wx.setNavigationBarTitle({
             title: data_name

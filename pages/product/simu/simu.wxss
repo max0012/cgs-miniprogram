@@ -1,1 +1,12 @@
-/* pages/product/simu/simu.wxss */
+.list {
+  border: 1px solid gray;
+  margin-bottom: 20px;
+  clear: both;
+}
+.redText{
+  color: red;
+}
+.div3{
+  width: 33%;
+  float: left;
+}

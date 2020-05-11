@@ -1,5 +1,5 @@
 {
-  "pages": [
+    "pages": [
         "pages/index/index",
         "pages/product/product",
         "pages/intention/intention",
@@ -11,7 +11,8 @@
         "pages/product/daikuan/daikuan",
         "pages/product/tuiguang/tuiguang",
         "pages/product/simu/simu",
-        "pages/product/gouwu/details"
+        "pages/product/gouwu/details",
+        "pages/product/gouwu/productTips"
     ],
     "tabBar": {
         "list": [
@@ -49,6 +50,6 @@
         "navigationBarTitleText": "",
         "backgroundColor": "#eeeeee",
         "backgroundTextStyle": "light",
-        "enablePullDownRefresh": false
+        "enablePullDownRefresh": true
     }
 }

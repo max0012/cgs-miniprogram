@@ -1,0 +1,12 @@
+   <scroll-view calss="scrollView" scroll-y="true" bindscrolltolower="searchScrollLower" style="height:200px">
+        <view wx:for="{{dataList}}" class="result-item">
+            <view class="title">{{item.title}}</view>
+            <view>
+                <video src="{{item.videoUrl}}">
+
+                </video>
+            </view>
+        </view>
+        <view class="loading" hidden="{{!loadMore}}">正在载入更多...</view>
+        <view class="loading" hidden="{{!loadAll}}">已加载全部</view>
+    </scroll-view>

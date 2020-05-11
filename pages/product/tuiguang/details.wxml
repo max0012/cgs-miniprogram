@@ -26,14 +26,12 @@
     </view>
     <!-- 分割线 -->
     <view class="divLine"></view>
-    <view>商品价格：{{detail.upperPrice}}</view>
-    <!-- 分割线 -->
-    <view class="divLine"></view>
-    <view>市场销售价格：{{detail.price}}</view>
+    <view>商品价格：{{detail.price}}</view>
     <!-- 分割线 -->
     <view class="divLine"></view>
     <view>营销佣金：
-        <text>登录后查看</text>
+        <text>{{detail.commissionText}}</text>
+        <text>        (佣金结算快至1天到账)</text>
     </view>
     <!-- 分割线2 -->
     <view class="divLine2"></view>
@@ -61,6 +59,5 @@
     <view>
         <button calss="btn" size="mini">联系产品顾问</button>
         <button calss="btn" size="mini">分享给客户</button>
-        <button calss="btn" size="mini">立即下单</button>
     </view>
 </view>
