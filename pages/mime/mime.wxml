@@ -1,15 +1,126 @@
 <view class="container mime">
-    <!--上部信息-->
-    <view class="user flex-wrp">
-        <image class="avatar" mode="aspectFit" src="https://wx.qlogo.cn/mmhead/PiajxSqBRaEIzMqK9QicxelZqlXBoY3uC5cibPFkibicUwgC2k2ialXRdRlg/0" background-size="cover"></image>
-        <view class="user-info flex-item">
-            <text class="userinfo-nickname">李镇年</text>
-            <button class="level" size="mini" hover-stop-propagation="true">高级理财师</button>
-            <view class="job-number"><text>工号：123456</text></view>
+    <!-- 个人信息 -->
+    <view class="user">
+        <view class="user-box flex-wrp">
+            <image class="avatar" mode="aspectFit" src="https://wx.qlogo.cn/mmhead/PiajxSqBRaEIzMqK9QicxelZqlXBoY3uC5cibPFkibicUwgC2k2ialXRdRlg/0" background-size="cover"></image>
+            <view class="user-info flex-item">
+                <text class="userinfo-nickname">李镇年</text>
+                <button class="level" size="mini" hover-stop-propagation="true">高级理财师</button>
+                <view class="job-number">
+                    <text>工号：123456</text>
+                </view>
+            </view>
         </view>
     </view>
 
-    <!--我的账户-->
-    <view class="my-accout">
+    <!-- 我的账户 -->
+    <view class="my-account">
+        <view class="title">
+            <text>我的账户</text>
+        </view>
+        <view class="account-info">
+            <view class="withdrawal-info flex-wrp">
+                <view class="my-item flex-item">
+                    <view class="item-num">
+                        <text>500.00</text>
+                    </view>
+                    <view class="item-title">
+                        <text>可提现</text>
+                    </view>
+                </view>
+                <view class="item-line"></view>
+                <view class="my-item flex-item">
+                    <view class="item-num">
+                        <text>500.00</text>
+                    </view>
+                    <view class="item-title">
+                        <text>提现中</text>
+                    </view>
+                </view>
+                <view class="item-line"></view>
+                <view class="my-item flex-item">
+                    <view class="item-num">
+                        <text>5500.00</text>
+                    </view>
+                    <view class="item-title">
+                        <text>总佣金</text>
+                    </view>
+                </view>
+            </view>
+            <view class="account-line"></view>
+            <view class="transaction-info flex-wrp">
+                <view class="my-item flex-item">
+                    <view class="item-num">
+                        <text>5500.00</text>
+                    </view>
+                    <view class="item-title">
+                        <text>成交总额</text>
+                    </view>
+                </view>
+                <view class="item-line"></view>
+                <view class="my-item flex-item">
+                    <view class="item-num">
+                        <text>2</text>
+                    </view>
+                    <view class="item-title">
+                        <text>成交订单数</text>
+                    </view>
+                </view>
+                <view class="item-line"></view>
+                <view class="my-item flex-item" style="line-height: 80rpx;">
+                    <text>查看业绩</text>
+                    <view class="i"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 我的服务 -->
+    <view class="my-services">
+        <view class="title">
+            <text>我的服务</text>
+        </view>
+        <view class="services-info flex-wrp">
+            <view class="my-item">
+                <view class="item-icon">
+                    <image mode="aspectFit" src="../../images/mime/my-order.png"></image>
+                </view>
+                <view class="item-title">
+                    <text>我的订单</text>
+                </view>
+            </view>
+            <view class="my-item">
+                <view class="item-icon">
+                    <image src="../../images/mime/my-interests.png"></image>
+                </view>
+                <view class="item-title">
+                    <text>我的权益</text>
+                </view>
+            </view>
+            <view class="my-item">
+                <view class="item-icon">
+                    <image src="../../images/mime/my-collection.png"></image>
+                </view>
+                <view class="item-title">
+                    <text>我的收藏</text>
+                </view>
+            </view>
+            <view class="my-item">
+                <view class="item-icon">
+                    <image src="../../images/mime/my-coupon.png"></image>
+                </view>
+                <view class="item-title">
+                    <view>优惠券</view>
+                </view>
+            </view>
+            <view class="my-item">
+                <view class="item-icon">
+                    <image src="../../images/mime/my-services.png"></image>
+                </view>
+                <view class="item-title">
+                    <text>专属客服</text>
+                </view>
+            </view>
+        </view>
     </view>
 </view>
