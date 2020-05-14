@@ -83,7 +83,7 @@
         <view class="services-info flex-wrp">
             <view class="my-item">
                 <view class="item-icon">
-                    <image mode="aspectFit" src="../../images/mime/my-order.png"></image>
+                    <image mode="aspectFit" src="../../assets/mime/my-order.png"></image>
                 </view>
                 <view class="item-title">
                     <text>我的订单</text>
@@ -91,7 +91,7 @@
             </view>
             <view class="my-item">
                 <view class="item-icon">
-                    <image src="../../images/mime/my-interests.png"></image>
+                    <image src="../../assets/mime/my-interests.png"></image>
                 </view>
                 <view class="item-title">
                     <text>我的权益</text>
@@ -99,7 +99,7 @@
             </view>
             <view class="my-item">
                 <view class="item-icon">
-                    <image src="../../images/mime/my-collection.png"></image>
+                    <image src="../../assets/mime/my-collection.png"></image>
                 </view>
                 <view class="item-title">
                     <text>我的收藏</text>
@@ -107,7 +107,7 @@
             </view>
             <view class="my-item">
                 <view class="item-icon">
-                    <image src="../../images/mime/my-coupon.png"></image>
+                    <image src="../../assets/mime/my-coupon.png"></image>
                 </view>
                 <view class="item-title">
                     <view>优惠券</view>
@@ -115,7 +115,7 @@
             </view>
             <view class="my-item">
                 <view class="item-icon">
-                    <image src="../../images/mime/my-services.png"></image>
+                    <image src="../../assets/mime/my-services.png"></image>
                 </view>
                 <view class="item-title">
                     <text>专属客服</text>

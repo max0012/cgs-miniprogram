@@ -1,2 +1,4 @@
-<!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<!--login.wxml-->
+<view>
+    <button class="login" bindtap="onLogin">微信授权</button>
+</view>
