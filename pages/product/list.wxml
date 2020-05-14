@@ -20,7 +20,7 @@
             </view>
             <!--              通过类型判断如何显示                 --->
             <!-- Tuiguang, Daikuan, Simu, Baoxian, Gouwu, Chexian  -->
-            <view wx:if="{{data_type==='Gouwu'}}">
+            <view wx:if="{{item.productCategory.type==='Gouwu'}}">
                 <view class="div3">
                     <view>
                         <text class="redText">{{item.upperPrice}}元</text>
@@ -38,7 +38,7 @@
                 </view>
             </view>
             <!--------------------   Simu私募类型  -------------------------->
-            <view wx:if="{{data_type==='Simu'}}">
+            <view wx:if="{{item.productCategory.type==='Simu'}}">
                 <view class="div3">
                     <view>
                         <text class="redText">{{item.earning}}</text>
@@ -59,7 +59,7 @@
                 </view>
             </view>
             <!----------------------- Tuiguang推广类型  -------------------------->
-            <view wx:if="{{data_type==='Tuiguang'}}">
+            <view wx:if="{{item.productCategory.type==='Tuiguang'}}">
                 <view class="div3">
                     <view>
                         <text class="redText">{{item.price}}</text>

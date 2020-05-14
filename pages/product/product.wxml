@@ -13,7 +13,7 @@
 <view class="container">
    <view class="weui-grids">
       <view class="weui-grid" wx:for="{{list}}" wx:key="list">
-         <view class='weui-grid__bg' data-id="{{item.id}}" data-name="{{item.name}}" data-type="{{item.type}}" bindtap="imgclick">
+         <view class='weui-grid__bg' data-id="{{item.id}}" data-name="{{item.name}}" bindtap="imgclick">
             <view class="weui-grid__icon">
               <image src=" {{item.coverUrl}}" mode="scaleToFill" />
             </view>

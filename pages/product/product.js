@@ -23,8 +23,6 @@ Page({
         var params = {
             PageSize: 99,
             PageIndex: 1,
-            SkipCount: 2,
-            MaxResultCount: 99
         }
         http.getReq(url, params, function(res) {
             //将获取到的数据，存在名字叫list的这个数组中
@@ -39,11 +37,10 @@ Page({
     imgclick: function(e) {
         //得到页面数据
         var data_id = e.currentTarget.dataset.id
-        var data_type = e.currentTarget.dataset.type
         var data_name = e.currentTarget.dataset.name
         //跳转到列表页面  
         wx.navigateTo({
-            url: 'list' + '?data_id=' + data_id + '&data_name=' + data_name + '&data_type=' + data_type,
+            url: 'list' + '?data_id=' + data_id + '&data_name=' + data_name ,
             success: function(res) {
                 console.log('进入产品列表页面,data_id为:' + data_id);
             },

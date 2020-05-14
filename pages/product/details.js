@@ -23,8 +23,6 @@ Page({
         indicatordots: true,
         //指示点颜色 
         indicatorcolor: "white",
-        //产品类型
-        data_type : null,
     },
 
     /** 
@@ -44,7 +42,6 @@ Page({
         }
         //上个页面传递的id 
         var data_id = e.data_id
-        var type = e.data_type
         var detailUrl = '/product/' + data_id + '/withDetails'
         var tipsUrl = '/productTips/byProductId/' + data_id
 
@@ -53,7 +50,6 @@ Page({
                 //将获取到的数据，存在名字叫detail的这个对象中 
                 that.setData({
                         detail: res,
-                        data_type: type
                     }),
                     console.log(res);
                     //产品详情中的图片路径（为html,需要在这里转换）
@@ -71,7 +67,7 @@ Page({
     },
 
     //查看营销小技巧事件
-    tipsClick: function(e) {
+    tipsClick: function(e) { 
         //得到页面数据
         var data_id = e.currentTarget.dataset.id
         wx.navigateTo({

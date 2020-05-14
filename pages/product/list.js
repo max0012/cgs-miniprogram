@@ -9,7 +9,6 @@ Page({
      */
     data: {
         data_list: [],
-        data_type:null,
     },
 
     /**
@@ -25,16 +24,12 @@ Page({
         var that = this;
         //上个页面传递的id
         var data_id = options.data_id
-        //类型
-        var type = options.data_type
         var url = '/product/byCategoryId/' + data_id
 
         http.getReq(url, null, function (res) {
             //将获取到的数据，存在名字叫data_list的这个数组中
             that.setData({
                 data_list: res,
-                //给data_type赋值，页面通过data_type判断显示样式
-                data_type: type,
             }),
                 console.log(res);
         })
@@ -46,7 +41,7 @@ Page({
         var data_id = e.currentTarget.dataset.id
         var that = this
         wx.navigateTo({
-            url: 'details?data_id=' + data_id + '&data_type=' + that.data.data_type,
+            url: 'details?data_id=' + data_id ,
             success: function (res) {
                 console.log('成功跳转，携带参数id值为' + data_id);
             },

@@ -13,17 +13,35 @@
 
         <!--内容布局-->
         <swiper class='swiper' bindchange='pageChange' current='{{currentIndex}}'>
-            <view>推荐产品</view>
-            <view wx:for="{{detail.relationPageProducts}}" wx:for-item="details" class='record-item'>
+        <!-- 有几个tab项就循环出几个swiper-item  -->
+            <view wx:for="{{data_list}}">
                 <swiper-item class='swiper'>
-                    <view class='name'>
-                        <view bindtap="detailClick">
-                            <view src="{{details.coverUrl}}"></view>
-                            <view>
-                                <view>{{details.name}}</view>
+                    <view>推荐产品</view>
+                    <view wx:for="{{detail.relationPageProducts}}" wx:for-item="details" class='record-item'>
+                        <view class='name'>
+                            <view bindtap="detailClick" data-id="{{details.product.id}}">
+                                <image src="{{details.product.coverUrl}}"></image>
                                 <view>
-                                    佣金：{{details.commissionText}}
-                                    <button>马上营销</button>
+                                    <view>{{details.product.name}}</view>
+                                    <view>
+                                        佣金：{{details.product.commissionText}}
+                                        <button>马上营销</button>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <!-- 培训课程板块 -->
+                    <view wx:if="{{detail.relationPageProductTipses.length>0}}">
+                        <view>培训课程</view>
+                        <view wx:for="{{detail.relationPageProductTipses}}" wx:for-item="tip">
+                            <view>
+                                <view>
+                                    <image src="{{tip.productTips.imageUrls}}"></image>
+                                </view>
+                                <view>
+                                    <text>{{tip.productTips.title}}</text>
+                                    <button>立即学习</button>
                                 </view>
                             </view>
                         </view>

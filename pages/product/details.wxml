@@ -26,7 +26,7 @@
     </view>
     <!--------------------- 通过类型判断如何显示    ------------------>
     <!-- Tuiguang, Daikuan, Simu, Baoxian, Gouwu, Chexian  -->
-    <view wx:if="{{data_type==='Gouwu'}}">
+    <view wx:if="{{detail.productCategory.type==='Gouwu'}}">
         <!-- 分割线 -->
         <view class="divLine"></view>
         <view>商品价格：{{detail.upperPrice}}</view>
@@ -35,7 +35,7 @@
         <view>市场销售价格：{{detail.price}}</view>
     </view>
     <!--------------------   Simu私募类型  -------------------------->
-    <view wx:if="{{data_type==='Simu'}}">
+    <view wx:if="{{detail.productCategory.type==='Simu'}}">
         <!-- 分割线 -->
         <view class="divLine"></view>
         <view>累计收益：{{detail.earning}}</view>
@@ -44,7 +44,7 @@
         <view>最新净值({{detail.netWorthTime}}):{{detail.netWorth}}</view>
     </view>
     <!----------------------- Tuiguang推广类型  -------------------------->
-    <view wx:if="{{data_type==='Tuiguang'}}">
+    <view wx:if="{{detail.productCategory.type==='Tuiguang'}}">
         <!-- 分割线 -->
         <view class="divLine"></view>
         <view>商品价格：{{detail.price}}</view>
@@ -83,7 +83,7 @@
     <view>
         <button calss="btn" size="mini">联系产品顾问</button>
         <button calss="btn" size="mini">分享给客户</button>
-        <button wx:if="{{data_type==='Gouwu'}}" calss="btn" size="mini">立即下单</button>
+        <button wx:if="{{detail.productCategory.type==='Gouwu'}}" calss="btn" size="mini">立即下单</button>
     </view>
 
 

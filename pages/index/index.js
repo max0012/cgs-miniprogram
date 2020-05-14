@@ -55,6 +55,8 @@ Page({
     //tab页切换后请求列表数据
     pageChange: function(e) {
         console.log("进入tab切换方法：------------id");
+        var that = this 
+        that.getDetails();
     },
 
     //请求列表数据方法
@@ -71,12 +73,14 @@ Page({
     },
 
     //进入产品详情页面
-    detailClick(data_id) {
+    detailClick(e) {
         var that = this
+        var id = e.currentTarget.dataset.id
+        var type = e.currentTarget.dataset.type
         wx.navigateTo({
-            url: 'details?data_id=' + data_id + '&data_type=' + that.data.data_type,
+            url: '../product/details?data_id=' + id ,
             success: function (res) {
-                console.log('成功跳转，携带参数id值为' + data_id);
+                console.log('成功跳转，携带参数id值为' + id);
             },
             fail: function (res) {
                 console.log('imgclick fail() !!!');
