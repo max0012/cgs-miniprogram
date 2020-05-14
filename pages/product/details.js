@@ -1,5 +1,5 @@
-var http = require('../../../utils/https.js')
-var WxParse = require('../../../wxParse/wxParse.js');
+var http = require('../../utils/https.js')
+var WxParse = require('../../wxParse/wxParse.js');
 
 /**
 * WxParse.wxParse(bindName , type, data, target,imagePadding)
@@ -9,7 +9,7 @@ var WxParse = require('../../../wxParse/wxParse.js');
 * 4.target为Page对象,一般为this(必填)
 * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
 */
-
+ 
 Page({
     /** 
      * 页面的初始数据 
@@ -22,7 +22,9 @@ Page({
         //是否显示指示点 
         indicatordots: true,
         //指示点颜色 
-        indicatorcolor: "white"
+        indicatorcolor: "white",
+        //产品类型
+        data_type : null,
     },
 
     /** 
@@ -39,10 +41,10 @@ Page({
         var tipsParams = {
             PageSize: 2,
             PageIndex: 1,
-            MaxResultCount: 2
         }
         //上个页面传递的id 
         var data_id = e.data_id
+        var type = e.data_type
         var detailUrl = '/product/' + data_id + '/withDetails'
         var tipsUrl = '/productTips/byProductId/' + data_id
 
@@ -51,6 +53,7 @@ Page({
                 //将获取到的数据，存在名字叫detail的这个对象中 
                 that.setData({
                         detail: res,
+                        data_type: type
                     }),
                     console.log(res);
                     //产品详情中的图片路径（为html,需要在这里转换）

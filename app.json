@@ -5,14 +5,9 @@
         "pages/intention/intention",
         "pages/mime/mime",
         "pages/login/login",
-        "pages/product/gouwu/gouwu",
-        "pages/product/baoxian/baoxian",
-        "pages/product/chexian/chexian",
-        "pages/product/daikuan/daikuan",
-        "pages/product/tuiguang/tuiguang",
-        "pages/product/simu/simu",
-        "pages/product/gouwu/details",
-        "pages/product/gouwu/productTips"
+        "pages/product/details",
+        "pages/product/productTips",
+        "pages/product/list"
     ],
     "tabBar": {
         "list": [

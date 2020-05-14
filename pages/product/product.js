@@ -1,4 +1,3 @@
-// pages/product/product.js
 
 var http = require('../../utils/https.js')
 
@@ -42,14 +41,11 @@ Page({
         var data_id = e.currentTarget.dataset.id
         var data_type = e.currentTarget.dataset.type
         var data_name = e.currentTarget.dataset.name
-        //转换大小写
-        var type = data_type.toLocaleLowerCase()
-        //根据type跳转页面  
-        //Tuiguang, Daikuan, Simu, Baoxian, Gouwu, Chexian
+        //跳转到列表页面  
         wx.navigateTo({
-            url: type + '/' + type + '?data_id=' + data_id + '&data_name=' + data_name,
+            url: 'list' + '?data_id=' + data_id + '&data_name=' + data_name + '&data_type=' + data_type,
             success: function(res) {
-                console.log('imgclick success() res:');
+                console.log('进入产品列表页面,data_id为:' + data_id);
             },
             fail: function(res) {
                 console.log('imgclick fail() !!!');

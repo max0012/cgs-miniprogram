@@ -1,13 +1,35 @@
-<!--index.wxml-->
-<view class="container">
-  <!-- <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">22222{{motto}}22222</text>
-  </view> -->
+<view class='ticket-container'>
+    <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <!--Tab布局-->
+        <view class='title'>
+            <view wx:for="{{data_list}}" wx:for-index="listIndex">
+                <view class="{{listIndex == currentIndex ? 'title-sel-selected' : 'title-sel'}}" data-id="{{item.id}}" bindtap='titleClick' data-idx='{{listIndex}}'>
+                    <text>{{item.name}}</text>
+                    <hr class="line-style" />
+                </view>
+            </view>
+        </view>
+
+
+        <!--内容布局-->
+        <swiper class='swiper' bindchange='pageChange' current='{{currentIndex}}'>
+            <view>推荐产品</view>
+            <view wx:for="{{detail.relationPageProducts}}" wx:for-item="details" class='record-item'>
+                <swiper-item class='swiper'>
+                    <view class='name'>
+                        <view bindtap="detailClick">
+                            <view src="{{details.coverUrl}}"></view>
+                            <view>
+                                <view>{{details.name}}</view>
+                                <view>
+                                    佣金：{{details.commissionText}}
+                                    <button>马上营销</button>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </swiper-item>
+            </view>
+        </swiper>
+    </scroll-view>
 </view>

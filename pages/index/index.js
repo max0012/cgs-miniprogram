@@ -1,68 +1,94 @@
-//index.js
 var http = require('../../utils/https.js')
-//获取应用实例
-const app = getApp()
 
 Page({
+
+    /**
+     * 页面的初始数据
+     */
     data: {
-        motto: 'Hello World',
-        userInfo: {},
-        hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
+        //选项卡集合
+        data_list: [],
+        //某一个选项卡详情
+        detail: null,
+        //默认选择下标为0的tab项
+        currentIndex: 0,
+        data_id : null,
     },
-    //事件处理函数
-    bindViewTap: function() {
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function(options) {
+        /** 页面一加载就访问服务器接口，加载初始页面 */
+        var that = this;
+        var url = '/page/foxIndex'
+        http.getReq(url, null, function(res) {
+            //将获取到的数据，存在名字叫list的这个数组中
+            that.setData({
+                    data_list: res,
+                }),
+                console.log("选项卡信息：" + res);
+            //加载第一个选项卡列表内容
+            var id = res[0].id;
+            that.setData({
+                data_id: id, 
+            })
+            that.getDetails();
+            console.log("第一个选项:卡id:" + id);
+
+        })
+    },
+
+    //用户点击tab时调用
+    titleClick: function(e) {
+        var that = this
+        var idx = e.currentTarget.dataset.idx
+        var id = e.currentTarget.dataset.id
+        console.log("当前下标:" + idx);
+        that.setData({
+            currentIndex: idx,
+            data_id : id
+        })
+        console.log("currentIndex下标:" + that.data.currentIndex);
+    },
+
+    //tab页切换后请求列表数据
+    pageChange: function(e) {
+        console.log("进入tab切换方法：------------id");
+    },
+
+    //请求列表数据方法
+    getDetails() {
+        var that = this
+        var id = that.data.data_id 
+        console.log("getDetails()方法中拿到的id:" + id)
+        var details_url = "/page/" + id + "/withDetails";
+        http.getReq(details_url, null, function(e) {
+            that.setData({
+                detail: e,
+            })
+        })
+    },
+
+    //进入产品详情页面
+    detailClick(data_id) {
+        var that = this
         wx.navigateTo({
-            url: '../logs/logs'
+            url: 'details?data_id=' + data_id + '&data_type=' + that.data.data_type,
+            success: function (res) {
+                console.log('成功跳转，携带参数id值为' + data_id);
+            },
+            fail: function (res) {
+                console.log('imgclick fail() !!!');
+            },
         })
     },
-    onLoad: function() {
-        if (app.globalData.userInfo) {
-            this.setData({
-                userInfo: app.globalData.userInfo,
-                hasUserInfo: true
-            })
-        } else if (this.data.canIUse) {
-            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-            // 所以此处加入 callback 以防止这种情况
-            app.userInfoReadyCallback = res => {
-                this.setData({
-                    userInfo: res.userInfo,
-                    hasUserInfo: true
-                })
-            }
-        } else {
-            // 在没有 open-type=getUserInfo 版本的兼容处理
-            wx.getUserInfo({
-                success: res => {
-                    app.globalData.userInfo = res.userInfo
-                    this.setData({
-                        userInfo: res.userInfo,
-                        hasUserInfo: true
-                    })
-                }
-            })
-        }
 
-        var url = '/advertisement'
-        var params = {
-            PageSize: 20,
-            PageIndex: 1,
-            SkipCount: 2,
-            MaxResultCount: 20
-        }
 
-        http.getReq(url, params, function(res) {
-            console.log("get");
-            console.log(res);
-        })
-    },
-    getUserInfo: function(e) {
-        console.log(e)
-        app.globalData.userInfo = e.detail.userInfo
-        this.setData({
-            userInfo: e.detail.userInfo,
-            hasUserInfo: true
-        })
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function() {
+
     }
 })

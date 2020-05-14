@@ -1,4 +1,4 @@
-var http = require('../../../utils/https.js')
+var http = require('../../utils/https.js')
 
 Page({
     /**
