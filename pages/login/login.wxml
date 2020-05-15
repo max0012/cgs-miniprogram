@@ -1,4 +1,4 @@
 <!--login.wxml-->
 <view>
-    <button class="login" bindtap="onLogin">微信授权</button>
+    <button open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">微信授权</button>
 </view>
