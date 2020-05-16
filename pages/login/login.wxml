@@ -1,2 +1,4 @@
-<!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<!--login.wxml-->
+<view>
+    <button open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">微信授权</button>
+</view>

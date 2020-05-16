@@ -62,6 +62,13 @@
 					"pathName": "pages/mime/mime",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

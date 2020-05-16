@@ -7,44 +7,46 @@
         "pages/login/login",
         "pages/product/details",
         "pages/product/productTips",
-        "pages/product/list"
+        "pages/product/list",
+        "pages/logs/logs"
     ],
     "tabBar": {
+        "color": "#A1A1A1",
+        "selectedColor": "#616877",
         "list": [
             {
                 "pagePath": "pages/index/index",
                 "text": "首页",
-                "iconPath": "/images/index.png",
-                "selectedIconPath": "/images/index_select.png"
+                "iconPath": "./assets/tabbar/index.png",
+                "selectedIconPath": "assets/tabbar/index_active.png"
             },
             {
                 "pagePath": "pages/product/product",
                 "text": "产品",
-                "iconPath": "/images/product.png",
-                "selectedIconPath": "/images/index_select.png"
+                "iconPath": "assets/tabbar/product.png",
+                "selectedIconPath": "assets/tabbar/index_active.png"
             },
             {
                 "pagePath": "pages/intention/intention",
                 "text": "意向",
-                "iconPath": "/images/intention.png",
-                "selectedIconPath": "/images/intention_select.png"
+                "iconPath": "assets/tabbar/intention.png",
+                "selectedIconPath": "assets/tabbar/intention_active.png"
             },
             {
                 "pagePath": "pages/mime/mime",
                 "text": "我的",
-                "iconPath": "/images/me.png",
-                "selectedIconPath": "/images/me_select.png"
+                "iconPath": "assets/tabbar/mime.png",
+                "selectedIconPath": "assets/tabbar/mime_active.png"
             }
         ]
     },
     "sitemapLocation": "sitemap.json",
     "window": {
-        "sitemapLocation": "sitemap.json",
         "navigationBarBackgroundColor": "#FFFFFF",
         "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "",
-        "backgroundColor": "#eeeeee",
+        "backgroundColor": "#F6F6F6",
         "backgroundTextStyle": "light",
-        "enablePullDownRefresh": true
+        "enablePullDownRefresh": true,
+        "navigationBarTitleText": "财龟师"
     }
 }
