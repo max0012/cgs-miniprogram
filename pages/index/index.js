@@ -1,4 +1,8 @@
-var http = require('../../utils/https.js')
+// 导入封装的request请求.js
+import {
+    get,
+    post
+} from '../../utils/network.js'
 
 Page({
 
@@ -12,7 +16,7 @@ Page({
         detail: null,
         //默认选择下标为0的tab项
         currentIndex: 0,
-        data_id : null,
+        data_id: null,
     },
 
     /**
@@ -22,7 +26,7 @@ Page({
         /** 页面一加载就访问服务器接口，加载初始页面 */
         var that = this;
         var url = '/page/foxIndex'
-        http.getReq(url, null, function(res) {
+        get(url).then(res => {
             //将获取到的数据，存在名字叫list的这个数组中
             that.setData({
                     data_list: res,
@@ -31,11 +35,12 @@ Page({
             //加载第一个选项卡列表内容
             var id = res[0].id;
             that.setData({
-                data_id: id, 
+                data_id: id,
             })
             that.getDetails();
             console.log("第一个选项:卡id:" + id);
-
+        }).catch(err => {
+            console.log(err)
         })
     },
 
@@ -47,7 +52,7 @@ Page({
         console.log("当前下标:" + idx);
         that.setData({
             currentIndex: idx,
-            data_id : id
+            data_id: id
         })
         console.log("currentIndex下标:" + that.data.currentIndex);
     },
@@ -55,20 +60,22 @@ Page({
     //tab页切换后请求列表数据
     pageChange: function(e) {
         console.log("进入tab切换方法：------------id");
-        var that = this 
+        var that = this
         that.getDetails();
     },
 
     //请求列表数据方法
     getDetails() {
         var that = this
-        var id = that.data.data_id 
+        var id = that.data.data_id
         console.log("getDetails()方法中拿到的id:" + id)
         var details_url = "/page/" + id + "/withDetails";
-        http.getReq(details_url, null, function(e) {
+        get(details_url).then(res => {
             that.setData({
-                detail: e,
+                detail: res,
             })
+        }).catch(err => {
+            console.log(err)
         })
     },
 
@@ -78,11 +85,11 @@ Page({
         var id = e.currentTarget.dataset.id
         var type = e.currentTarget.dataset.type
         wx.navigateTo({
-            url: '../product/details?data_id=' + id ,
-            success: function (res) {
+            url: '../product/details?data_id=' + id,
+            success: function(res) {
                 console.log('成功跳转，携带参数id值为' + id);
             },
-            fail: function (res) {
+            fail: function(res) {
                 console.log('imgclick fail() !!!');
             },
         })

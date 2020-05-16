@@ -1,5 +1,4 @@
 var util = require('../../utils/util.js')
-var request = require('../../utils/https.js')
 var app = getApp()
 Page({
     data: {

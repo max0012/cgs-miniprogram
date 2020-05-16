@@ -1,15 +1,20 @@
-var http = require('../../utils/https.js')
+// 导入封装的request请求.js
+import {
+    get,
+    post
+} from '../../utils/network.js'
+// 引入wxParse解析html
 var WxParse = require('../../wxParse/wxParse.js');
 
 /**
-* WxParse.wxParse(bindName , type, data, target,imagePadding)
-* 1.bindName绑定的数据名(必填)
-* 2.type可以为html或者md(必填)
-* 3.data为传入的具体数据(必填)
-* 4.target为Page对象,一般为this(必填)
-* 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
-*/
- 
+ * WxParse.wxParse(bindName , type, data, target,imagePadding)
+ * 1.bindName绑定的数据名(必填)
+ * 2.type可以为html或者md(必填)
+ * 3.data为传入的具体数据(必填)
+ * 4.target为Page对象,一般为this(必填)
+ * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+ */
+
 Page({
     /** 
      * 页面的初始数据 
@@ -46,28 +51,32 @@ Page({
         var tipsUrl = '/productTips/byProductId/' + data_id
 
         //获取产品详情方法
-        http.getReq(detailUrl, null, function(res) {
+        get(detailUrl).then(res => {
                 //将获取到的数据，存在名字叫detail的这个对象中 
                 that.setData({
                         detail: res,
                     }),
                     console.log(res);
-                    //产品详情中的图片路径（为html,需要在这里转换）
-            var description = res.description;
-            WxParse.wxParse('description', 'html', description, that, 5);
-            }),
+                //产品详情中的图片路径（为html,需要在这里转换）
+                var description = res.description;
+                WxParse.wxParse('description', 'html', description, that, 5);
+        }).catch(err => {
+            console.log(err)
+        }),
 
             //加载营销小提示方法
-            http.getReq(tipsUrl, tipsParams, function(res) {
+            get(detailUrl, tipsParams).then(res => {
                 that.setData({
                         productTips: res.items,
                     }),
                     console.log("productTips====" + res.items);
-            })
+        }).catch(err => {
+            console.log(err)
+        })
     },
 
     //查看营销小技巧事件
-    tipsClick: function(e) { 
+    tipsClick: function(e) {
         //得到页面数据
         var data_id = e.currentTarget.dataset.id
         wx.navigateTo({

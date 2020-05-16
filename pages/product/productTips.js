@@ -1,4 +1,8 @@
-var http = require('../../utils/https.js')
+// 导入封装的request请求.js
+import {
+    get,
+    post
+} from '../../utils/network.js'
 
 Page({
     /**
@@ -11,7 +15,7 @@ Page({
         pageSize: 1,
         pageIndex: 1,
         tipsUrl: '/productTips/byProductId/',
-        data_id:null,
+        data_id: null,
     },
 
     /**
@@ -32,7 +36,7 @@ Page({
         that.getData();
     },
     //滚动到底部触发事件
-    searchScrollLower: function () {
+    searchScrollLower: function() {
         console.log("上拉触底事件")
         var that = this
         if (!that.data.loadMore) {
@@ -59,37 +63,36 @@ Page({
         }
         //请求数据
         var url = that.data.tipsUrl + that.data.data_id
-        var params ={
+        var params = {
             PageSize: that.data.pageSize,
-            PageIndex : that.data.pageIndex
+            PageIndex: that.data.pageIndex
         }
-        http.getReq(url, params, function(res) {
-                if (res.items && res.items.length > 0) {
-                    console.log("请求成功", res.items)
-                    //把新请求到的数据添加到dataList里  
-                    let list = that.data.dataList.concat(res.items)
+        get(url, params).then(res => {
+            if (res.items && res.items.length > 0) {
+                console.log("请求成功", res.items)
+                //把新请求到的数据添加到dataList里  
+                let list = that.data.dataList.concat(res.items)
+                that.setData({
+                    dataList: list, //获取数据数组  
+                    pageIndex: that.data.pageIndex + 1,
+                    loadMore: false //把"上拉加载"的变量设为false，显示  
+                });
+                if (res.items.length < that.data.pageSize) {
                     that.setData({
-                        dataList: list, //获取数据数组  
-                        pageIndex: that.data.pageIndex +1 ,
-                        loadMore: false //把"上拉加载"的变量设为false，显示  
-                    });
-                    if (res.items.length < that.data.pageSize) {
-                        that.setData({
-                            loadMore: false, //隐藏加载中。。
-                            loadAll: true //所有数据都加载完了
-                        });
-                    }
-                } else {
-                    that.setData({
-                        loadAll: true, //把“没有数据”设为true，显示  
-                        loadMore: false //把"上拉加载"的变量设为false，隐藏  
+                        loadMore: false, //隐藏加载中。。
+                        loadAll: true //所有数据都加载完了
                     });
                 }
-            })
+            } else {
+                that.setData({
+                    loadAll: true, //把“没有数据”设为true，显示  
+                    loadMore: false //把"上拉加载"的变量设为false，隐藏  
+                });
+            }
+        }).catch(err => {
+            console.log(err)
+        })
 
     }
 
 })
-
-
-
