@@ -1,4 +1,19 @@
 <!--login.wxml-->
-<view>
-    <button open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">微信授权</button>
+<view class="container">
+    <view class="login">
+        <view class="welcome flex-wrp">
+            <view class="title flex-item">
+                <text>你好，\n欢迎来到财龟师</text>
+            </view>
+            <view class="bg flex-item">
+                <image src="../../assets/login/login-bg.png" mode="aspectFit"></image>
+            </view>
+        </view>
+        <view class="phone-number">
+            <input type="number" bindinput="bindKeyInput" placeholder-class="placeholder" placeholder="请输入手机号码"></input>
+        </view>
+        <view class="login-btn">
+            <button bindtap="getCode">登录</button>
+        </view>
+    </view>
 </view>

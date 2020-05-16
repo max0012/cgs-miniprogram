@@ -5,10 +5,12 @@
         "pages/intention/intention",
         "pages/mime/mime",
         "pages/login/login",
+        "pages/login/code/code",
         "pages/product/details",
         "pages/product/productTips",
         "pages/product/list",
-        "pages/logs/logs"
+        "pages/logs/logs",
+        "pages/authorize/authorize"
     ],
     "tabBar": {
         "color": "#A1A1A1",
@@ -44,7 +46,7 @@
     "window": {
         "navigationBarBackgroundColor": "#FFFFFF",
         "navigationBarTextStyle": "black",
-        "backgroundColor": "#F6F6F6",
+        "backgroundColor": "#EFEFEF",
         "backgroundTextStyle": "light",
         "enablePullDownRefresh": true,
         "navigationBarTitleText": "财龟师"

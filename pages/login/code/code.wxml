@@ -1,0 +1,19 @@
+<view class="container">
+    <view class="code">
+        <view class="tips flex-wrp">
+            <view class="title flex-item">
+                <text>输入验证码</text>
+                <text class="msg">短信验证码已经发送至+86 {{mobile}}</text>
+            </view>
+            <view class="bg flex-item">
+                <image src="../../../assets/login/login-bg.png" mode="aspectFit"></image>
+            </view>
+        </view>
+        <view class="code-number">
+            <input type="number" bindinput="bindKeyInput" placeholder-class="placeholder" placeholder="输入验证码"></input>
+        </view>
+        <view class="logon-btn">
+            <button bindtap="logOn">验证</button>
+        </view>
+    </view>
+</view>

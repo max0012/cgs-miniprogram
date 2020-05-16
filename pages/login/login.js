@@ -8,19 +8,22 @@ var uri = '/manager/logOn'
 const app = getApp()
 
 Page({
-    onLoad() {
-        get('/page/foxIndex', {name: "hhh"}).then(res => {
-            console.log("测试GET请求")
-            console.log(res)
-        }).catch(err => {
-            console.log(err)
+    data: {
+        mobile: ''
+    },
+    bindKeyInput(e) {
+        this.setData({
+            mobile: e.detail.value
         })
     },
-    handleGetUserInfo(event) {
-        console.log(event)
-        wx.showModal({
-            title: '用户信息',
-            content: event.detail.userInfo.nickName
+    getCode() {
+        get('/manager/mobileToken', {
+            mobile: this.data.mobile
+        }).then(res => {
+            console.log(res)
+            wx.navigateTo({
+                url: 'code/code?mobile=' + this.data.mobile
+            })
         })
     }
 })

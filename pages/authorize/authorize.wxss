@@ -1,0 +1,50 @@
+.container {
+    background-color: #fff;
+}
+
+.auth {
+    width: 100%;
+    text-align: center;
+}
+
+.auth .cgs-info .cgs-icon {
+    margin-top: 200rpx;
+}
+
+.auth .cgs-info .cgs-title {
+    margin-top: 5rpx;
+    margin-bottom: 220rpx;
+    font-size: 33rpx;
+    font-weight: 500;
+    letter-spacing: 2rpx;
+    text-align: center;
+    color: #373737;
+}
+
+.cgs-info .cgs-icon image {
+    width: 115rpx;
+    height: 115rpx;
+}
+
+.auth-btns .wx-login {
+    margin: 0 40rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 33rpx;
+    font-weight: 300;
+    background-color: #d8b07c;
+    color: #fff;
+}
+
+.auth-btns .wx-login::after, .auth-btns .tel-login::after {
+    border: none;
+}
+
+.auth-btns .tel-login {
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 30rpx;
+    font-weight: 300;
+    background-color: #fff;
+    color: #5E739A;
+}

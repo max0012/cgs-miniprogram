@@ -1,0 +1,17 @@
+<!--pages/authorize/authorize.wxml-->
+<view class="container">
+    <view class="auth">
+        <view class="cgs-info">
+            <view class="cgs-icon">
+                <image src="../../assets/cgs-icon.png" mode="aspectFit"></image>
+            </view>
+            <view class="cgs-title">
+                <text>财龟师</text>
+            </view>
+        </view>
+        <view class="auth-btns">
+            <button class="wx-login" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">微信登录</button>
+            <button class="tel-login">手机号登录/注册</button>
+        </view>
+    </view>
+</view>

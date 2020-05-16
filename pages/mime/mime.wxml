@@ -2,12 +2,12 @@
     <!-- 个人信息 -->
     <view class="user">
         <view class="user-box flex-wrp">
-            <image class="avatar" mode="aspectFit" src="https://wx.qlogo.cn/mmhead/PiajxSqBRaEIzMqK9QicxelZqlXBoY3uC5cibPFkibicUwgC2k2ialXRdRlg/0" background-size="cover"></image>
+            <image class="avatar" mode="aspectFit" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
             <view class="user-info flex-item">
-                <text class="userinfo-nickname">李镇年</text>
+                <text class="userinfo-nickname">{{userInfo.name}}</text>
                 <button class="level" size="mini" hover-stop-propagation="true">高级理财师</button>
                 <view class="job-number">
-                    <text>工号：123456</text>
+                    <text>工号：{{userInfo.number}}</text>
                 </view>
             </view>
         </view>

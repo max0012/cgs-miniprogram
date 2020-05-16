@@ -34,7 +34,7 @@ export default function request(options) {
             },
             fail: function(err) {
                 wx.showToast({
-                    title: '数据请求失败，情稍后再试',
+                    title: '请求失败，情稍后再试',
                     icon: 'none'
                 })
                 reject(err)

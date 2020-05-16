@@ -1,9 +1,9 @@
-.login {
+.code {
     width: 100%;
     background-color: #fff;
 }
 
-.welcome .title {
+.tips .title {
     flex: 2;
     margin-top: 100rpx;
     margin-left: 50rpx;
@@ -11,14 +11,21 @@
     font-size: 40rpx;
 }
 
-.welcome .bg image {
+.tips .title .msg {
+    display: block;
+    color: #8C8C8C;
+    font-size: 31rpx;
+    margin-top: 20rpx;
+}
+
+.tips .bg image {
     width: 100%;
     height: 250rpx;
     position: relative;
     right: -20rpx;
 }
 
-.phone-number input {
+.code-number input {
     color: #000;
     height: 70rpx;
     margin: 30rpx 50rpx;
@@ -26,17 +33,17 @@
     opacity: 0.5;
 }
 
-.phone-number .placeholder {
+.code-number .placeholder {
     color: #c7c7cc;
     font-size: 30rpx;
     font-weight: 300;
 }
 
-.login-btn {
+.logon-btn {
     margin: 30rpx 50rpx;
 }
 
-.login-btn button {
+.logon-btn button {
     height: 90rpx;
     line-height: 90rpx;
     font-size: 33rpx;
@@ -46,6 +53,6 @@
     background-color: #5678f6;
 }
 
-.login-btn button::after {
+.logon-btn button::after {
     border: none;
 }
