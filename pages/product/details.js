@@ -33,13 +33,12 @@ Page({
     /** 
      * 生命周期函数--监听页面加载 
      */
-    onLoad: function(e) {
+    onLoad(e) {
         //设置页面顶部titile
         wx.setNavigationBarTitle({
             title: "产品详情"
         })
         /** 页面一加载就加载商品详情 */
-        var that = this
         //营销小提示分页数据，当前页面只需要两条
         var tipsParams = {
             PageSize: 2,
@@ -53,20 +52,20 @@ Page({
         //获取产品详情方法
         get(detailUrl).then(res => {
                 //将获取到的数据，存在名字叫detail的这个对象中 
-                that.setData({
+                this.setData({
                         detail: res,
                     }),
                     console.log(res);
                 //产品详情中的图片路径（为html,需要在这里转换）
                 var description = res.description;
-                WxParse.wxParse('description', 'html', description, that, 5);
+                WxParse.wxParse('description', 'html', description, this, 5);
         }).catch(err => {
             console.log(err)
         }),
 
             //加载营销小提示方法
             get(detailUrl, tipsParams).then(res => {
-                that.setData({
+                this.setData({
                         productTips: res.items,
                     }),
                     console.log("productTips====" + res.items);
@@ -76,7 +75,7 @@ Page({
     },
 
     //查看营销小技巧事件
-    tipsClick: function(e) {
+    tipsClick(e) {
         //得到页面数据
         var data_id = e.currentTarget.dataset.id
         wx.navigateTo({
@@ -93,7 +92,7 @@ Page({
     /** 
      * 用户点击右上角分享 
      */
-    onShareAppMessage: function() {
+    onShareAppMessage() {
 
     }
 })

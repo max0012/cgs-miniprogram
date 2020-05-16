@@ -22,69 +22,66 @@ Page({
      * 生命周期函数--监听页面加载
      */
 
-    onLoad: function(e) {
-        var that = this
+    onLoad(e) {
         //设置页面顶部titile
         wx.setNavigationBarTitle({
             title: "营销小技巧"
         })
         //保存上个页面传递的id 
-        that.setData({
+        this.setData({
             data_id: e.data_id,
         });
         //加载营销小提示方法
-        that.getData();
+        this.getData();
     },
     //滚动到底部触发事件
     searchScrollLower: function() {
         console.log("上拉触底事件")
-        var that = this
-        if (!that.data.loadMore) {
-            that.setData({
+        if (!this.data.loadMore) {
+            this.setData({
                 loadMore: true, //加载中  
                 loadAll: false //是否加载完所有数据
             });
             //加载更多
             console.log("加载更多中.............")
-            that.getData();
+            this.getData();
         }
 
     },
 
     //加载数据的方法
     getData() {
-        var that = this;
         //第一次加载数据 
-        if (that.data.pageIndex == 1) {
+        if (this.data.pageIndex == 1) {
             this.setData({
                 loadMore: true, //把"上拉加载"的变量设为true，显示  
                 loadAll: false //把“没有数据”设为false，隐藏  
             })
         }
         //请求数据
-        var url = that.data.tipsUrl + that.data.data_id
+        var url = this.data.tipsUrl + this.data.data_id
         var params = {
-            PageSize: that.data.pageSize,
-            PageIndex: that.data.pageIndex
+            PageSize: this.data.pageSize,
+            PageIndex: this.data.pageIndex
         }
         get(url, params).then(res => {
             if (res.items && res.items.length > 0) {
                 console.log("请求成功", res.items)
                 //把新请求到的数据添加到dataList里  
-                let list = that.data.dataList.concat(res.items)
-                that.setData({
+                let list = this.data.dataList.concat(res.items)
+                this.setData({
                     dataList: list, //获取数据数组  
-                    pageIndex: that.data.pageIndex + 1,
+                    pageIndex: this.data.pageIndex + 1,
                     loadMore: false //把"上拉加载"的变量设为false，显示  
                 });
-                if (res.items.length < that.data.pageSize) {
-                    that.setData({
+                if (res.items.length < this.data.pageSize) {
+                    this.setData({
                         loadMore: false, //隐藏加载中。。
                         loadAll: true //所有数据都加载完了
                     });
                 }
             } else {
-                that.setData({
+                this.setData({
                     loadAll: true, //把“没有数据”设为true，显示  
                     loadMore: false //把"上拉加载"的变量设为false，隐藏  
                 });
