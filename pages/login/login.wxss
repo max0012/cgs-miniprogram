@@ -3,32 +3,47 @@
     background-color: #fff;
 }
 
-.welcome .title {
-    flex: 2;
-    margin-top: 100rpx;
-    margin-left: 50rpx;
-    text-align: left;
-    font-size: 40rpx;
-}
-
-.welcome .bg image {
+.welcome {
     width: 100%;
-    height: 250rpx;
-    position: relative;
-    right: -20rpx;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
-.phone-number input {
-    color: #000;
-    height: 70rpx;
-    margin: 30rpx 50rpx;
+.welcome .title {
+    width: 50%;
+    margin-left: 50rpx;
+    font-size: 47rpx;
+    font-weight: 500;
+}
+
+.welcome .login-bg {
+    width: 30%;
+}
+
+.welcome .login-bg image {
+    width: 100%;
+    height: 295rpx;
+}
+
+.phone-number {
+    font-size: 33rpx;
+    margin: 80rpx 50rpx 50rpx 50rpx;
     border-bottom: 1px solid #eaeaea;
     opacity: 0.5;
 }
 
+.phone-number input {
+    width: 90%;
+    height: 80rpx;
+}
+
+.phone-number .input-close {
+    width: 8%;
+    margin-top: 20rpx;
+    text-align: right;
+}
+
 .phone-number .placeholder {
-    color: #c7c7cc;
-    font-size: 30rpx;
     font-weight: 300;
 }
 
@@ -48,4 +63,8 @@
 
 .login-btn button::after {
     border: none;
+}
+
+.disabled {
+    background-color: #b9c8fa !important;
 }

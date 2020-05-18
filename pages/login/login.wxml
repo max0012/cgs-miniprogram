@@ -2,18 +2,21 @@
 <view class="container">
     <view class="login">
         <view class="welcome flex-wrp">
-            <view class="title flex-item">
+            <view class="title">
                 <text>你好，\n欢迎来到财龟师</text>
             </view>
-            <view class="bg flex-item">
+            <view class="login-bg">
                 <image src="../../assets/login/login-bg.png" mode="aspectFit"></image>
             </view>
         </view>
-        <view class="phone-number">
-            <input type="number" bindinput="bindKeyInput" placeholder-class="placeholder" placeholder="请输入手机号码"></input>
+        <view class="phone-number flex-wrp">
+            <input type="number" value="{{mobile}}" placeholder-class="placeholder" placeholder="请输入手机号码" auto-focus bindinput="bindKeyInput" bindblur="inputBlur" bindfocus="inputFocus"></input>
+            <view class="input-close" catchtap="inputMobile">
+                <icon class="icon-small" type="clear" size="17" hidden="{{!isFocus}}"></icon>
+            </view>
         </view>
         <view class="login-btn">
-            <button bindtap="getCode">登录</button>
+            <button class="{{mobile? '':'disabled'}}" bindtap="{{mobile?'getCode':''}}">登录</button>
         </view>
     </view>
 </view>

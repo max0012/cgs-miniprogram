@@ -3,47 +3,87 @@
     background-color: #fff;
 }
 
-.tips .title {
-    flex: 2;
-    margin-top: 100rpx;
-    margin-left: 50rpx;
-    text-align: left;
-    font-size: 40rpx;
-}
-
-.tips .title .msg {
-    display: block;
-    color: #8C8C8C;
-    font-size: 31rpx;
-    margin-top: 20rpx;
-}
-
-.tips .bg image {
+.code .tips {
     width: 100%;
-    height: 250rpx;
-    position: relative;
-    right: -20rpx;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
-.code-number input {
-    color: #000;
-    height: 70rpx;
-    margin: 30rpx 50rpx;
+.code .tips .title {
+    width: 50%;
+    margin-left: 50rpx;
+    font-size: 47rpx;
+    font-weight: 500;
+}
+
+.code .tips .code-bg {
+    width: 32%;
+}
+
+.code .tips .code-bg image {
+    width: 100%;
+    height: 310rpx;
+}
+
+.code .msg {
+    display: block;
+    color: #8c8c8c;
+    font-size: 31rpx;
+    margin: 15rpx 0 0 50rpx;
+}
+
+.code .code-number {
+    margin: 80rpx 50rpx 30rpx 50rpx;
     border-bottom: 1px solid #eaeaea;
     opacity: 0.5;
+    font-size: 33rpx;
 }
 
-.code-number .placeholder {
-    color: #c7c7cc;
-    font-size: 30rpx;
+.code .code-number input {
+    width: 83%;
+    height: 80rpx;
+}
+
+.code .code-number .placeholder {
     font-weight: 300;
 }
 
-.logon-btn {
+.code .code-number .again-btn {
+    width: 17%;
+    margin-top: 25rpx;
+    font-size: 25rpx;
+    text-align: center;
+}
+
+.code .agreement {
+    color: #a0a0a0;
+    font-size: 25rpx;
+    margin: 0 0 60rpx 50rpx;
+}
+
+.code radio .wx-radio-input {
+    width: 30rpx;
+    height: 30rpx;
+    margin-top: -5rpx;
+}
+
+.code radio .wx-radio-input.wx-radio-input-checked::before {
+    width: 30rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    font-size:28rpx;
+    margin-left: 1rpx;
+}
+
+.code .agreement .href {
+    color: #577af5;
+}
+
+.code .logon-btn {
     margin: 30rpx 50rpx;
 }
 
-.logon-btn button {
+.code .logon-btn button {
     height: 90rpx;
     line-height: 90rpx;
     font-size: 33rpx;
@@ -53,6 +93,10 @@
     background-color: #5678f6;
 }
 
-.logon-btn button::after {
+.code .logon-btn button::after {
     border: none;
+}
+
+.disabled {
+    background-color: #b9c8fa !important;
 }

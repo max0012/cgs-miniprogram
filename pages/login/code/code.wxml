@@ -1,19 +1,29 @@
 <view class="container">
     <view class="code">
         <view class="tips flex-wrp">
-            <view class="title flex-item">
+            <view class="title">
                 <text>输入验证码</text>
-                <text class="msg">短信验证码已经发送至+86 {{mobile}}</text>
             </view>
-            <view class="bg flex-item">
+            <view class="code-bg">
                 <image src="../../../assets/login/login-bg.png" mode="aspectFit"></image>
             </view>
         </view>
-        <view class="code-number">
-            <input type="number" bindinput="bindKeyInput" placeholder-class="placeholder" placeholder="输入验证码"></input>
+        <view class="msg">
+            <text>短信验证码已经发送至 +86 {{mobile}}</text>
+        </view>
+        <view class="code-number flex-wrp">
+            <input type="number" placeholder-class="placeholder" placeholder="请输入验证码" value="{{code}}" bindinput="bindKeyInput"></input>
+            <view class="again-btn" bindtap="{{flag ? '' : 'getCode'}}">
+                <text>{{codeTips}}</text>
+            </view>
+        </view>
+        <view class="agreement">
+            <label class="radio" bindtap="onCheck">
+                <radio checked="{{isCheck}}" color="#577AF5" />我已经阅读并同意<text class="href" data-type="1" bindtap="toAgreement">《用户协议》</text>与<text class="href" data-type="2" bindtap="toAgreement">《隐私政策》</text>
+            </label>
         </view>
         <view class="logon-btn">
-            <button bindtap="logOn">验证</button>
+            <button class="{{code && isCheck? '':'disabled'}}" bindtap="logOn" >验证</button>
         </view>
     </view>
 </view>
