@@ -10,7 +10,8 @@
         "pages/product/productTips",
         "pages/product/list",
         "pages/logs/logs",
-        "pages/authorize/authorize"
+        "pages/authorize/authorize",
+        "pages/agreement/agreement"
     ],
     "tabBar": {
         "color": "#A1A1A1",
@@ -48,7 +49,7 @@
         "navigationBarTextStyle": "black",
         "backgroundColor": "#EFEFEF",
         "backgroundTextStyle": "light",
-        "enablePullDownRefresh": true,
-        "navigationBarTitleText": "财龟师"
+        "navigationBarTitleText": "财龟师",
+        "navigationStyle": "custom"
     }
 }
