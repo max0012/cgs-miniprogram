@@ -25,14 +25,14 @@ export default function request(options) {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Authorization': "Bearer " + wx.getStorageSync("token")
             },
-            success: function(res) {
+            success: res => {
                 if(res.statusCode == 200) {
                     resolve(res.data)
                 } else {
-                    reject(res.errMsg)
+                    reject(res.data.error)
                 }
             },
-            fail: function(err) {
+            fail: err => {
                 wx.showToast({
                     title: '请求失败，情稍后再试',
                     icon: 'none'
