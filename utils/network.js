@@ -20,9 +20,10 @@ export default function request(options) {
         wx.request({
             url: options.url,
             data: options.data || {},
-            method: options.method || 'GET',
+            method: options.method ,
             header: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
                 'Authorization': "Bearer " + wx.getStorageSync("token")
             },
             success: res => {

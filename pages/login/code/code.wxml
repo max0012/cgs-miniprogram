@@ -13,7 +13,7 @@
         </view>
         <view class="code-number flex-wrp">
             <input type="number" placeholder-class="placeholder" placeholder="请输入验证码" value="{{code}}" bindinput="bindKeyInput"></input>
-            <view class="again-btn" bindtap="{{flag ? '' : 'getCode'}}">
+            <view class="again-btn" bindtap="{{flag? '':'getCode'}}">
                 <text>{{codeTips}}</text>
             </view>
         </view>
