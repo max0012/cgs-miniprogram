@@ -23,7 +23,7 @@ export default function request(options) {
             method: options.method ,
             header: {
                 'Content-Type': 'application/json',
-                'Authorization': "Bearer " + wx.getStorageSync("token")
+                'Authorization': "Bearer " + wx.getStorageSync("Token")
             },
             success: res => {
                 if(res.statusCode == 200) {

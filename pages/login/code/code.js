@@ -1,4 +1,4 @@
-import { get,post } from '../../../utils/network.js'
+import { get, post } from '../../../utils/network.js'
 const util = require('../../../utils/util.js')
 const CountTime = require('../../../utils/countTime.js')
 var codeUri = '/manager/mobileToken'
@@ -42,7 +42,7 @@ Page({
     logOn() {
         if (!this.data.code) {
             util.toast("请输入验证码")
-        } else if(!this.data.isCheck) {
+        } else if (!this.data.isCheck) {
             util.toast("同意协议才能登录")
         } else {
             // 格式化请求参数
@@ -51,13 +51,7 @@ Page({
                 code: this.data.code
             })
             post(logOnUri + '?' + params).then(res => {
-                // 存储用户数据
-                wx.setStorageSync("token", res.token)
-                wx.setStorageSync("userInfo", res.manager)
-                // 默认跳转到“我的”页面
-                wx.switchTab({
-                    url: '../../mime/mime',
-                })
+                this.setInfo(res)
             }).catch(err => {
                 util.toast(err.message)
             })
@@ -74,8 +68,24 @@ Page({
             }).then(res => {
                 this.time.countTime();
                 util.toast("验证码已发送，请注意查收")
-            }).catch(err =>{
+            }).catch(err => {
                 util.toast(err.message)
+            })
+        }
+    },
+    // 登录后的操作
+    setInfo(res) {
+        wx.setStorageSync("Token", res.token)
+        wx.setStorageSync("UserInfo", res.manager)
+        let router = wx.getStorageSync('Router')
+        let url = wx.getStorageSync('Url')
+        if (router === ('/pages/index/index' || '/pages/product/product' || '/pages/intention/intention' || '/pages/mime/mime')) {
+            wx.switchTab({
+                url: 'url',
+            })
+        } else {
+            wx.redirectTo({
+                url: 'url',
             })
         }
     }

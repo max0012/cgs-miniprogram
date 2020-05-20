@@ -76,9 +76,9 @@
 }
 
 .my-account .item-line {
-    opacity: 0.2;
+    opacity: 0.1;
     width: 1rpx;
-    border-right: 1px solid rgb(179, 142, 142);
+    border-right: 1px solid #fff;
 }
 
 .my-account .withdrawal-info {

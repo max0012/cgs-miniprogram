@@ -36,8 +36,41 @@ const toast = msg => {
     })
 }
 
+
+/**
+ * 获取当前页面路由
+ */
+const getRouter = () => {
+    var pages = getCurrentPages()
+    var currentPage = pages[pages.length - 1]
+    var router = currentPage.route
+    wx.setStorageSync('Router', `/${router}`)
+}
+
+/**
+ * 获取当前页带参数的url
+ */
+const getUrl = () => {
+    var pages = getCurrentPages()
+    var currentPage = pages[pages.length - 1]
+    var url = currentPage.route
+    wx.setStorageSync('Router', `/${url}`)
+    var options = currentPage.options
+
+    //参数多时通过&拼接url的参数
+    var urlWithArgs = url + '?'
+    for (var key in options) {
+        var value = options[key]
+        urlWithArgs += key + '=' + value + '&'
+    }
+    urlWithArgs = urlWithArgs.substring(0, urlWithArgs.length - 1)
+    wx.setStorageSync('Url', `/${urlWithArgs}`)
+}
+
 module.exports = {
     formatTime: formatTime,
     json2Form: json2Form,
-    toast: toast
+    toast: toast,
+    getRouter: getRouter,
+    getUrl: getUrl
 }

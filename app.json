@@ -11,8 +11,19 @@
         "pages/product/list",
         "pages/logs/logs",
         "pages/authorize/authorize",
-        "pages/agreement/agreement"
+        "pages/agreement/agreement",
+        "pages/account/balance/index",
+        "pages/account/record/index",
+        "pages/account/achievement/index",
+        "pages/equity/index",
+        "pages/collection/index",
+        "pages/coupon/index",
+        "pages/setting/index",
+        "pages/order/index"
     ],
+    "usingComponents": {
+        "mp-icon": "components/icon/icon"
+    },
     "tabBar": {
         "color": "#A1A1A1",
         "selectedColor": "#616877",
@@ -49,7 +60,6 @@
         "navigationBarTextStyle": "black",
         "backgroundColor": "#EFEFEF",
         "backgroundTextStyle": "light",
-        "navigationBarTitleText": "财龟师",
-        "navigationStyle": "custom"
+        "navigationBarTitleText": "财龟师"
     }
 }
