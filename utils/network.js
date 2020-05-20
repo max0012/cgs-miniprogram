@@ -22,7 +22,6 @@ export default function request(options) {
             data: options.data || {},
             method: options.method ,
             header: {
-                // 'Content-Type': 'application/x-www-form-urlencoded',
                 'Content-Type': 'application/json',
                 'Authorization': "Bearer " + wx.getStorageSync("token")
             },

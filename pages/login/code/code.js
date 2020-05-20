@@ -45,11 +45,13 @@ Page({
         } else if(!this.data.isCheck) {
             util.toast("同意协议才能登录")
         } else {
-            post(logOnUri, {
+            // 格式化请求参数
+            let params = util.json2Form({
                 mobile: this.data.mobile,
                 code: this.data.code
-            }).then(res => {
-                // 存储数据
+            })
+            post(logOnUri + '?' + params).then(res => {
+                // 存储用户数据
                 wx.setStorageSync("token", res.token)
                 wx.setStorageSync("userInfo", res.manager)
                 // 默认跳转到“我的”页面

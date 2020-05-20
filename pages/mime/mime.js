@@ -8,10 +8,12 @@ Page({
         
     },
     onShow() {
-        var userInfo = wx.getStorageSync("userInfo");
+        let userInfo = wx.getStorageSync("userInfo");
         if (userInfo) {
+            let avatarUrl = 'userInfo.avatarUrl';
             this.setData({
-                userInfo: userInfo
+                userInfo: userInfo,
+                [avatarUrl]: userInfo.avatarUrl ? userInfo.avatarUrl: '../../assets/mime/default.png'
             })
         }
     }
