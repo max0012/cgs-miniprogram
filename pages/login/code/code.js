@@ -79,17 +79,16 @@ Page({
     setInfo(res) {
         wx.setStorageSync("Token", res.token)
         wx.setStorageSync("UserInfo", res.manager)
-        let router = wx.getStorageSync('Router')
         let url = wx.getStorageSync('Url')
-        if (router === ('/pages/index/index' || '/pages/product/product' || '/pages/intention/intention' || '/pages/mime/mime')) {
-            wx.switchTab({
-                url: 'url',
-            })
-        } else {
-            wx.redirectTo({
-                url: 'url',
-            })
-        }
+        // 失败则尝试switchTab
+        wx.redirectTo({
+            url: url,
+            fail() {
+                wx.switchTab({
+                  url: url
+                })
+            }
+        })
     },
     //返回上一页
     toBack() {
