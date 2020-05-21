@@ -1,1 +1,75 @@
-/* pages/intention/intention.wxss */
+.page{
+     height: 100%;
+}
+.ticket-container {
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.title {
+    width: 100%;
+    height: 88rpx;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.title-sel {
+    color: #24272c;
+    font-size: 32rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.title-sel-selected {
+    color: #006bff;
+    font-size: 32rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.swiper {
+    height: 600rpx;
+    width: 90%;
+    flex: 1;
+    overflow: scroll;
+    margin: 0 auto;
+}
+
+.record-item {
+    margin-top: 10rpx;
+    background-color: white;
+    padding-bottom: 5rpx;
+    padding-top: 5rpx;
+    font-size: 30rpx;
+}
+
+.name {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #eee;
+    padding: 2vh;
+    border-radius: 10rpx;
+}
+
+/*分割线样式*/
+.divLine{
+ background: rgb(224, 224, 222);
+ width: 100%;
+ height: 1rpx;
+}
+
+/*分割线样式2*/
+.divLine2{
+ background: rgb(224, 224, 222);
+ width: 100%;
+ height: 5rpx;
+}

@@ -1,0 +1,29 @@
+<view>
+    <view wx:if="{{detail.flag == 1}}">
+        <text>客户经理：{{detail.senderManagerName}} <button>联系客户经理</button></text>
+    </view>
+    <view class="divLine2"></view>
+    <view>
+        <text wx:if="{{status === 'Submitted'}}">状态：已提交</text>
+        <text wx:if="{{status === 'Replied'}}">状态：营销中</text>
+        <text wx:if="{{status === 'Closed'}}">状态：已关闭</text>
+        <text>提交时间：{{detail.creationTime}}</text>
+    </view>
+    <view class="divLine2"></view>
+    <view>
+        <image src="{{detail.coverUrl}}"></image>
+        <text>{{detail.name}}</text>
+        <text>盈利佣金：{{detail.commissionText}}</text>
+    </view>
+    <view class="divLine2"></view>
+    <view>
+        <view>客户名称：{{detail.customerName}}
+            <button wx:if="{{detail.flag == 0 && status === 'Submitted' }}" bindtap="closeIntention" data-id="{{detail.id}}">关闭意向</button>
+            <button wx:if="{{detail.flag == 1}}">联系客户</button>
+        </view>
+        <view class="divLine"></view>
+        <view>联系电话：{{detail.customerMobile}}</view>
+        <view>数量/金额：{{detail.quantity}}</view>
+        <view>备注：{{detail.description}}</view>
+    </view>
+</view>

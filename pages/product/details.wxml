@@ -5,7 +5,7 @@
     <swiper indicator-dots="{{indicatordots}}" indicator-color="{{indicatorcolor}}">
         <block wx:for="{{detail.imageUrls}}">
             <swiper-item>
-                <image src="{{item}}" style="height: 220px; width: 100%;" class='img' />
+                <image src="{{item}}" class='img' />
             </swiper-item>
         </block>
     </swiper>
@@ -49,10 +49,71 @@
         <view class="divLine"></view>
         <view>商品价格：{{detail.price}}</view>
     </view>
+    <!----------------------- Baoxian保险类型  -------------------------->
+    <view wx:if="{{detail.productCategory.type==='Baoxian'}}">
+        <view>
+            <text>被保人出生日期</text>
+            <picker mode="date" bindchange="bindBirthdayChange" value="{{birthday}}">
+                <text wx:if="{{birthdayFlag}}"> 请选择 > </text>
+                <text wx:if="{{birthday}}">{{birthday}}</text>
+            </picker>
+        </view>
+        <view class="divLine"></view>
+        <view>
+            <text>性别</text>
+            <radio-group bindchange="radioChange">
+                <label class="weui-cell weui-check__label" wx:for="{{radios}}">
+                    <view class="weui-cell__hd">
+                        <radio value="{{item.value}}" />
+                    </view>
+                    <view class="weui-cell__bd">{{item.name}}</view>
+                </label>
+            </radio-group>
+        </view>
+        <view class="divLine"></view>
+        <view>
+            <text>保障额度</text>
+            <picker bindchange="bindCoverageIdChange" value="{{coverageId[coverageIdIndex].value}}" range-key="{{'label'}}" range="{{coverageId}}">
+                <view class="picker">
+                    <text wx:if="{{coverageIdFlag}}"> 请选择 ></text>{{coverageId[coverageIdIndex].label}}
+                </view>
+            </picker>
+        </view>
+        <view class="divLine"></view>
+        <view>
+            <text>保障年期</text>
+            <picker bindchange="bindYearIdChange" value="{{yearId[yearIdIndex].value}}" range-key="{{'label'}}" range="{{yearId}}">
+                <view class="picker">
+                    <text wx:if="{{yearIdFlag}}"> 请选择 > </text>{{yearId[yearIdIndex].label}}
+                </view>
+            </picker>
+        </view>
+        <view class="divLine"></view>
+        <view>
+            <view>
+                <text>保险金额与佣金</text>
+            </view>
+            <view>
+                <text>保费预估 以实际合同与准</text>
+                <text wx:if="{{premium === null}}">0.00元</text>
+                <text wx:if="{{premium !== null}}">{{premium[0]}}元</text>
+            </view>
+        </view>
+        <view>
+            <view>
+                <text>推广费率:{{detail.commissionText}}</text>
+                <text wx:if="{{premium === null}}">本单现金收入(税前)  0.00元</text>
+                <text wx:if="{{premium !== null}}">本单现金收入(税前)  {{premium[1]}}元</text>
+            </view>
+        </view>
+    </view>
+
+
     <!---------------------------下面是相同模块--------------------------------->
     <!-- 分割线 -->
     <view class="divLine"></view>
-    <view>营销佣金：
+    <!-- 保险类型不显示佣金 -->
+    <view wx:if="{{detail.productCategory.type != 'Baoxian'}}">营销佣金：
         <text>{{detail.commissionText}}</text>
         <text>        (佣金结算快至1天到账)</text>
     </view>
@@ -81,10 +142,8 @@
     </view>
     <!-------------------------根据类型显示不同按钮---------------->
     <view>
-        <button calss="btn" size="mini">联系产品顾问</button>
+        <button calss="btn" size="mini" bindtap="btnContactClick" data-commissionText="{{detail.commissionText}}" data-name="{{detail.name}}" data-coverUrl="{{detail.coverUrl}}" data-receiver-manager-id="{{detail.manager.id}}">联系产品顾问</button>
         <button calss="btn" size="mini">分享给客户</button>
         <button wx:if="{{detail.productCategory.type==='Gouwu'}}" calss="btn" size="mini">立即下单</button>
     </view>
-
-
 </view>

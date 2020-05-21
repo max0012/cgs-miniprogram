@@ -1,0 +1,40 @@
+<view>
+    <view>
+        <text>客户信息将直接提交给产品顾问，产品顾问收到消息后将直接以最快时间和你联系，请你耐心等待！</text>
+    </view>
+    <view>
+        <view>
+            <image src="{{product.coverUrl}}"></image>
+        </view>
+        <view>
+            <text>{{product.name}}</text>
+            <text>营销佣金：{{product.commissionText}}</text>
+        </view>
+    </view>
+    <view class="divLine2"></view>
+    <form bindsubmit="commitIntention">
+        <view>
+            <text>客户名称：</text>
+            <input value="客户名称" value="{{customerName}}" name="customerName"></input>
+            <button bindtap="searchCustomer">选择</button>
+        </view>
+        <view class="divLine"></view>
+        <view>
+            <text>联系电话：</text>
+            <input placeholder="请输入联系电话" name="customerMobile"></input>
+        </view>
+        <view class="divLine"></view>
+        <view>
+            <text>数量/金额：</text>
+            <input placeholder="请填入意向成交金额或者数量" type="digit" name="quantity"></input>
+        </view>
+        <view class="divLine"></view>
+        <view>
+            <text>备注说明：</text>
+            <input placeholder="请填写您的备注信息" name="description"></input>
+        </view>
+        <view>
+            <button form-type="submit">提交</button>
+        </view>
+    </form>
+</view>

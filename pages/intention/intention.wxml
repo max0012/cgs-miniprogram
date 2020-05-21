@@ -1,2 +1,53 @@
-<!--pages/intention/intention.wxml-->
-<text>pages/intention/intention.wxml</text>
+<view class='ticket-container'>
+    <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <!--Tab布局-->
+        <view class='title'>
+            <view>
+                <view class="{{0 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" data-id="{{item.id}}" bindtap='titleClick' data-idx='0'>
+                    <text>我的意向</text>
+                </view>
+                <view class="{{1 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" data-id="{{item.id}}" bindtap='titleClick' data-idx='1'>
+                    <text>客户意向</text>
+                </view>
+            </view>
+        </view>
+
+
+        <!--内容布局-->
+        <swiper class='swiper' bindchange='pageChange' current='{{currentIndex}}'>
+            <!--  我的意向  -->
+            <swiper-item class='swiper'>
+                <view wx:for="{{data_list}}" bindtap="divClick" data-item="{{item}}">
+                    <text>客户名称：{{item.customerName}}  </text>
+                    <text wx:if="{{item.status === 'Submitted'}}">状态：已提交</text>
+                    <text wx:if="{{item.status === 'Replied'}}">状态：营销中</text>
+                    <text wx:if="{{item.status === 'Closed'}}">状态：已关闭</text>
+                    <view class="divLine"></view>
+                    <view>
+                        <image src="{{item.product.coverUrl}}"></image>
+                        <text>{{item.product.name}}</text>
+                        <text>盈利佣金：{{item.product.commissionText}}</text>
+                    </view>
+                    <view class="divLine2"></view>
+                </view>
+            </swiper-item>
+            <!--    客户意向 --->
+            <swiper-item class='swiper'>
+                <view wx:for="{{cust_list}}" bindtap="divClick" data-item="{{item}}">
+                    <text>客户经理：{{item.senderManager.name}}</text>
+                    <text wx:if="{{item.status === 'Submitted'}}">已提交</text>
+                    <text wx:if="{{item.status === 'Replied'}}">营销中</text>
+                    <text wx:if="{{item.status === 'Closed'}}">已关闭</text>
+                    <view class="divLine"></view>
+                    <view>
+                        <image src="{{item.product.coverUrl}}"></image>
+                        <text>{{item.product.name}}</text>
+                        <text>盈利佣金：{{item.product.commissionText}}</text>
+                    </view>
+                    <view class="divLine2"></view>
+                </view>
+            </swiper-item>
+
+        </swiper>
+    </scroll-view>
+</view>

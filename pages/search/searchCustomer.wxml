@@ -1,0 +1,10 @@
+<view>
+    <input placeholder="搜索" bindinput="likeQuery" ></input>
+    <view wx:if="{{customer_list}}">
+        <view wx:for="{{customer_list}}" bindtap="choiceCustomer" data-name="{{item.name}}" >
+            <image src="{{item.avatarUrl}}"></image>
+            <text>{{item.name}}</text>
+        </view>
+        <view class="divLine"></view>
+    </view>
+</view>
