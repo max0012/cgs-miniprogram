@@ -1,2 +1,28 @@
-<!--pages/collection/index.wxml-->
-<text>pages/collection/index.wxml</text>
+<view>
+    <view wx:for="{{favoriteNews}}">
+        <!-- 头条新闻 -->
+        <view wx:if="{{item.news.type === 1}}" bindtap="newsClick" data-id="{{item.news.id}}">
+            <view>
+                <text>今日头条 | {{item.news.creationTime}}</text>
+            </view>
+            <view>
+                <text>{{item.news.title}}</text>
+            </view>
+            <view>
+                <text>分享早报，累计获取关注度：{{item.news.countView}}阅读</text>
+                <image src="{{item.news.coverUrl}}"></image>
+            </view>
+        </view>
+        <!-- 头条新闻 -->
+        <view wx:if="{{item.news.type === 0}}" bindtap="newsClick" data-id="{{item.news.id}}">
+            <view>
+                <text>{{item.news.title}}</text>
+            </view>
+            <view>
+                <text>{{item.news.countView}}阅读</text>
+                <image src="{{item.news.coverUrl}}"></image>
+            </view>
+        </view>
+    
+    </view>
+</view>

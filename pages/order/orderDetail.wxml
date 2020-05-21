@@ -65,6 +65,24 @@
                 {{filters.formatTime(orderDetail.creationTime)}}
                 </text>
             </view>
+            <view>
+                <text>
+                    创建时间：
+                {{filters.formatTime(orderDetail.creationTime)}}
+                </text>
+            </view>
+            <view>
+                <text wx:if="{{orderDetail.status !== 'BeforePayment'}}">
+                    付款时间：
+                {{filters.formatTime(orderDetail.payTime)}}
+                </text>
+            </view>
+            <view>
+                <text wx:if="{{orderDetail.status === 'Confirm'}}">
+                    签收：
+                {{filters.formatTime(orderDetail.receiveTime)}}
+                </text>
+            </view>
         </view>
     </view>
 </view>

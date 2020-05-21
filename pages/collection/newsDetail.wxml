@@ -1,0 +1,35 @@
+<!--引入wxParse解析html-->
+<import src="../../wxParse/wxParse.wxml" />
+
+<view>
+    <view>
+        <image src="{{userInfo.avatarUrl}}"></image>
+        <view>
+            <text>{{userInfo.name}}</text>
+            <text wx:if="{{userInfo.isShowTitle}}">{{userInfo.title}}</text>
+            <text>{{userInfo.company}}</text>
+            <text>{{userInfo.mobile}}</text>
+            <text wx:if="{{userInfo.isShowEmail}}">{{userInfo.email}}</text>
+        </view>
+    </view>
+    <view>
+        <text>{{newsDetail.countView}}人浏览  </text>
+        <text>靠谱{{newsDetail.countNice}}</text>
+    </view>
+    <!-- 分割线 -->
+    <view class="divLine"></view>
+    <view>
+        <view>
+            今日头条 | {{newsDetail.creationTime}}
+        </view>
+        <view>
+            <text>{{newsDetail.title}}</text>
+        </view>
+    </view>
+    <view>
+        <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+    </view>
+    <view>
+        <image src="{{newsDetail.visitCustomers.avatarUrl}}"></image>
+    </view>
+</view>

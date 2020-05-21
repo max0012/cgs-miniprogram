@@ -43,7 +43,7 @@
                                     <view>
                                         订单总额：￥{{order.totalPrice}}
                                     </view>
-                                    <view>
+                                    <view wx:if="{{order.status === 'BeforePayment'}}">
                                         <button>去支付</button>
                                     </view>
                                 </view>

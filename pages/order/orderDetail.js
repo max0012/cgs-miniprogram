@@ -16,6 +16,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        //设置页面顶部titile
+        wx.setNavigationBarTitle({
+            title: "订单详情"
+        })
         var order_id = options.order_id
         console.log("order_id:" + order_id)
         var url = "/order/" + order_id
@@ -24,7 +28,6 @@ Page({
                 orderDetail: res,
             })
             console.log("订单详情orderDetail: " + res)
-            //格式化价格
         }).catch(err => {
             console.log(err)
         })

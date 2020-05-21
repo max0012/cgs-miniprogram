@@ -1,2 +1,36 @@
-<!--pages/equity/index.wxml-->
-<text>pages/equity/index.wxml</text>
+<view>
+    <view>
+        <image src="{{userInfo.avatarUrl}}"></image>
+        <text>等级：等级1</text>
+        工号：<text wx:if="{{userInfo.number}}">{{userInfo.number}}</text>
+    </view>
+    <view>
+        <view>
+            <text>我的信誉值</text>
+            <text>{{userInfo.reputation}}</text>
+        </view>
+        <view>
+            <text bindtap="reputationClick">什么是信誉值？</text>
+            <button>提升信誉值</button>
+        </view>
+        <view>
+            <text>{{yearlyReputation.reputation}}</text>
+            <text>我的年信誉值</text>
+        </view>
+        <view>
+            <text>{{yearlyReputation.rank}}</text>
+            <text>我的年信誉值排名</text>
+        </view>
+    </view>
+    <view>
+        <text>注：前200名可以参与当年股权分配</text>
+    </view>
+    <view>
+        <view>
+            <text>等级权益说明</text>
+        </view>
+        <view>
+            <image src="{{yearlyReputation.levelImage}}"></image>
+        </view>
+    </view>
+</view>
