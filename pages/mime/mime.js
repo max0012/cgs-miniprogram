@@ -1,8 +1,5 @@
 var util = require('../../utils/util.js')
-import {
-    get,
-    post
-} from '../../utils/network.js'
+import { get,post } from '../../utils/network.js'
 var app = getApp()
 Page({
     data: {

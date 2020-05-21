@@ -1,11 +1,17 @@
 // login.js
 import { get,post } from '../../utils/network.js'
 const util = require('../../utils/util.js')
-
 Page({
     data: {
         mobile: '',
-        isFocus: false
+        isFocus: false,
+        middleHeight: 0
+    },
+    onLoad() {
+        // 兼容icon居中显示：获取胶囊按钮和状态栏的距离高度+胶囊按钮中间位置高度
+        this.setData({
+            middleHeight: wx.getMenuButtonBoundingClientRect().top + 4
+        })
     },
     // 监听input值
     bindKeyInput(e) {
@@ -42,5 +48,11 @@ Page({
                 url: 'code/code?mobile=' + this.data.mobile
             })
         }
+    },
+    //返回上一页
+    toBack() {
+        wx.navigateBack({
+           delta: 2
+        })
     }
 })

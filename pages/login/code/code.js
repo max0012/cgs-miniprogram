@@ -8,11 +8,13 @@ Page({
         mobile: '',
         code: '',
         codeTips: '',
-        isCheck: false
+        isCheck: false,
+        middleHeight: 0
     },
     onLoad(options) {
         this.setData({
-            mobile: options.mobile
+            mobile: options.mobile,
+            middleHeight: wx.getMenuButtonBoundingClientRect().top + 4
         })
         // 初始化倒计时插件
         this.time = new CountTime(this);
@@ -88,5 +90,11 @@ Page({
                 url: 'url',
             })
         }
+    },
+    //返回上一页
+    toBack() {
+        wx.navigateBack({
+           delta: 1
+        })
     }
 })

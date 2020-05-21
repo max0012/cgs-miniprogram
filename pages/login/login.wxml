@@ -1,5 +1,8 @@
 <!--login.wxml-->
 <view class="container">
+    <view class="back" style="top: {{middleHeight}}px">
+        <mp-icon icon="back" size="{{13}}" bindtap="toBack"></mp-icon>
+    </view>
     <view class="login">
         <view class="welcome flex-wrp">
             <view class="title">
