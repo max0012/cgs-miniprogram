@@ -119,7 +119,9 @@ Page({
             creationTime: item.creationTime,
             status: item.status,
             description: item.description,
-            flag: flag
+            flag: flag,
+            lastDialogIsReceiver: item.lastDialogIsReceiver
+
         }
         wx.navigateTo({
             url: 'intention_details?detail=' + JSON.stringify(detail),

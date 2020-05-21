@@ -84,15 +84,28 @@ Page({
         //当前产品经理id
         var productManagerId = this.data.detail.productManagerId
         //当前登录用户Id
-        var userid = wx.getStorageSync("UserInfo")
+        var user = wx.getStorageSync("UserInfo")
+        var userId = user.id
+        var lastDialogIsReceiver = this.data.detail.lastDialogIsReceiver
+        var flag = this.data.detail.flag
+        //我的意向
         if (flag === 0) {
-            //当产品顾问评论后才能回复
-            var dialogs = this.data.dialogs
-            if (dialogs) {
+            //如果当前登录用户就是此产品的顾问或产品顾问已回复
+            if(productManagerId === userId || lastDialogIsReceiver){
+                console.log("我的意向中提交我的回复。。。。")
+            }else{
+                console.log("你已经发言过了，需要等对方回复")
+            }
 
-            } else {
-                console.log("")
+        //客户意向
+        } else {
+            //当前登录用户（即此产品顾问没回复时）
+            if (!lastDialogIsReceiver){
+                console.log("客户意向中提交顾问回复.......")
+            }else{
+                console.log("你已经发言过了，需要等对方回复")
             }
         }
+
     }
 })

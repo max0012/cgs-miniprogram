@@ -19,7 +19,8 @@
         "pages/collection/index",
         "pages/coupon/index",
         "pages/setting/index",
-        "pages/order/index"
+        "pages/order/index",
+        "pages/order/orderDetail"
     ],
     "usingComponents": {
         "mp-icon": "components/icon/icon"

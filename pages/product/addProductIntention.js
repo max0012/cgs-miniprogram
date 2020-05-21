@@ -74,9 +74,7 @@ Page({
         var url = "/productIntend"
         post(url, jsonParams).then(res => {
             console.log(res)
-            // this.setData({
-            //     premium: res
-            // })
+            
         }).catch(err => {
             console.log(err)
         })

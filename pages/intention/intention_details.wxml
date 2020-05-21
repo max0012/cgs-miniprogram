@@ -26,4 +26,46 @@
         <view>数量/金额：{{detail.quantity}}</view>
         <view>备注：{{detail.description}}</view>
     </view>
+    <view class="divLine2"></view>
+    <view wx:if="{{dialogs}}">
+        <view wx:for="{{dialogs}}">
+            <view>
+                <image src="detail.receiverManagerAvatarUrl"></image>
+                <view wx:if="{{detail.flag == 0}}">
+                    产品顾问-{{detail.receiverManagerName}}
+                </view>
+                <view wx:if="{{detail.flag == 1}}">
+                    我的回复
+                </view>
+                <view>
+                    {{item.creationTime}}
+                </view>
+                <view wx:if="{{item.content}}">
+                    {{item.content}}
+                </view>
+                <view wx:if="{{!item.content}}">
+                    暂无回复
+                </view>
+            </view>
+            <view>
+                <image src="detail.senderManagerAvatarUrl"></image>
+                <view wx:if="{{detail.flag == 0}}">
+                    我的回复
+                </view>
+                <view wx:if="{{detail.flag == 1}}">
+                    客户经理-{{detail.senderManagerName}}
+                </view>
+                <view wx:if="{{item.reply}}">
+                    {{item.reply}}
+                </view>
+                <view wx:if="{{!item.reply}}">
+                    暂无回复
+                </view>
+            </view>
+        </view>
+    </view>
+    <view>
+        <input placeholder="请输入评论内容"></input>
+        <button bindtap="commitDialog">发表</button>
+    </view>
 </view>
