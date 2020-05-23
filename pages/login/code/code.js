@@ -8,11 +8,13 @@ Page({
         mobile: '',
         code: '',
         codeTips: '',
-        isCheck: false
+        isCheck: false,
+        middleHeight: 0
     },
     onLoad(options) {
         this.setData({
-            mobile: options.mobile
+            mobile: options.mobile,
+            middleHeight: wx.getMenuButtonBoundingClientRect().top + 4
         })
         // 初始化倒计时插件
         this.time = new CountTime(this);
@@ -77,16 +79,21 @@ Page({
     setInfo(res) {
         wx.setStorageSync("Token", res.token)
         wx.setStorageSync("UserInfo", res.manager)
-        let router = wx.getStorageSync('Router')
         let url = wx.getStorageSync('Url')
-        if (router === ('/pages/index/index' || '/pages/product/product' || '/pages/intention/intention' || '/pages/mime/mime')) {
-            wx.switchTab({
-                url: 'url',
-            })
-        } else {
-            wx.redirectTo({
-                url: 'url',
-            })
-        }
+        // 失败则尝试switchTab
+        wx.redirectTo({
+            url: url,
+            fail() {
+                wx.switchTab({
+                  url: url
+                })
+            }
+        })
+    },
+    //返回上一页
+    toBack() {
+        wx.navigateBack({
+           delta: 1
+        })
     }
 })

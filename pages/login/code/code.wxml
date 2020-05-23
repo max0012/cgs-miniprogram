@@ -1,4 +1,7 @@
 <view class="container">
+    <view class="back" style="top: {{middleHeight}}px">
+        <mp-icon icon="back" size="{{13}}" bindtap="toBack"></mp-icon>
+    </view>
     <view class="code">
         <view class="tips flex-wrp">
             <view class="title">
