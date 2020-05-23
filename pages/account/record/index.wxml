@@ -1,2 +1,10 @@
-<!--pages/account/record/index.wxml-->
-<text>pages/account/record/index.wxml</text>
+<view>
+    <view wx:for="{{withdraws}}" wx:key="item" bindtap="withdrawDetail" data-id="{{item.id}}">
+        <view>提现金额：{{item.money}}</view>
+        <view>申请时间：{{item.creationTime}}</view>
+        <view wx:if="{{item.status === 'Withdrawing'}}">状态：提现中</view>
+        <view wx:if="{{item.status === 'Success'}}">状态：提现成功</view>
+        <view wx:if="{{item.status === 'Failure'}}">状态：提现失败</view>
+        <view wx:if="{{item.status === 'Cancel'}}">状态：已取消</view>
+    </view>
+</view>

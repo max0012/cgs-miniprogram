@@ -1,66 +1,102 @@
-// pages/account/balance/index.js
+// 导入封装的request请求.js
+import {
+    get,
+    post
+} from '../../../utils/network.js'
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+        userInfo: null,
+        //需提现的金额
+        money: null,
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
-
+    onShow(options) {
+        var userInfo = wx.getStorageSync("UserInfo")
+        this.setData({
+            userInfo: userInfo
+        })
     },
 
     /**
-     * 生命周期函数--监听页面隐藏
+     * 更新银行卡
      */
-    onHide: function () {
-
+    bankCardClick(e) {
+        console.log("")
+        wx.navigateTo({
+            url: 'updateBankCard',
+            success: function(res) {
+                console.log('成功跳转至更新银行卡页面');
+            },
+            fail: function(res) {
+                console.log('跳转更新银行卡页面失败！');
+            },
+        })
+    },
+    /**
+     * 输入提现金额输入框
+     */
+    withdrawInput(e) {
+        this.setData({
+            money: e.detail.value
+        })
     },
 
     /**
-     * 生命周期函数--监听页面卸载
+     * 申请提现
      */
-    onUnload: function () {
-
+    commitWithdraw(e) {
+        //申请的提现金额
+        var money = this.data.money
+        //可提现的金额
+        var balance = this.data.userInfo.balanceWithdrawAvailable
+        if (!money) {
+            wx.showToast({
+                title: '请输入提现金额',
+                icon: 'none',
+                duration: 1000
+            })
+        } else if (balance < money) {
+            wx.showToast({
+                title: '提现金额超出范围',
+                icon: 'none',
+                duration: 1000
+            })
+        } else {
+            var url = "/managerWithdraw/submit?money=" + parseInt(money)
+            post(url).then(res => {
+                wx.showToast({
+                    title: '提交申请成功',
+                    icon: 'none',
+                    duration: 1000
+                })
+                this.toRecord()
+            }).catch(err => {
+                console.log(err)
+            })
+        }
     },
 
     /**
-     * 页面相关事件处理函数--监听用户下拉动作
+     * 跳转到提现记录页面
      */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+    toRecord() {
+        wx.navigateTo({
+            url: '../record/index',
+            success: function(res) {
+                console.log('成功跳转至提现记录页面');
+            },
+            fail: function(res) {
+                console.log('跳转提现记录页面失败！');
+            },
+        })
     }
+
 })

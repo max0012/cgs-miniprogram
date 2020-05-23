@@ -1,0 +1,17 @@
+<view>
+    <form bindsubmit="updateBankCard">
+        <view>
+            <text>持卡人姓名：</text>
+            <input placeholder="请输入持卡人姓名" value="{{userInfo.bankCard.name}}" name="name"></input>
+        </view>
+        <view>
+            <text>银行支行姓名：</text>
+            <input placeholder="请输入银行支行姓名" value="{{userInfo.bankCard.branch}}" name="branch"></input>
+        </view>
+        <view>
+            <text>银行卡号：</text>
+            <input placeholder="请输入银行卡号" value="{{userInfo.bankCard.number}}" name="number"></input>
+        </view>
+        <button form-type="submit">保存</button>
+    </form>
+</view>

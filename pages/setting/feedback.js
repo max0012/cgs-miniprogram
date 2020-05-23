@@ -50,7 +50,9 @@ Page({
             var url = "/my/feedback"
             post(url,{
                 content: feedbackInput,
-                creatorId: id
+                creatorId: id,
+                creationTime: new Date(),
+                id: ""
             }).then(res => {
                 wx.showToast({
                     title: '提交成功！',

@@ -1,0 +1,19 @@
+<view>
+    <view>申请时间：{{withdrawDetail.creationTime}}</view>
+    <view>提现金额：{{withdrawDetail.money}}</view>
+    <view wx:if="{{withdrawDetail.status === 'Withdrawing'}}">状态：提现中</view>
+    <view wx:if="{{withdrawDetail.status === 'Success'}}">状态：提现成功</view>
+    <view wx:if="{{withdrawDetail.status === 'Failure'}}">状态：提现失败</view>
+    <view wx:if="{{withdrawDetail.status === 'Cancel'}}">状态：已取消</view>
+    <view>银行名称：{{withdrawDetail.bankCard.branch}}</view>
+    <view>银行账户：{{withdrawDetail.bankCard.number}}</view>
+    <view>
+        支付流水号：
+        <text wx:if="{{withdrawDetail.payNumber}}">{{withdrawDetail.payNumber}}</text>
+    </view>
+    <view>
+        支付提交时间：
+        <text wx:if="{{withdrawDetail.payDate}}">{{withdrawDetail.payDate}}</text>
+    </view>
+    <button wx:if="{{withdrawDetail.status === 'Withdrawing'}}" bindtap="cancelWithdraw">取消提现</button>
+</view>

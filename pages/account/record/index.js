@@ -1,66 +1,49 @@
-// pages/account/record/index.js
+// 导入封装的request请求.js
+import {
+    get,
+    post
+} from '../../../utils/network.js'
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        //提现列表
+        withdraws: null,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-
+    onShow(options) {
+        var url = "/managerWithdraw/currentManager"
+        get(url, {
+            PageSize: 10,
+            PageIndex: 1
+        }).then(res => {
+            this.setData({
+                withdraws: res.items
+            })
+        }).catch(err => {
+            console.log(err)
+        })
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
+   /**
+     * 生命周期函数--监听页面加载
      */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+    withdrawDetail(e){
+        var id = e.currentTarget.dataset.id
+        wx.navigateTo({
+            url: 'withdrawDetails?id=' + id,
+            success: function (res) {
+                console.log('成功跳转至提现详情页面，携带参数id值为' + id);
+            },
+            fail: function (res) {
+                console.log('跳转提现详情页面失败!');
+            },
+        })
     }
 })

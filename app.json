@@ -25,7 +25,9 @@
         "pages/collection/newsDetail",
         "pages/setting/myInformation",
         "pages/setting/myAddress",
-        "pages/setting/feedback"
+        "pages/setting/feedback",
+        "pages/account/balance/updateBankCard",
+        "pages/account/record/withdrawDetails"
     ],
     "usingComponents": {
         "mp-icon": "components/icon/icon"
