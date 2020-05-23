@@ -11,56 +11,52 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad(options) {
 
     },
 
     /**
-     * 生命周期函数--监听页面初次渲染完成
+     * 跳转至个人资料页面
      */
-    onReady: function () {
-
+    userClick() {
+        wx.navigateTo({
+            url: 'myInformation',
+            success: function(res) {
+                console.log('成功跳转至个人资料页面！');
+            },
+            fail: function(res) {
+                console.log('跳转个人资料页面失败！');
+            },
+        })
     },
 
     /**
-     * 生命周期函数--监听页面显示
+     * 跳转至个我的地址页面
      */
-    onShow: function () {
-
+    addressClick() {
+        wx.navigateTo({
+            url: 'myAddress',
+            success: function(res) {
+                console.log('成功跳转至我的地址页面！');
+            },
+            fail: function(res) {
+                console.log('跳转我的地址页面失败！');
+            },
+        })
     },
 
     /**
-     * 生命周期函数--监听页面隐藏
+     * 跳转至意见反馈页面
      */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+    feedbackClick() {
+        wx.navigateTo({
+            url: 'feedback',
+            success: function(res) {
+                console.log('成功跳转至意见反馈页面！');
+            },
+            fail: function(res) {
+                console.log('跳转意见反馈页面失败！');
+            },
+        })
     }
 })

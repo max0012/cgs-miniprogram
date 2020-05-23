@@ -22,7 +22,10 @@
         "pages/order/index",
         "pages/order/orderDetail",
         "pages/equity/reputation",
-        "pages/collection/newsDetail"
+        "pages/collection/newsDetail",
+        "pages/setting/myInformation",
+        "pages/setting/myAddress",
+        "pages/setting/feedback"
     ],
     "usingComponents": {
         "mp-icon": "components/icon/icon"

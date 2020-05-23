@@ -10,28 +10,28 @@ Page({
      * 页面的初始数据
      */
     data: {
-        coupons: null,
+        address: null
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        var url = "/coupon"
-        var params = {
+        var url = "/orderReceiver"
+        get(url,{
             PageSize: 10,
             PageIndex: 1
-        }
-        get(url, {
-            params: params
         }).then(res => {
+            //将获取到的数据，存在名字叫detail的这个对象中 
             this.setData({
-                coupons: res.items,
-            })
-            console.log("优惠券列表: " + res.items)
+                address: res.items,
+            }),
+            console.log("地址列表： " + res);
+            
         }).catch(err => {
             console.log(err)
         })
+    },
 
-    }
+   
 })

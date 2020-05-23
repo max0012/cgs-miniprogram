@@ -1,5 +1,5 @@
 <view>
-    <view wx:for="{{favoriteNews}}">
+    <view wx:for="{{favoriteNews}}" wx:key="item">
         <!-- 头条新闻 -->
         <view wx:if="{{item.news.type === 1}}" bindtap="newsClick" data-id="{{item.news.id}}">
             <view>
@@ -13,7 +13,7 @@
                 <image src="{{item.news.coverUrl}}"></image>
             </view>
         </view>
-        <!-- 头条新闻 -->
+        <!-- 普通资讯 -->
         <view wx:if="{{item.news.type === 0}}" bindtap="newsClick" data-id="{{item.news.id}}">
             <view>
                 <text>{{item.news.title}}</text>

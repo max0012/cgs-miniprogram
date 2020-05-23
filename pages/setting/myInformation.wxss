@@ -1,0 +1,21 @@
+/*分割线样式*/
+
+.divLine {
+    background: rgb(224, 224, 222);
+    width: 100%;
+    height: 1rpx;
+}
+
+/*城市下拉框*/
+.cityPicker{
+    display:inline-block;
+    font-size:33rpx;
+    color:#C7C7CC;
+    width:71%;
+    margin-left:36rpx;
+    height:75rpx;
+    letter-spacing:2rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -1,2 +1,16 @@
-<!--pages/setting/index.wxml-->
-<text>pages/setting/index.wxml</text>
+<view>
+    <view bindtap="userClick">个人资料 ></view>
+    <!-- 分割线 -->
+    <view class="divLine"></view>
+
+    <view bindtap="addressClick">我的地址 ></view>
+    <view class="divLine"></view>
+
+    <view bindtap="feedbackClick">意见反馈 ></view>
+    <view class="divLine"></view>
+
+    <view>关于我们 ></view>
+    <view class="divLine2"></view>
+
+    <view bindtap="">退出登录</view>
+</view>

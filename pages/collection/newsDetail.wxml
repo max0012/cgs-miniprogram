@@ -1,7 +1,7 @@
 <!--引入wxParse解析html-->
 <import src="../../wxParse/wxParse.wxml" />
 
-<view>
+<scroll-view style="height:{{systemInfo.windowHeight}}px;" scroll-y="true" scroll-into-view="{{toView}}">
     <view>
         <image src="{{userInfo.avatarUrl}}"></image>
         <view>
@@ -30,6 +30,33 @@
         <template is="wxParse" data="{{wxParseData:content.nodes}}" />
     </view>
     <view>
-        <image src="{{newsDetail.visitCustomers.avatarUrl}}"></image>
+        <input placeholder="请输入评论内容" value="{{newsComment}}" bindinput="newsCommentClick"></input>
+        <button bindtap="commitComment">提交</button>
     </view>
-</view>
+    <view>
+        <view>
+            评论
+        </view>
+        <view wx:for="{{newsComments}}" wx:key="item" data-index="{{index}}">
+            <!-- 给最后一条评论加上id值，发表评论后定位到最后一条评论 -->
+            <view wx:if="{{index === (newsComments.length - 1) }}" id="hash1">
+                <view>
+                    <image src="{{item.manager.avatarUrl}}"></image>
+                </view>
+                <view>
+                    <text>{{item.creationTime}}</text>
+                    <text>{{item.content}}</text>
+                </view>
+            </view>
+            <view wx:else>
+                <view>
+                    <image src="{{item.manager.avatarUrl}}"></image>
+                </view>
+                <view>
+                    <text>{{item.creationTime}}</text>
+                    <text>{{item.content}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</scroll-view>

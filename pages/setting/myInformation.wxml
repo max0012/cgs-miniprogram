@@ -1,0 +1,41 @@
+<view>
+    <view>
+        姓名：
+        <input value="{{userInfo.name}}"></input>
+    </view>
+    <view class="divLine"></view>
+    <view>
+        头像：
+        <image src="{{userInfo.avatarUrl}}"></image>
+    </view>
+    <view class="divLine"></view>
+    <view>
+        <text>性别</text>
+        <picker bindchange="bindgenderChange" value="{{gender[genderIndex].value}}" range-key="{{'label'}}" range="{{gender}}">
+            <view class="picker">
+                {{genderDefault}} >
+            </view>
+        </picker>
+    </view>
+    <view class="divLine"></view>
+    <view>
+        <text>生日</text>
+        <picker mode="date" bindchange="bindBirthdayChange" value="{{birthday}}">
+            <text wx:if="{{birthday === 0 || birthday === 'null'}}"> 请选择 > </text>
+            <text wx:else>{{birthday}}</text>
+        </picker>
+    </view>
+    <view class="divLine"></view>
+    <view>
+        联系电话：
+        <input value="{{userInfo.mobile}}"></input>
+    </view>
+    <view class="divLine"></view>
+    <view>
+        所在城市：
+            <picker class="cityPicker" mode="region" bindchange="bindRegionChange" value="{{detailed}}" custom-item="{{customItem}}" name="detailed">
+                <view class="picker {{clas}}">{{detailed}}</view>
+            </picker>
+    </view>
+    <view class="divLine"></view>
+</view>

@@ -201,7 +201,7 @@ Page({
      * 切换出生日期下拉框
      */
     bindBirthdayChange(e) {
-        console.log('保障年限选择改变，携带值为', e.detail.value)
+        console.log('出生日期选择改变，携带值为', e.detail.value)
         this.setData({
             birthday: e.detail.value,
             birthdayFlag: false,

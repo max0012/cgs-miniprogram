@@ -1,0 +1,7 @@
+<view>
+    <view>反馈意见</view>
+    <view>
+        <input placeholder="请输入您的反馈意见" value='{{name}}' bindinput='feedbackInput'></input>
+        <button bindtap="feedbackCommit">提交</button>
+    </view>
+</view>
