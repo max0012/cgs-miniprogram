@@ -2,7 +2,7 @@
     <!-- 个人信息 -->
     <view class="user">
         <view class="user-box flex-wrp">
-            <image class="avatar" mode="aspectFit" src="{{userInfo.avatarUrl || '../../assets/mime/default.png'}}" background-size="cover"></image>
+            <image class="avatar" mode="aspectFit" src="{{userInfo.avatarUrl || '../../assets/mime/default.png'}}"></image>
             <view class="user-info flex-item">
                 <text class="userinfo-nickname">{{userInfo.name || '未登录'}}</text>
                 <button class="level" size="mini" hover-stop-propagation="true">高级理财师</button>

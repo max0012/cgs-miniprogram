@@ -17,6 +17,9 @@ export const post = (url, data) => request({
 
 export default function request(options) {
     return new Promise((resolve, reject) => {
+        wx.showLoading({
+          title: '加载中...',
+        })
         wx.request({
             url: options.url,
             data: options.data || {},
@@ -31,8 +34,10 @@ export default function request(options) {
                 } else {
                     reject(res.data.error)
                 }
+                wx.hideLoading()
             },
             fail: err => {
+                wx.hideLoading()
                 wx.showToast({
                     title: '请求失败，请稍后再试',
                     icon: 'none'

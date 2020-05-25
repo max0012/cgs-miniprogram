@@ -7,45 +7,38 @@
     </view>
     <view class="tab-list">
         <view wx:for="{{dataList}}" wx:for-index="listIndex" wx:key="index">
-            <view class="{{listIndex == currentIndex ? 'title-sel-selected' : 'title-sel'}}" data-id="{{item.id}}" bindtap="titleClick" data-idx="{{listIndex}}">
+            <view class="{{listIndex == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap="titleClick" data-id="{{item.id}}" data-idx="{{listIndex}}">
                 <text>{{item.name}}</text>
                 <hr class="line-style" />
             </view>
         </view>
     </view>
     <!--内容布局-->
-    <swiper class="swiper" current="{{currentIndex}}" bindchange="pageChange">
-        <swiper-item>
+    <swiper class="swiper" circular="true" duration="200" current="{{currentIndex}}" bindchange="pageChange" style="height: {{windowHeight}}px;">
+        <swiper-item wx:for="{{dataList}}" wx:for-index="listIndex" wx:key="index">
             <view class="recommend">
                 <view class="title">
                     <text>推荐产品</text>
                 </view>
                 <view class="list">
-                    <view class="product">
-                        <view class="img">
-                            
+                     <view class="product flex-wrp" wx:for="{{pageDetails.relationPageProducts}}" wx:key="index">
+                        <view class="img flex-wrp">
+                            <image src="{{item.product.coverUrl}}" mode="aspectFit"></image>
                         </view>
-                        <view class="info">
+                        <view class="info flex-wrp">
                             <view class="desc">
-                                <text>6只装 吴纯水蜜桃味 我点had合法化杜拉拉口袋里看风景埃里克的接口家具代理费 * 6支</text>
+                                <text>{{item.product.name}}</text>
                             </view>
-                            <view>
-                                <text>佣金：198元</text>
-                                <button>马上营销</button>
+                            <view class="opt flex-wrp">
+                                <view class="commission">
+                                    <text>佣金：{{item.product.commissionText}}</text>
+                                </view>
+                                <button class="marketing-btn">马上营销</button>
                             </view>
                         </view>
                     </view>
                 </view>
             </view>
         </swiper-item>
-        <swiper-item>
-            222          
-        </swiper-item> 
-        <swiper-item> 
-            333
-        </swiper-item> 
-        <swiper-item> 
-            444
-        </swiper-item> 
     </swiper>
 </view>
