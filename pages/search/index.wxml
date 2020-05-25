@@ -1,0 +1,61 @@
+<view>
+    <view class="search">
+        <view class="searchItem">
+            <image src="../../assets/search.png" />
+            <input bindinput="bindKeyInput" placeholder="搜索" confirm-type="search"></input>
+        </view>
+    </view>
+    <!---  搜索到的客户结果 --->
+    <view wx:if="{{detail.customer.length > 0}}">
+        <view>客户</view>
+        <view wx:for="{{detail.customer}}" wx:key="item">
+            <view>
+                <image src="{{item.imageUrl}}"></image>
+                <text>{{item.name}}</text>
+            </view>
+        </view>
+        <view bindtap="moreCustomer">查看更多客户</view>
+    </view>
+    <!---  搜索到的事务结果 --->
+    <view wx:if="{{detail.work.length > 0}}">
+        <view>事务</view>
+        <view wx:for="{{detail.work}}" wx:key="item">
+            <view>
+                <image src="{{item.imageUrl}}"></image>
+                <text>{{item.customerName}}  </text>
+                <text>{{item.name}}</text>
+            </view>
+        </view>
+        <view bindtap="moreWork">查看更多事务</view>
+    </view>
+    <!---  搜索到的产品结果 --->
+    <view wx:if="{{detail.product.length > 0}}">
+        <view>产品</view>
+        <view wx:for="{{detail.product}}" wx:key="item">
+            <image src="{{item.imageUrl}}"></image>
+                <view>
+                    <text>{{item.name}}</text>
+                </view>
+                <view>
+                    <text>产品热度：{{item.countView}}</text>
+                    <text>佣金：{{item.commission}}</text>
+                </view>
+                <button>马上营销</button>
+        </view>
+        <view bindtap="moreProduct">查看更多产品</view>
+    </view>
+    <!---  搜索到的资讯结果 --->
+    <view wx:if="{{detail.news.length > 0}}">
+        <view>资讯</view>
+        <view wx:for="{{detail.news}}" wx:key="item">
+            <view>
+                <text>{{item.name}}</text>
+            </view>
+            <view>
+                <text>{{item.countView}} 阅读</text>
+            </view>
+            <image src="{{item.imageUrl}}"></image>
+        </view>
+        <view bindtap="moreNews">查看更多资讯</view>
+    </view>
+</view>

@@ -2,7 +2,7 @@
 import {
     get,
     post
-} from '../../utils/network.js'
+} from '../../../utils/network.js'
 
 Page({
 

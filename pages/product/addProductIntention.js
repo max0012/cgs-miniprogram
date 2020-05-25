@@ -18,10 +18,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        //设置页面顶部titile
-        wx.setNavigationBarTitle({
-            title: "联系产品顾问"
-        })
         //上个页面传递的数据 
         this.setData({
             product: JSON.parse(options.product)
@@ -33,7 +29,7 @@ Page({
      */
     searchCustomer(e) {
         wx.navigateTo({
-            url: "../search/searchCustomer",
+            url: "../search/customer/searchCustomer",
         })
     },
 

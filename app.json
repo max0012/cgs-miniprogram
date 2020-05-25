@@ -8,6 +8,7 @@
         "pages/login/code/code",
         "pages/product/details",
         "pages/product/productTips",
+        "pages/product/addProductIntention",
         "pages/product/list",
         "pages/logs/logs",
         "pages/authorize/authorize",
@@ -27,7 +28,12 @@
         "pages/setting/myAddress",
         "pages/setting/feedback",
         "pages/account/balance/updateBankCard",
-        "pages/account/record/withdrawDetails"
+        "pages/account/record/withdrawDetails",
+        "pages/search/index",
+        "pages/search/customer/searchCustomer",
+        "pages/search/work/searchWork",
+        "pages/search/product/searchProduct",
+        "pages/search/news/searchNews"
     ],
     "usingComponents": {
         "mp-icon": "components/icon/icon"

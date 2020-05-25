@@ -1,2 +1,19 @@
-<!--pages/account/achievement/index.wxml-->
-<text>pages/account/achievement/index.wxml</text>
+<view>
+    <view>
+        <text bindtap="lastMonth"> 《  </text>
+        <text> {{year}} - {{month}}  </text>
+        <text bindtap="nextMonth">  》 </text>
+    </view>
+    <view>
+        <text>本月利润提成 {{performanceSummary.monthlyCommissionPrice}}</text>     |       
+        <text>本月利润排名 {{performanceSummary.rank}}</text>
+    </view>
+    <view>
+        业务类型  |  业务订单  |  业务利润
+    </view>
+    <view wx:for="{{performanceSummary.groupedData}}" wx:key="item">
+        <view>
+            <text>{{item.productCategoryName}}  |  {{item.count}}  |  {{item.totalPrice}}</text>
+        </view>
+    </view>
+</view>
