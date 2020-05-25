@@ -1,53 +1,51 @@
-<view class='ticket-container'>
-    <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-        <!--Tab布局-->
-        <view class='title'>
-            <view wx:for="{{data_list}}" wx:for-index="listIndex">
-                <view class="{{listIndex == currentIndex ? 'title-sel-selected' : 'title-sel'}}" data-id="{{item.id}}" bindtap='titleClick' data-idx='{{listIndex}}'>
-                    <text>{{item.name}}</text>
-                    <hr class="line-style" />
-                </view>
+<view class="container">
+    <view class="search">
+        <view class="searchItem">
+            <image src="../../assets/search.png" />
+            <input bindinput="bindKeyInput" placeholder="搜索" confirm-type="search"></input>
+        </view>
+    </view>
+    <view class="tab-list">
+        <view wx:for="{{dataList}}" wx:for-index="listIndex" wx:key="index">
+            <view class="{{listIndex == currentIndex ? 'title-sel-selected' : 'title-sel'}}" data-id="{{item.id}}" bindtap="titleClick" data-idx="{{listIndex}}">
+                <text>{{item.name}}</text>
+                <hr class="line-style" />
             </view>
         </view>
-
-
-        <!--内容布局-->
-        <swiper class='swiper' bindchange='pageChange' current='{{currentIndex}}'>
-        <!-- 有几个tab项就循环出几个swiper-item  -->
-            <view wx:for="{{data_list}}">
-                <swiper-item class='swiper'>
-                    <view>推荐产品</view>
-                    <view wx:for="{{detail.relationPageProducts}}" wx:for-item="details" class='record-item'>
-                        <view class='name'>
-                            <view bindtap="detailClick" data-id="{{details.product.id}}">
-                                <image src="{{details.product.coverUrl}}"></image>
-                                <view>
-                                    <view>{{details.product.name}}</view>
-                                    <view>
-                                        佣金：{{details.product.commissionText}}
-                                        <button>马上营销</button>
-                                    </view>
-                                </view>
-                            </view>
+    </view>
+    <!--内容布局-->
+    <swiper class="swiper" current="{{currentIndex}}" bindchange="pageChange">
+        <swiper-item>
+            <view class="recommend">
+                <view class="title">
+                    <text>推荐产品</text>
+                </view>
+                <view class="list">
+                    <view class="product">
+                        <view class="img">
+                            
                         </view>
-                    </view>
-                    <!-- 培训课程板块 -->
-                    <view wx:if="{{detail.relationPageProductTipses.length>0}}">
-                        <view>培训课程</view>
-                        <view wx:for="{{detail.relationPageProductTipses}}" wx:for-item="tip">
+                        <view class="info">
+                            <view class="desc">
+                                <text>6只装 吴纯水蜜桃味 我点had合法化杜拉拉口袋里看风景埃里克的接口家具代理费 * 6支</text>
+                            </view>
                             <view>
-                                <view>
-                                    <image src="{{tip.productTips.imageUrls}}"></image>
-                                </view>
-                                <view>
-                                    <text>{{tip.productTips.title}}</text>
-                                    <button>立即学习</button>
-                                </view>
+                                <text>佣金：198元</text>
+                                <button>马上营销</button>
                             </view>
                         </view>
                     </view>
-                </swiper-item>
+                </view>
             </view>
-        </swiper>
-    </scroll-view>
+        </swiper-item>
+        <swiper-item>
+            222          
+        </swiper-item> 
+        <swiper-item> 
+            333
+        </swiper-item> 
+        <swiper-item> 
+            444
+        </swiper-item> 
+    </swiper>
 </view>
