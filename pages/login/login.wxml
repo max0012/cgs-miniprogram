@@ -13,7 +13,7 @@
             </view>
         </view>
         <view class="phone-number flex-wrp">
-            <input type="number" value="{{mobile}}" placeholder-class="placeholder" placeholder="请输入手机号码" auto-focus bindinput="bindKeyInput" bindblur="inputBlur" bindfocus="inputFocus"></input>
+            <input type="number" value="{{mobile}}" placeholder-class="placeholder" placeholder="请输入手机号码" focus bindinput="bindKeyInput" bindblur="inputBlur" bindfocus="inputFocus"></input>
             <view class="input-close" catchtap="inputMobile">
                 <icon class="icon-small" type="clear" size="17" hidden="{{!isFocus}}"></icon>
             </view>

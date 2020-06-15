@@ -1,5 +1,8 @@
-import { get,post } from '../../utils/network.js'
-const utils  = require('../../utils/util.js')
+import {
+    get,
+    post
+} from '../../utils/network.js'
+const utils = require('../../utils/util.js')
 
 Page({
     data: {
@@ -12,25 +15,26 @@ Page({
     onLoad(options) {
         this.getIndexInfo()
         this.setData({
-            windowHeight: wx.getSystemInfoSync()['windowHeight'] - 95
+            windowHeight: wx.getSystemInfoSync()['windowHeight'] - 89
         })
     },
     // 获取tab栏的列表信息
     getIndexInfo() {
-         get('/page/foxIndex').then(res => {
-             this.setData({
-                 dataId: res[0].id,
-                 dataList: res
-             })
-             //加载第一个选项卡列表内容
-             this.getDetails()
-         }).catch(err => {
+        get('/page/foxIndex').then(res => {
+            this.setData({
+                dataId: res[0].id,
+                dataList: res
+            })
+            //加载第一个选项卡列表内容
+            this.getDetails()
+        }).catch(err => {
             utils.toast(err + ' ')
-         })
+        })
     },
     //根据页面详情
     getDetails() {
-        get('/page/'+ this.data.dataId +'/withDetails').then(res => {
+        // page详情
+        get('/page/' + this.data.dataId + '/withDetails').then(res => {
             this.setData({
                 pageDetails: res
             })
@@ -38,10 +42,18 @@ Page({
             utils.toast(err + ' ')
         })
     },
+    //进入搜索页面
+    toSearch(e) {
+        wx.navigateTo({
+            url: '../search/index?k=' + e.detail.value
+        })
+    },
     //进入产品详情页面
     detailClick(e) {
         var id = e.currentTarget.dataset.id
-        wx.navigateTo({url: '../product/details?data_id=' + id})
+        wx.navigateTo({
+            url: '../product/details?data_id=' + id
+        })
     },
     //用户点击tab时调用
     titleClick(e) {

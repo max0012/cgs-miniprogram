@@ -1,93 +1,64 @@
-.search {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    height: 88rpx;
-    background: #fff;
-    align-items: center;
-}
-
-.searchItem {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 65rpx;
-    margin: 0 30rpx;
-    border-radius: 30rpx;
-    background: #F5F5F5;
-}
-
-.searchItem image {
-    height: 32rpx;
-    width: 32rpx;
-    align-self: center;
-    margin: 0 20rpx;
-}
-
-.searchItem input {
-    flex: 1;
-    font-size: 28rpx;
-    margin-top: 13rpx;
-}
-
-.tab-list {
+.swiper-tab {
     width: 100%;
     height: 75rpx;
     background: white;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    position: fixed;
+    z-index: 9;
+    margin-top: 88rpx;
+    box-shadow: 0 0 6px 0 #E6E6E6;
 }
 
-.title-sel {
+.swiper-tab .tab {
+    height: 100%;
     color: #999999;
-    font-size: 26rpx;
-}
-
-.title-sel .line-style {
-    background: #fff;
-    height: 6rpx;
-    width: 40rpx;
-    position: relative;
-    margin-top: 10rpx;
-}
-
-.title-sel-selected {
-    color: #564F5F;
     font-size: 26rpx;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
-.title-sel-selected .line-style {
-    background: #564F5F;
+.swiper-tab .tab .tab-text {
+    margin-top: 16rpx;
+}
+
+.tab-active {
+    color: #564F5F !important;
+}
+
+.tab-active .line {
     height: 5rpx;
-    width: 30rpx;
-    position: absolute;
-    top: 158rpx;
+    width: 35rpx;
+    background: #564F5F;
 }
 
 .swiper {
     width: 100%;
-    margin-top: 15rpx;
+    overflow: scroll;
+    margin-top: 163rpx;
+    z-index: 1;
 }
 
 .swiper swiper-item {
     height: auto !important;
+    background-color: #F6F6F6;
+}
+
+.recommend, .train {
+    padding: 35rpx 30rpx;
+    margin-top: 15rpx;
     background-color: #fff;
 }
 
-.recommend {
-    margin: 30rpx;
-}
-
-.recommend .list .product {
+.recommend .list .product, .train .list .course {
     height: 165rpx;
-    margin-top: 30rpx;
+    margin-top: 40rpx;
 }
 
-.recommend .list .product .img {
+.recommend .list .product .img, .train .list .course .img {
     flex: 2;
     overflow: hidden;
     align-items: center;
@@ -95,27 +66,28 @@
     border-radius: 8rpx;
 }
 
-.recommend .list .product image {
+.recommend .list .product image, .train .list .course image {
     background-size: cover;
     width: 100%;
 }
 
-.recommend .list .product .info {
+.recommend .list .product .info, .train .list .course .info {
     flex: 3;
     flex-wrap: wrap;
     align-content: space-between;
 }
 
-.recommend .list .product .desc {
-    font-size: 26rpx;
-    line-height: 32rpx;
-    letter-spacing: 1rpx;
+.recommend .list .product .desc, .train .list .course .desc {
+    height: 80rpx;
     margin-top: 5rpx;
+    line-height: 32rpx;
+    font-size: 26rpx;
+    letter-spacing: 1rpx;
 }
 
-.recommend .list .product .opt {
+.recommend .list .product .opt, .train .list .course .opt {
     width: 100%;
-    height: 50rpx;
+    height: 55rpx;
     align-items: center;
     justify-content: space-between;
 }
@@ -140,5 +112,22 @@
 }
 
 .recommend .list .product .marketing-btn::after {
+    border: none;
+}
+
+.train .list .course .study-btn {
+    margin: 0;
+    padding: 0;
+    width: 140rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 25rpx;
+    font-weight: 300;
+    border-radius: 50rpx;
+    background-color: #6DCB9E;
+    color: #fff;
+}
+
+.train .list .course .study-btn::after {
     border: none;
 }

@@ -1,4 +1,3 @@
-import { get,post } from '../../utils/network.js'
 const util = require('../../utils/util.js')
 
 Page({

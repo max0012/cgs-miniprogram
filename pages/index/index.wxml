@@ -1,44 +1,61 @@
 <view class="container">
-    <view class="search">
-        <view class="searchItem">
-            <image src="../../assets/search.png" />
-            <input bindinput="bindKeyInput" placeholder="搜索" confirm-type="search"></input>
-        </view>
-    </view>
-    <view class="tab-list">
-        <view wx:for="{{dataList}}" wx:for-index="listIndex" wx:key="index">
-            <view class="{{listIndex == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap="titleClick" data-id="{{item.id}}" data-idx="{{listIndex}}">
-                <text>{{item.name}}</text>
-                <hr class="line-style" />
-            </view>
-        </view>
-    </view>
-    <!--内容布局-->
-    <swiper class="swiper" circular="true" duration="200" current="{{currentIndex}}" bindchange="pageChange" style="height: {{windowHeight}}px;">
-        <swiper-item wx:for="{{dataList}}" wx:for-index="listIndex" wx:key="index">
-            <view class="recommend">
-                <view class="title">
-                    <text>推荐产品</text>
-                </view>
-                <view class="list">
-                     <view class="product flex-wrp" wx:for="{{pageDetails.relationPageProducts}}" wx:key="index">
-                        <view class="img flex-wrp">
-                            <image src="{{item.product.coverUrl}}" mode="aspectFit"></image>
-                        </view>
-                        <view class="info flex-wrp">
-                            <view class="desc">
-                                <text>{{item.product.name}}</text>
+    <head-search style="width: 100%;"></head-search>
+	<view class="swiper-tab">
+		<view class="tab {{listIndex == currentIndex ? 'tab-active' : ''}}" wx:for="{{dataList}}" wx:for-index="listIndex" wx:key="index" bindtap="titleClick" data-id="{{item.id}}" data-idx="{{listIndex}}">
+			<text class="tab-text">{{item.name}}</text>
+			<hr class="line" />
+		</view>
+	</view>
+	<!--内容布局-->
+	<swiper class="swiper" duration="200" current="{{currentIndex}}" bindchange="pageChange" style="height: {{windowHeight}}px;">
+		<swiper-item wx:for="{{dataList}}" wx:for-index="listIndex" wx:key="index">
+            <view style="height: {{windowHeight}}px;">
+                <!-- 推荐 -->
+                <view class="recommend">
+                    <view class="title">
+                        <text>推荐产品</text>
+                    </view>
+                    <view class="list">
+                        <view class="product flex-wrp" wx:for="{{pageDetails.relationPageProducts}}" wx:for-item="pro" wx:key="index">
+                            <view class="img flex-wrp">
+                                <image src="{{pro.product.coverUrl}}" mode="aspectFit"></image>
                             </view>
-                            <view class="opt flex-wrp">
-                                <view class="commission">
-                                    <text>佣金：{{item.product.commissionText}}</text>
+                            <view class="info flex-wrp">
+                                <view class="desc">
+                                    <text>{{pro.product.name}}</text>
                                 </view>
-                                <button class="marketing-btn">马上营销</button>
+                                <view class="opt flex-wrp">
+                                    <view class="commission">
+                                        <text>佣金：{{pro.product.commissionText}}</text>
+                                    </view>
+                                    <button class="marketing-btn">马上营销</button>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <!-- 培训 -->
+                <view class="train" wx:if="{{pageDetails.relationPageProductTipses.length > 0}}">
+                    <view class="title">
+                        <text>培训课程</text>
+                    </view>
+                    <view class="list">
+                        <view class="course flex-wrp" wx:for="{{pageDetails.relationPageProductTipses}}" wx:for-item="tip" wx:key="index">
+                            <view class="img flex-wrp">
+                                <image src="{{tip.productTips.imageUrls[0]}}" mode="aspectFit"></image>
+                            </view>
+                            <view class="info flex-wrp">
+                                <view class="desc">
+                                    <text>{{tip.productTips.title}}</text>
+                                </view>
+                                <view class="opt flex-wrp">
+                                    <button class="study-btn">立即学习</button>
+                                </view>
                             </view>
                         </view>
                     </view>
                 </view>
             </view>
-        </swiper-item>
-    </swiper>
+		</swiper-item>
+	</swiper>
 </view>

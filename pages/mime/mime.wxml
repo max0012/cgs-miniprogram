@@ -79,7 +79,7 @@
             <text>我的服务</text>
         </view>
         <view class="services-info flex-wrp">
-            <view class="my-item" data-param-data="{{item.paramData}}" bindtap="{{item.serviceFun}}" wx:for="{{myServices}}">
+            <view class="my-item" data-param-data="{{item.paramData}}" bindtap="{{item.serviceFun}}" wx:for="{{myServices}}" wx:key="index">
                 <view class="item-icon">
                     <image mode="aspectFit" src="../../assets/mime/{{item.iconUrl}}.png"></image>
                 </view>
