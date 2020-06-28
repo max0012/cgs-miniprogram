@@ -45,54 +45,59 @@ Page({
         premium: null,
         //性别
         radios: [{
-            value: true,
-            name: '男'
-        },
-        {
-            value: false,
-            name: '女'
-        },
+                value: true,
+                name: '男'
+            },
+            {
+                value: false,
+                name: '女'
+            },
         ],
         //保障额度
         coverageId: [{
-            label: '3万',
-            value: '3'
-        },
-        {
-            label: '5万',
-            value: '5'
-        },
-        {
-            label: '10万',
-            value: '10'
-        },
-        {
-            label: '20万',
-            value: '20'
-        }
+                label: '3万',
+                value: '3'
+            },
+            {
+                label: '5万',
+                value: '5'
+            },
+            {
+                label: '10万',
+                value: '10'
+            },
+            {
+                label: '20万',
+                value: '20'
+            }
         ],
         //保障年期
         yearId: [{
-            label: '5年',
-            value: '5'
-        },
-        {
-            label: '10年',
-            value: '10'
-        },
-        {
-            label: '15年',
-            value: '15'
-        },
-        {
-            label: '20年',
-            value: '20'
-        },
-        {
-            label: '30年',
-            value: '30'
-        }
+                label: '5年',
+                value: '5'
+            },
+            {
+                label: '10年',
+                value: '10'
+            },
+            {
+                label: '15年',
+                value: '15'
+            },
+            {
+                label: '20年',
+                value: '20'
+            },
+            {
+                label: '30年',
+                value: '30'
+            }
         ],
+        hideModal: false, //模态框的状态  true-隐藏  false-显示
+        animationData: {},
+        num: 1, //弹框选择的数量
+        minusStatus: 'disabled', //减号状态
+        plusStatus: 'normal' //加号状态
     },
 
     /** 
@@ -121,23 +126,23 @@ Page({
 
         //获取产品详情方法
         get(detailUrl).then(res => {
-            //将获取到的数据，存在名字叫detail的这个对象中 
-            this.setData({
-                detail: res,
+                //将获取到的数据，存在名字叫detail的这个对象中 
+                this.setData({
+                        detail: res,
+                    }),
+                    console.log(res);
+                //产品详情中的图片路径（为html,需要在这里转换）
+                var description = res.description;
+                WxParse.wxParse('description', 'html', description, this, 5);
+            }).catch(err => {
+                console.log(err)
             }),
-                console.log(res);
-            //产品详情中的图片路径（为html,需要在这里转换）
-            var description = res.description;
-            WxParse.wxParse('description', 'html', description, this, 5);
-        }).catch(err => {
-            console.log(err)
-        }),
 
             //加载营销小提示方法
             get(detailUrl, tipsParams).then(res => {
                 this.setData({
-                    productTips: res.items,
-                }),
+                        productTips: res.items,
+                    }),
                     console.log("productTips====" + res.items);
             }).catch(err => {
                 console.log(err)
@@ -150,10 +155,10 @@ Page({
         var data_id = e.currentTarget.dataset.id
         wx.navigateTo({
             url: 'productTips?data_id=' + data_id,
-            success: function (res) {
+            success: function(res) {
                 console.log('成功跳转，携带参数data_id值为' + data_id);
             },
-            fail: function (res) {
+            fail: function(res) {
                 console.log('tipsClick fail() !!!');
             },
         })
@@ -266,4 +271,136 @@ Page({
         })
     },
 
+    /** 
+     * 点击联系立即下单按钮，弹框选择数量
+     */
+    clickme: function() {
+        this.showModal();
+    },
+    //显示对话框
+    showModal: function() {
+        // 显示遮罩层
+        var animation = wx.createAnimation({
+            duration: 200,
+            timingFunction: "linear",
+            delay: 0
+        })
+        this.animation = animation
+        animation.translateY(300).step()
+        this.setData({
+            animationData: animation.export(),
+            showModalStatus: true
+        })
+        setTimeout(function() {
+            animation.translateY(0).step()
+            this.setData({
+                animationData: animation.export()
+            })
+        }.bind(this), 200)
+    },
+    //隐藏对话框
+    hideModal: function() {
+        // 隐藏遮罩层
+        var animation = wx.createAnimation({
+            duration: 200,
+            timingFunction: "linear",
+            delay: 0
+        })
+        this.animation = animation
+        animation.translateY(300).step()
+        this.setData({
+            animationData: animation.export(),
+        })
+        setTimeout(function() {
+            animation.translateY(0).step()
+            this.setData({
+                animationData: animation.export(),
+                showModalStatus: false
+            })
+        }.bind(this), 200)
+    },
+
+    /* 点击减号 */
+    bindMinus: function() {
+        var num = this.data.num;
+        // 如果大于1时，才可以减
+        if (num > 1) {
+            num--;
+        } else {
+            wx.showToast({
+                title: '数量最少为一',
+                icon: 'none',
+                duration: 2000
+            })
+        }
+        // 减号，只有大于一件的时候，才能normal状态，否则disable状态
+        var minusStatus = num <= 1 ? 'disabled' : 'normal';
+        // 将数值与状态写回
+        this.setData({
+            num: num,
+            minusStatus: minusStatus
+        });
+    },
+    /* 点击加号 */
+    bindPlus: function() {
+        var num = this.data.num;
+        var inventory = this.data.detail.inventory
+        // 数量不超过库存
+        if (num < inventory) {
+            num++;
+        } else {
+            wx.showToast({
+                title: '数量超过范围！',
+                icon: 'none',
+                duration: 2000
+            })
+        }
+        // 加号，只有小于库存的时候，才能normal状态，否则disable状态
+        var plusStatus = num >= inventory ? 'disabled' : 'normal';
+        // 将数值与状态写回
+        this.setData({
+            num: num,
+            plusStatus: plusStatus
+        });
+    },
+    /* 输入框事件 */
+    bindManual: function(e) {
+        var num = e.detail.value;
+        var inventory = this.data.detail.inventory
+        if (num > inventory) {
+            wx.showToast({
+                title: '数量超过范围！',
+                icon: 'none',
+                duration: 2000
+            })
+            num = inventory;
+        }
+        // 减号，只有大于一件的时候，才能normal状态，否则disable状态
+        var minusStatus = num <= 1 ? 'disabled' : 'normal';
+        // 加号，只有小于库存的时候，才能normal状态，否则disable状态
+        var plusStatus = num >= inventory ? 'disabled' : 'normal';
+        // 将数值与状态写回
+        this.setData({
+            num: num,
+            minusStatus: minusStatus,
+            plusStatus: plusStatus
+        });
+    },
+
+    /** 
+     * 进入下单页面
+     */
+    clickOrder(e){
+        var detail = {
+            productId: this.data.data_id,  //产品id
+            coverUrl: this.data.detail.coverUrl, //封面图
+            name: this.data.detail.name,  //产品名称
+            upperPrice: this.data.detail.upperPrice, //真实价格（购物类产品才有）
+            expressPrice: this.data.detail.expressPrice,  //(运费)
+            inventory: this.data.detail.inventory,  //库存
+        }
+        wx.navigateTo({
+            url: "../order/addOrder?detail=" + JSON.stringify(detail) + "&num=" + this.data.num,
+        })
+    }
 })

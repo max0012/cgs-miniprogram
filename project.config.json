@@ -57,9 +57,9 @@
 			"current": -1,
 			"list": [
 				{
-					"id": -1,
-					"name": "我的",
-					"pathName": "pages/mime/mime",
+					"id": 0,
+					"name": "pages/address/index",
+					"pathName": "pages/address/index",
 					"query": "",
 					"scene": null
 				},

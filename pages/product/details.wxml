@@ -144,6 +144,24 @@
     <view>
         <button calss="btn" size="mini" bindtap="btnContactClick" data-commissionText="{{detail.commissionText}}" data-name="{{detail.name}}" data-coverUrl="{{detail.coverUrl}}" data-receiver-manager-id="{{detail.manager.id}}">联系产品顾问</button>
         <button calss="btn" size="mini">分享给客户</button>
-        <button wx:if="{{detail.productCategory.type==='Gouwu'}}" calss="btn" size="mini">立即下单</button>
+        <button wx:if="{{detail.productCategory.type==='Gouwu'}}" calss="btn" size="mini" bindtap="clickme">立即下单</button>
+        <!--屏幕背景变暗的背景  -->
+        <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+        <!--弹出框  -->
+        <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+
+            <view class="comment_li_name">商品数量（库存{{detail.inventory}}件）</view>
+            <view class="stepper">
+                <!-- 减号 -->
+                <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+                <!-- 数值 -->
+                <input type="number" bindchange="bindManual" value="{{num}}" />
+                <!-- 加号 -->
+                <text class="{{plusStatus}}" bindtap="bindPlus">+</text>
+            </view>
+            <view class="comment_inputbox">
+                <view class="comment_sendbtn" bindtap="clickOrder">立即下单</view>
+            </view>
+        </view>
     </view>
 </view>

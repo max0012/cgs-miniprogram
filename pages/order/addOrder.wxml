@@ -1,0 +1,35 @@
+<view>
+    <view>
+        <text bindtap="receiverList">新增收货地址    > </text>
+    </view>
+    <view>
+        <view>商品信息</view>
+        <view>
+            <image src="{{detail.coverUrl}}"></image>
+            <text>{{detail.name}}</text>
+            <text>价格：{{detail.upperPrice}}</text>
+            <view class="stepper">
+                <!-- 减号 -->
+                <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+                <!-- 数值 -->
+                <input type="number" bindchange="bindManual" value="{{num}}" />
+                <!-- 加号 -->
+                <text class="{{plusStatus}}" bindtap="bindPlus">+</text>
+            </view>
+        </view>
+        <view>
+            <input placeholder="备注信息：请输入"></input>
+        </view>
+    </view>
+    <view>
+        <view>价格信息</view>
+        <view>商品价格：￥{{detail.upperPrice * num}}</view>
+        <view>优惠券 </view>
+        <view>优惠价格 ￥</view>
+        <view>运费 ￥{{detail.expressPrice}}</view>
+    </view>
+    <view>
+        <view>订单总额：￥{{detail.upperPrice * num}}</view>
+        <input>支付</input>
+    </view>
+</view>
