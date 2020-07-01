@@ -33,7 +33,10 @@
         "pages/search/customer/searchCustomer",
         "pages/search/work/searchWork",
         "pages/search/product/searchProduct",
-        "pages/search/news/searchNews"
+        "pages/search/news/searchNews",
+        "pages/order/addOrder",
+        "pages/address/index",
+        "pages/address/updateAddress"
     ],
     "usingComponents": {
         "mp-icon": "components/icon/icon"

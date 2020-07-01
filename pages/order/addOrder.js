@@ -9,6 +9,11 @@ Page({
         num: null,
         minusStatus: null,
         plusStatus: null,
+        value: null,   //选择的收货人地址信息
+        coupon:null,    //选择的优惠券信息
+        addressFlag: true,  //addressFlag=true:未选择地址
+        couponFlag: true,  //couponFlag=true:未选择优惠券
+        
     },
 
     /**
@@ -100,9 +105,48 @@ Page({
     /**
      * 跳转到收货地址页面
      */
-    receiverList(e){
+    receiverList(e) {
         wx.navigateTo({
-            url: "../address/index",
+            url: "../address/index?type=1",
+        })
+    },
+
+    /**
+     * 接收上个页面返回后携带的值 
+     * */
+    onShow(e) {
+        var pages = getCurrentPages();
+        var currPage = pages[pages.length - 1];
+
+        //地址选择页面
+        var value = currPage.data.value
+        console.log(value)
+        if (value != null) {
+            this.setData({
+                addressFlag: false,
+                value: value
+            })
+        }
+        //优惠券选择页面
+        var coupon = currPage.data.coupon
+        console.log(coupon)
+        if(coupon != null){
+            this.setData({
+                couponFlag: false,
+                coupon: coupon
+            })
+        }
+    },
+
+    /**
+     * 跳转至优惠券页面
+     * */
+    getCoupon(e) {
+        var totalPrice = this.data.num * this.data.detail.upperPrice
+        wx.navigateTo({
+            url: "../coupon/index?type=1&totalPrice=" + totalPrice,
         })
     }
+
+
 })

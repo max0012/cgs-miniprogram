@@ -1,6 +1,10 @@
 <view>
-    <view>
+    <view wx:if="{{addressFlag}}">
         <text bindtap="receiverList">新增收货地址    > </text>
+    </view>
+    <view wx:if="{{!addressFlag}}" bindtap="receiverList">
+        <view>{{value.name}}    {{value.mobile}}</view>
+        <view>{{value.province}}{{value.city}}{{value.district}}{{value.address}}</view>
     </view>
     <view>
         <view>商品信息</view>
@@ -24,12 +28,17 @@
     <view>
         <view>价格信息</view>
         <view>商品价格：￥{{detail.upperPrice * num}}</view>
-        <view>优惠券 </view>
-        <view>优惠价格 ￥</view>
+        <view wx:if="{{couponFlag}}" bindtap="getCoupon">优惠券     请选择></view>
+        <view wx:if="{{!couponFlag}}" bindtap="getCoupon">优惠券       {{coupon.faceValue}}元优惠券 ></view>
+        <view>
+            优惠价格 
+            <text wx:if="{{couponFlag}}">￥0.00</text>
+            <text wx:if="{{!couponFlag}}">-￥{{coupon.faceValue}}</text>
+        </view>
         <view>运费 ￥{{detail.expressPrice}}</view>
     </view>
     <view>
         <view>订单总额：￥{{detail.upperPrice * num}}</view>
-        <input>支付</input>
+        <input bindtap="payment">支付</input>
     </view>
 </view>

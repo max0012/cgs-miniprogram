@@ -1,22 +1,44 @@
-
 <view>
     <text bindtap="addAddress">添加新地址</text>
 </view>
 
 <view wx:if="{{addressList}}">
-    <view wx:for="{{addressList}}" wx:key="item">
-        <view>
-            <text>{{item.name}}</text>
-            <text>{{item.mobile}}</text>
-        </view>
-        <view>
-            <text>{{item.province}}</text>
-            <text>{{item.city}}</text>
-            <text>{{item.district}}</text>
-            <text>{{item.address}}</text>
-        </view>
-        <view>
-            <text bindtap="updateAddress" data-item="{{item}}">编辑</text>
+    <!-- type=1:下单页面跳转过来，需要给每项加上点击事件  -->
+    <view wx:if="{{type == 1}}">
+        <view wx:for="{{addressList}}" wx:key="item" data-item="{{item}}" bindtap="clickView">
+            <view>
+                <text>{{item.name}}</text>
+                <text>{{item.mobile}}</text>
+            </view>
+            <view>
+                <text>{{item.province}}</text>
+                <text>{{item.city}}</text>
+                <text>{{item.district}}</text>
+                <text>{{item.address}}</text>
+            </view>
+            <view>
+                <text bindtap="updateAddress" data-item="{{item}}">编辑</text>
+            </view>
         </view>
     </view>
+    <!-- type != 1:列表页面跳转过来，不需要添加点击事件  -->
+    <view wx:if="{{type != 1}}">
+        <view wx:for="{{addressList}}" wx:key="item">
+            <view>
+                <text>{{item.name}}</text>
+                <text>{{item.mobile}}</text>
+            </view>
+            <view>
+                <text>{{item.province}}</text>
+                <text>{{item.city}}</text>
+                <text>{{item.district}}</text>
+                <text>{{item.address}}</text>
+            </view>
+            <view>
+                <text bindtap="updateAddress" data-item="{{item}}">编辑</text>
+            </view>
+        </view>
+    </view>
+
+
 </view>

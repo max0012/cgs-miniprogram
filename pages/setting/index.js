@@ -35,7 +35,7 @@ Page({
      */
     addressClick() {
         wx.navigateTo({
-            url: 'myAddress',
+            url: '../address/index',
             success: function(res) {
                 console.log('成功跳转至我的地址页面！');
             },
