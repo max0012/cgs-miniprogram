@@ -15,6 +15,13 @@ const formatNumber = n => {
 }
 
 /**
+ * 手机格式校验
+ */
+const validatePhone = s => {
+    return (/^1[34578]\d{9}$/.test(s)) ? true : false
+}
+
+/**
  * 格式化Content-Type的请求参数
  * Content-Type: application/x-www-form-urlencoded
  */
@@ -35,7 +42,6 @@ const toast = msg => {
         icon: 'none'
     })
 }
-
 
 /**
  * 获取当前页面路由
@@ -67,10 +73,36 @@ const getUrl = () => {
     wx.setStorageSync('Url', `/${urlWithArgs}`)
 }
 
+/**
+ * 用于判断空 Undefined String Array Object Number
+ */
+function isNull(str) {
+    if (Object.prototype.toString.call(str) === '[object Undefined]') {
+        return true
+    } else if (
+        Object.prototype.toString.call(str) === '[object String]' ||
+        Object.prototype.toString.call(str) === '[object Array]') {
+        return str.length == 0 ? true : false
+    } else if (Object.prototype.toString.call(str) === '[object Object]') {
+        return JSON.stringify(str) == '{}' ? true : false
+    } else if (typeof (str) == 'number') {
+        if (str) {
+            return false
+        } else {
+            if (str == 0) {
+                return false
+            }
+            return true
+        }
+    }
+}
+
 module.exports = {
     formatTime: formatTime,
     json2Form: json2Form,
     toast: toast,
     getRouter: getRouter,
-    getUrl: getUrl
+    getUrl: getUrl,
+    isNull: isNull,
+    validatePhone: validatePhone
 }
