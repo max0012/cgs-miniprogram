@@ -15,6 +15,18 @@ export const post = (url, data) => request({
     method: "POST"
 })
 
+export const put = (url, data) => request({
+    url: domain + url,
+    data: data,
+    method: "PUT"
+})
+
+export const deleted = (url, data) => request({
+    url: domain + url,
+    data: data,
+    method: "DELETE"
+})
+
 export default function request(options) {
     return new Promise((resolve, reject) => {
         wx.showLoading({
