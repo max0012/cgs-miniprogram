@@ -1,4 +1,5 @@
 // components/search/search.js
+const app = getApp();
 Component({
     properties: {
         placeholderText: {
@@ -12,9 +13,7 @@ Component({
     methods: {
         //进入搜索页面
         toSearch(e) {
-            wx.navigateTo({
-                url: '../search/index?k=' + e.detail.value
-            })
+			app.navToPage("search", `k=${e.detail.value}`);
         }
     }
 })

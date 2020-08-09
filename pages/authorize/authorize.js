@@ -1,7 +1,6 @@
-import {
-    get,
-    post
-} from '../../utils/network.js'
+// 导入封装的request请求.js
+const app = getApp();
+const { get, post } = app.require('utils/network.js');
 
 Page({
     data: {

@@ -1,8 +1,6 @@
-import {
-    get,
-    post
-} from '../../utils/network.js'
-const utils = require('../../utils/util.js')
+const app = getApp();
+const { get, post } = app.require('utils/network.js');
+const utils = app.require('utils/util.js')
 
 Page({
     data: {
@@ -48,16 +46,12 @@ Page({
     },
     //进入搜索页面
     toSearch(e) {
-        wx.navigateTo({
-            url: '../search/index?k=' + e.detail.value
-        })
+		app.navToPage("search", `k=${e.detail.value}`);
     },
     //进入产品详情页面
     detailClick(e) {
         var id = e.currentTarget.dataset.id
-        wx.navigateTo({
-            url: '../product/details?data_id=' + id
-        })
+		app.navToPage("product_detail", `data_id=${id}`);
     },
     //用户点击tab时调用
     titleClick(e) {

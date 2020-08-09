@@ -1,6 +1,8 @@
-import { get, post } from '../../../utils/network.js'
-const util = require('../../../utils/util.js')
-const CountTime = require('../../../utils/countTime.js')
+// 导入封装的request请求.js
+const app = getApp();
+const { get, post } = app.require('utils/network.js');
+const util = app.require('utils/util.js');
+const CountTime = app.require('utils/countTime.js');
 var codeUri = '/manager/mobileToken'
 var logOnUri = '/manager/logOn'
 Page({
@@ -36,9 +38,7 @@ Page({
     // 查看协议
     toAgreement(e) {
         var type = e.currentTarget.dataset.type;
-        wx.navigateTo({
-            url: '../../agreement/agreement?type=' + type,
-        })
+        app.navToPage("agreement", `type=${type}`);
     },
     // 验证并登录
     logOn() {

@@ -1,0 +1,88 @@
+<!-- 引入数字处理文件，保留两位小数  -->
+<wxs module="filters" src="../../../utils/filter.wxs"></wxs>
+
+<view>
+    <view>业务单号：{{orderDetail.orderNumber}}</view>
+    <!-- 分割线 -->
+    <view class="divLine"></view>
+    <view>
+        状态：
+        <text wx:if="{{orderDetail.status === 'BeforePayment'}}">待付款</text>
+        <text wx:elif="{{orderDetail.status === 'BeforeShipping'}}">待发货</text>
+        <text wx:elif="{{orderDetail.status === 'BeforeReceive'}}">待收货</text>
+        <text wx:else="{{orderDetail.status === 'Confirm'}}">已签收</text>
+    </view>
+    <view class="divLine2"></view>
+    <view>
+        <view>
+            收货人信息
+        </view>
+        <view>
+            {{orderDetail.orderReceiver.name}} {{orderDetail.orderReceiver.mobile}}
+        </view>
+    </view>
+    <view class="divLine"></view>
+    <view>
+        {{orderDetail.orderReceiver.province}} {{orderDetail.orderReceiver.city}} {{orderDetail.orderReceiver.district}} {{orderDetail.orderReceiver.address}}
+    </view>
+    <view class="divLine2"></view>
+    <view>
+        <image src="{{orderDetail.product.coverUrl}}"></image>
+        <text>{{orderDetail.product.name}}</text>
+        <view>
+            <text>数量：{{orderDetail.quantity}}件</text>
+            <text>{{orderDetail.unitPrice}}元</text>
+        </view>
+    </view>
+    <view class="divLine2"></view>
+    <view>
+        <text>价格信息</text>
+        <view>
+            <text>商品价格 ￥{{orderDetail.unitPrice}}</text>
+        </view>
+        <view class="divLine"></view>
+        <view>
+            <text>优惠券 ￥{{orderDetail.couponPrice}}</text>
+        </view>
+        <view class="divLine"></view>
+        <view>
+            <!--  优惠后的价格=单价-优惠价格  -->
+            <text>优惠价格 ￥{{filters.toFix(orderDetail.unitPrice - orderDetail.couponPrice)}}</text>
+        </view>
+        <view class="divLine"></view>
+        <view>
+            <!--  实付款=总价-优惠价格 * 数量  -->
+            <text>实付款 ￥{{orderDetail.totalPrice - orderDetail.couponPrice * orderDetail.quantity}}</text>
+        </view>
+        <view class="divLine2"></view>
+        <view>
+            <view>
+                <text>订单信息</text>
+            </view>
+            <view>
+                <text>
+                    创建时间：
+                {{filters.formatTime(orderDetail.creationTime)}}
+                </text>
+            </view>
+            <view>
+                <text>
+                    创建时间：
+                {{filters.formatTime(orderDetail.creationTime)}}
+                </text>
+            </view>
+            <view>
+                <text wx:if="{{orderDetail.status !== 'BeforePayment'}}">
+                    付款时间：
+                {{filters.formatTime(orderDetail.payTime)}}
+                </text>
+            </view>
+            <view>
+                <text wx:if="{{orderDetail.status === 'Confirm'}}">
+                    签收：
+                {{filters.formatTime(orderDetail.receiveTime)}}
+                </text>
+            </view>
+        </view>
+    </view>
+</view>

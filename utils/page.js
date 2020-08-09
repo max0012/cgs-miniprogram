@@ -1,5 +1,8 @@
-{
-    "pages": [
+/**
+ * 本文件中的配置，旨在复制app.json中页面配置
+ * 注意：本文件中的页面相同应与app.json中的页面配置相同
+ */
+const pages = [
         "pages/index/index",
         "pages/intention/intention/intention",
         "pages/intention/intention_details/intention_details",
@@ -37,46 +40,21 @@
         "pages/search/search_news/search_news",
         "pages/address/address/address",
         "pages/address/update_address/update_address"
-    ],
-    "usingComponents": {
-        "mp-icon": "components/icon/icon"
-    },
-    "tabBar": {
-        "color": "#A1A1A1",
-        "selectedColor": "#616877",
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "text": "首页",
-                "iconPath": "./assets/tabbar/index.png",
-                "selectedIconPath": "assets/tabbar/index_active.png"
-            },
-            {
-                "pagePath": "pages/product/product/product",
-                "text": "产品",
-                "iconPath": "assets/tabbar/product.png",
-                "selectedIconPath": "assets/tabbar/index_active.png"
-            },
-            {
-                "pagePath": "pages/intention/intention/intention",
-                "text": "意向",
-                "iconPath": "assets/tabbar/intention.png",
-                "selectedIconPath": "assets/tabbar/intention_active.png"
-            },
-            {
-                "pagePath": "pages/mine/mine",
-                "text": "我的",
-                "iconPath": "assets/tabbar/mime.png",
-                "selectedIconPath": "assets/tabbar/mime_active.png"
-            }
-        ]
-    },
-    "sitemapLocation": "sitemap.json",
-    "window": {
-        "navigationBarBackgroundColor": "#FFFFFF",
-        "navigationBarTextStyle": "black",
-        "backgroundColor": "#EFEFEF",
-        "backgroundTextStyle": "light",
-        "navigationBarTitleText": "财龟师"
-    }
+    ];
+function initPageMap(pageMap) {
+	if(pageMap){
+		for (let path of pages) {
+			pageMap.set(path.substr(path.lastIndexOf("/") + 1), path);
+		}
+	} else {
+		let map = new Map();
+		for (let path of pages) {
+			map.set(path.substr(path.lastIndexOf("/") + 1), path);
+		}
+		return map;
+	}
 }
+module.exports = {
+	pages:pages,
+	initPageMap:initPageMap,
+};
