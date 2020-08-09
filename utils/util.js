@@ -28,7 +28,13 @@ const validatePhone = s => {
 const json2Form = params => {
     var str = [];
     for (var p in params) {
-        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(params[p]));
+		if (params.hasOwnProperty(p)) {
+			if (typeof params[p] == 'object') {
+				str.push(encodeURIComponent(p) + "=" + encodeURIComponent(JSON.stringify(params[p])));
+			} else {
+				str.push(encodeURIComponent(p) + "=" + encodeURIComponent(params[p]));
+			}
+		}
     }
     return str.join("&")
 }
@@ -76,25 +82,52 @@ const getUrl = () => {
 /**
  * 用于判断空 Undefined String Array Object Number
  */
-function isNull(str) {
-    if (Object.prototype.toString.call(str) === '[object Undefined]') {
-        return true
-    } else if (
-        Object.prototype.toString.call(str) === '[object String]' ||
-        Object.prototype.toString.call(str) === '[object Array]') {
-        return str.length == 0 ? true : false
-    } else if (Object.prototype.toString.call(str) === '[object Object]') {
-        return JSON.stringify(str) == '{}' ? true : false
-    } else if (typeof (str) == 'number') {
-        if (str) {
-            return false
-        } else {
-            if (str == 0) {
-                return false
-            }
-            return true
-        }
-    }
+function isNull(val) {
+	// null or undefined
+	if (val == null) return true;
+
+	if (typeof val === 'boolean') return false;
+
+	if (typeof val === 'number') return !val;
+
+	if (val instanceof Error) return val.message === '';
+
+	switch (Object.prototype.toString.call(val)) {
+		// String or Array
+		case '[object String]':
+		case '[object Array]':
+			return !val.length;
+
+			// Map or Set or File
+		case '[object File]':
+		case '[object Map]':
+		case '[object Set]':
+			{
+				return !val.size;
+			}
+			// Plain Object
+		case '[object Object]':
+			{
+				return !Object.keys(val).length;
+			}
+	}
+	return false;
+}
+
+/**
+ * 对象深克隆
+ * @param {Object} obj
+ */
+function deepClone(obj) {
+	let newObj = Array.isArray(obj) ? [] : {}
+	if (obj && typeof obj === "object") {
+		for (let key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				newObj[key] = (obj && typeof obj[key] === 'object') ? deepClone(obj[key]) : obj[key];
+			}
+		}
+	}
+	return newObj
 }
 
 module.exports = {
@@ -104,5 +137,6 @@ module.exports = {
     getRouter: getRouter,
     getUrl: getUrl,
     isNull: isNull,
-    validatePhone: validatePhone
+    validatePhone: validatePhone,
+    deepClone: deepClone,
 }

@@ -7,17 +7,15 @@ const utils = require('../../utils/util.js')
 Page({
     data: {
         dataList: [],
-        pageDetails: null,
+        pageDetails: [],
         dataId: null,
         currentIndex: 0,
-        windowHeight: 0,
-        headerTop: 163 //headerTop=head-search高度+swiper-tab高度
+        windowHeight: 0
     },
     onLoad(options) {
         this.getIndexInfo()
-        let _windowHeight = wx.getSystemInfoSync()['windowHeight'] - (this.data.headerTop * (wx.getSystemInfoSync()['windowWidth']/750)) 
         this.setData({
-            windowHeight: _windowHeight
+            windowHeight: wx.getSystemInfoSync()['windowHeight'] - 89
         })
     },
     // 获取tab栏的列表信息
@@ -36,13 +34,17 @@ Page({
     //根据页面详情
     getDetails() {
         // page详情
-        get('/page/' + this.data.dataId + '/withDetails').then(res => {
-            this.setData({
-                pageDetails: res
-            })
-        }).catch(err => {
-            utils.toast(err + ' ')
-        })
+		if(utils.isNull(this.data.pageDetails[this.data.currentIndex])){
+			get('/page/' + this.data.dataId + '/withDetails').then(res => {
+				let originalArr = utils.deepClone(this.data.pageDetails);
+				originalArr[this.data.currentIndex] = res
+			    this.setData({
+			        pageDetails: originalArr
+			    })
+			}).catch(err => {
+			    utils.toast(err + ' ')
+			})
+		}
     },
     //进入搜索页面
     toSearch(e) {
@@ -71,28 +73,5 @@ Page({
             dataId: this.data.dataList[e.detail.current].id
         })
         this.getDetails()
-    },
-
-    onPulling(e) {
-        console.log('onPulling:', e)
-    },
-
-    onRefresh() {
-        if (this._freshing) return
-        this._freshing = true
-        setTimeout(() => {
-            this.setData({
-                triggered: false,
-            })
-            this._freshing = false
-        }, 3000)
-    },
-
-    onRestore(e) {
-        console.log('onRestore:', e)
-    },
-
-    onAbort(e) {
-        console.log('onAbort', e)
     }
 })

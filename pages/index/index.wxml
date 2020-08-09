@@ -7,29 +7,16 @@
 		</view>
 	</view>
 	<!--内容布局-->
-	<swiper class="swiper" duration="200" current="{{currentIndex}}" bindchange="pageChange" 
-        style="height: {{windowHeight}}px;margin-top: {{headerTop}}rpx;">
+	<swiper class="swiper" duration="200" current="{{currentIndex}}" bindchange="pageChange" style="height: {{windowHeight}}px;">
 		<swiper-item wx:for="{{dataList}}" wx:for-index="listIndex" wx:key="index">
-            <scroll-view
-                style="height: {{windowHeight}}px;"
-                scroll-y
-                refresher-enabled="{{true}}"
-                refresher-threshold="{{50}}"
-                refresher-default-style="white"
-                refresher-background="#EFEFEF"
-                refresher-triggered="{{triggered}}"
-                bindrefresherpulling="onPulling"
-                bindrefresherrefresh="onRefresh"
-                bindrefresherrestore="onRestore"
-                bindrefresherabort="onAbort"
-            >
+            <view style="height: {{windowHeight}}px;">
                 <!-- 推荐 -->
                 <view class="recommend">
                     <view class="title">
                         <text>推荐产品</text>
                     </view>
                     <view class="list">
-                        <view class="product flex-wrp" wx:for="{{pageDetails.relationPageProducts}}" wx:for-item="pro" wx:key="index">
+                        <view class="product flex-wrp" wx:for="{{pageDetails[currentIndex].relationPageProducts}}" wx:for-item="pro" wx:key="index">
                             <view class="img flex-wrp">
                                 <image src="{{pro.product.coverUrl}}" mode="aspectFit"></image>
                             </view>
@@ -68,7 +55,7 @@
                         </view>
                     </view>
                 </view>
-            </scroll-view>
+            </view>
 		</swiper-item>
 	</swiper>
 </view>
