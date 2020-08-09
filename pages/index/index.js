@@ -10,12 +10,14 @@ Page({
         pageDetails: null,
         dataId: null,
         currentIndex: 0,
-        windowHeight: 0
+        windowHeight: 0,
+        headerTop: 163 //headerTop=head-search高度+swiper-tab高度
     },
     onLoad(options) {
         this.getIndexInfo()
+        let _windowHeight = wx.getSystemInfoSync()['windowHeight'] - (this.data.headerTop * (wx.getSystemInfoSync()['windowWidth']/750)) 
         this.setData({
-            windowHeight: wx.getSystemInfoSync()['windowHeight'] - 89
+            windowHeight: _windowHeight
         })
     },
     // 获取tab栏的列表信息
@@ -69,5 +71,28 @@ Page({
             dataId: this.data.dataList[e.detail.current].id
         })
         this.getDetails()
+    },
+
+    onPulling(e) {
+        console.log('onPulling:', e)
+    },
+
+    onRefresh() {
+        if (this._freshing) return
+        this._freshing = true
+        setTimeout(() => {
+            this.setData({
+                triggered: false,
+            })
+            this._freshing = false
+        }, 3000)
+    },
+
+    onRestore(e) {
+        console.log('onRestore:', e)
+    },
+
+    onAbort(e) {
+        console.log('onAbort', e)
     }
 })

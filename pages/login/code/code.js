@@ -62,9 +62,7 @@ Page({
     // 获取验证码
     getCode() {
         // 手机号码校验
-        if (!(/^1[34578]\d{9}$/.test(this.data.mobile))) {
-            util.toast("请输入正确的手机号")
-        } else {
+        if (util.validatePhone(this.data.mobile)) {
             get(codeUri, {
                 mobile: this.data.mobile
             }).then(res => {
@@ -73,6 +71,8 @@ Page({
             }).catch(err => {
                 util.toast(err.message)
             })
+        } else {
+            util.toast("请输入正确的手机号")
         }
     },
     // 登录后的操作

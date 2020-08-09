@@ -12,6 +12,9 @@ Page({
         this.setData({
             middleHeight: wx.getMenuButtonBoundingClientRect().top + 4
         })
+
+        console.log("mobile=" + util.isNull(this.data.mobile))
+        console.log("middleHeight=" + util.isNull(this.data.middleHeight))
     },
     // 监听input值
     bindKeyInput(e) {
@@ -41,12 +44,12 @@ Page({
     // 发送验证码
     getCode() {
         // 手机号码校验
-        if (!(/^1[34578]\d{9}$/.test(this.data.mobile))) {
-            util.toast("请输入正确的手机号")
-        } else {
+        if (util.validatePhone(this.data.mobile)) {
             wx.navigateTo({
                 url: 'code/code?mobile=' + this.data.mobile
             })
+        } else {
+            util.toast("请输入正确的手机号")
         }
     },
     //返回上一页

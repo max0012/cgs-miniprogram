@@ -38,13 +38,12 @@
 .swiper {
     width: 100%;
     overflow: scroll;
-    margin-top: 163rpx;
     z-index: 1;
 }
 
 .swiper swiper-item {
     height: auto !important;
-    background-color: #F6F6F6;
+    background-color: #EFEFEF;
 }
 
 .recommend, .train {

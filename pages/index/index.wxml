@@ -7,9 +7,22 @@
 		</view>
 	</view>
 	<!--内容布局-->
-	<swiper class="swiper" duration="200" current="{{currentIndex}}" bindchange="pageChange" style="height: {{windowHeight}}px;">
+	<swiper class="swiper" duration="200" current="{{currentIndex}}" bindchange="pageChange" 
+        style="height: {{windowHeight}}px;margin-top: {{headerTop}}rpx;">
 		<swiper-item wx:for="{{dataList}}" wx:for-index="listIndex" wx:key="index">
-            <view style="height: {{windowHeight}}px;">
+            <scroll-view
+                style="height: {{windowHeight}}px;"
+                scroll-y
+                refresher-enabled="{{true}}"
+                refresher-threshold="{{50}}"
+                refresher-default-style="white"
+                refresher-background="#EFEFEF"
+                refresher-triggered="{{triggered}}"
+                bindrefresherpulling="onPulling"
+                bindrefresherrefresh="onRefresh"
+                bindrefresherrestore="onRestore"
+                bindrefresherabort="onAbort"
+            >
                 <!-- 推荐 -->
                 <view class="recommend">
                     <view class="title">
@@ -55,7 +68,7 @@
                         </view>
                     </view>
                 </view>
-            </view>
+            </scroll-view>
 		</swiper-item>
 	</swiper>
 </view>
