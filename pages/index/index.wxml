@@ -1,5 +1,5 @@
 <view class="container">
-    <head-search style="width: 100%;"></head-search>
+    <head-search style="width: 100%; height: 176rpx;"></head-search>
 	<view class="swiper-tab">
 		<view class="tab {{listIndex == currentIndex ? 'tab-active' : ''}}" wx:for="{{dataList}}" wx:for-index="listIndex" wx:key="index" bindtap="titleClick" data-id="{{item.id}}" data-idx="{{listIndex}}">
 			<text class="tab-text">{{item.name}}</text>
