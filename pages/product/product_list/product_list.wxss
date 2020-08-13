@@ -56,3 +56,19 @@
 	width: 33%;
 	float: left;
 }
+
+.operation_buttons {
+	padding: 40rpx 30rpx 10rpx 30rpx;
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+}
+.btn_opt {
+	width: 40%;
+	border: 1rpx solid #CCCCCC;
+	padding: 12rpx 14rpx 16rpx 14rpx;
+	border-radius: 2px;
+	font-size: 30rpx;
+	font-weight: bold;
+	text-decoration: underline;
+}

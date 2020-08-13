@@ -78,6 +78,10 @@
                     <button class="btn">立即营销</button>
                 </view>
             </view>
-        </view>
+			<view class="operation_buttons">
+				<view class="btn_opt btn_trick">营销技巧</view>
+				<view class="btn_opt btn_flow">操作流程</view>
+			</view>
+		</view>
     </view>
 </view>
