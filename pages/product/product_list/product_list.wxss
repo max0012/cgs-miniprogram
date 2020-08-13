@@ -1,12 +1,58 @@
+.pageBody {
+	background-color: #F7F7F7;
+	border-top: 1px solid #B2B2B2;
+	border-bottom: 1px solid #B2B2B2;
+	font-family: "Microsoft JhengHei";
+}
+
 .list {
-  border: 1px solid gray;
-  margin-bottom: 20px;
-  clear: both;
+	margin-bottom: 20rpx;
+	clear: both;
+	padding: 32rpx;
+	background-color: #fff;
 }
-.redText{
-  color: red;
+
+.list .mainImg image {
+	width: 690rpx;
+	height: 345rpx;
+	border-radius: 12rpx;
 }
-.div3{
-  width: 33%;
-  float: left;
+
+.list .prd_title {
+	margin: 24rpx 0;
+	font-size: 35rpx;
+	font-weight: bold;
+	font-family: "Microsoft YaHei";
+}
+
+.list .prd_price_row {
+	margin: 14rpx 0;
+}
+.list .prd_price_row .prd_price_prefix{
+	font-weight: 800;
+	font-size: 31rpx;
+}
+.list .prd_price_row .prd_price{
+	font-weight: 800;
+	font-size: 27rpx;
+	color: #ED4123;
+	padding-left: 8rpx;
+}
+
+.list .prd_intro {
+	background-color: #F8F8F8;
+	border-radius: 5rpx;
+	margin-top: 28rpx;
+	padding: 20rpx;
+	color: #ADADAD;
+	font-size: 26rpx;
+}
+
+.redText {
+	color: red;
+}
+
+.div3 {
+	width: 33%;
+	float: left;
 }

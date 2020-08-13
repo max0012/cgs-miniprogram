@@ -1,21 +1,23 @@
 <!--购物页列表-->
 <view>
-    <view wx:for="{{data_list}}">
-        <view class="list" data-id="{{item.id}}" bindtap="divClick">
-            <view calss="mainImg">
-                <image src=" {{item.coverUrl}}" />
+    <view class="pageBody">
+        <view class="list" wx:for="{{data_list}}" data-id="{{item.id}}" bindtap="divClick">
+            <view class="mainImg">
+                <image src=" {{item.coverUrl}}" mode="aspectFit" />
             </view>
-            <view>
-                <image src=" {{item.productBrand.coverUrl}}" />
-                <text>{{item.productBrand.name}}</text>
-            </view>
-            <view>
+            <view class="prd_title">
+                <!-- <image src=" {{item.productBrand.coverUrl}}" /> -->
                 <text>{{item.name}}</text>
             </view>
-            <view>
-                <text>营销成功：{{item.countSale}}</text>
+            <view class="prd_price_row">
+                <text class="prd_price_prefix">保费金额:</text>
+				<text class="prd_price">{{item.price}}</text>
             </view>
-            <view>
+            <view class="prd_price_row">
+                <text class="prd_price_prefix">营销佣金:</text>
+				<text class="prd_price">{{item.earning}}</text>
+            </view>
+            <view class="prd_intro">
                 <text>{{item.intro}}</text>
             </view>
             <!--              通过类型判断如何显示                 --->

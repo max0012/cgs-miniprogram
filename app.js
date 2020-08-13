@@ -1,6 +1,5 @@
 //app.js
-const pageMap = new Map();
-require("utils/page.js").initPageMap(pageMap);
+const pageMap = require("utils/page.js").initPageMap();
 const util = require('utils/util.js');
 App({
     onLaunch() {

@@ -59,8 +59,8 @@
 				{
 					"id": 0,
 					"name": "pages/address/index",
-					"pathName": "pages/address/index",
-					"query": "",
+					"pathName": "pages/product/product_list/product_list",
+					"query": "data_id= bb688e55-0e6b-4f2a-b25d-1d7b0ba58934",
 					"scene": null
 				},
 				{

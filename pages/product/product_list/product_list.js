@@ -16,20 +16,16 @@ Page({
      */
     onLoad(options) {
         //设置页面顶部titile
-        var data_name = options.data_name
-        wx.setNavigationBarTitle({
-            title: data_name
-        })
+        let data_name = options.data_name
+        wx.setNavigationBarTitle({ title: data_name })
         /** 页面一加载就访问服务器接口，加载商品列表 */
         //上个页面传递的id
-        var data_id = options.data_id
-        var url = '/product/byCategoryId/' + data_id
-        get(url).then(res => {
+        get('/product/byCategoryId/' + options.data_id).then(res => {
             //将获取到的数据，存在名字叫data_list的这个数组中
             this.setData({
-                    data_list: res,
-                }),
-                console.log(res);
+				data_list: res,
+			}),
+            console.log(res);
         }).catch(err => {
             console.log(err)
         })
@@ -38,7 +34,7 @@ Page({
     //点击进入商品详情页
     divClick(e) {
         //得到页面数据
-        var data_id = e.currentTarget.dataset.id
+        let data_id = e.currentTarget.dataset.id
         app.navToPage("product_detail", `data_id=${data_id}`);
     },
 

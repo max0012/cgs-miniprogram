@@ -1,4 +1,4 @@
-   <scroll-view calss="scrollView" scroll-y="true" bindscrolltolower="searchScrollLower" style="height:200px">
+   <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="searchScrollLower" style="height:200px">
         <view wx:for="{{dataList}}" class="result-item">
             <view class="title">{{item.title}}</view>
             <view>
