@@ -1,79 +1,132 @@
-.container{
-  width: 100%;
+.pageBody .container {
+	width: 100%;
 }
-swiper{
-  width: 100%;
+
+.pageBody swiper {
+	width: 100%;
 }
-.img{
-  border-top: 1px solid #EDEDED;
-  border-bottom: 1px solid #EDEDED;
+
+.pageBody .img {
+	border-top: 1px solid #EDEDED;
+	border-bottom: 1px solid #EDEDED;
+	width: 100%;
 }
+
+.product_desc {
+	padding: 30rpx;
+}
+
+.product_desc .company {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.product_desc .company .logo {
+	width: 46rpx;
+	height: 16rpx;
+}
+
+.product_desc .company .company_name {
+	margin-left: 24rpx;
+	color: #ADADAD;
+	font-size: 26rpx
+}
+
+.product_desc .prd_title {
+	margin: 24rpx 0;
+	font-size: 35rpx;
+	font-weight: bold;
+	font-family: "Microsoft YaHei";
+}
+
+.product_desc .prd_sale_count {
+	color: #B0A08C;
+	font-size: 22rpx;
+	border: 1rpx solid #9E8D78;
+	padding: 8rpx 16rpx 12rpx 16rpx;
+	display: inline-block;
+	border-radius: 10rpx;
+}
+
+.product_desc .prd_intro {
+	background-color: #F8F8F8;
+	border-radius: 5rpx;
+	margin-top: 28rpx;
+	padding: 20rpx;
+	color: #ADADAD;
+	font-size: 26rpx;
+}
+
 /*分割线样式*/
-.divLine{
- background: rgb(224, 224, 222);
- width: 100%;
- height: 1rpx;
+.pageBody .divLine {
+	background: rgb(224, 224, 222);
+	width: 100%;
+	height: 1rpx;
 }
+
 /*分割线样式2*/
-.divLine2{
- background: rgb(224, 224, 222);
- width: 100%;
- height: 5rpx;
+.pageBody .divLine2 {
+	background: rgb(224, 224, 222);
+	width: 100%;
+	height: 5rpx;
 }
+
 /*浮动按钮样式*/
-.btn {
-    position: fixed;
-    bottom: 0;
-    width: 33%;
-}
+/* .pageBody .btn {
+	position: fixed;
+	bottom: 0;
+	width: 33%;
+} */
 
 
 /*使屏幕变暗  */
-.commodity_screen {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #000;
-  opacity: 0.2;
-  overflow: hidden;
-  z-index: 1000;
-  color: #fff;
+.pageBody .commodity_screen {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #000;
+	opacity: 0.2;
+	overflow: hidden;
+	z-index: 1000;
+	color: #fff;
 }
+
 /*对话框 */
-.commodity_attr_box {
-  height: 300rpx;
-  width: 100%;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 2000;
-  background: #fff;
-  padding-top: 20rpx;
+.pageBody .commodity_attr_box {
+	height: 300rpx;
+	width: 100%;
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 2000;
+	background: #fff;
+	padding-top: 20rpx;
 }
 
 /*主容器*/
-.stepper {
+.pageBody .stepper {
 	width: 80px;
 	height: 26px;
 	/*给主容器设一个边框*/
 	border: 1px solid #ccc;
 	border-radius: 3px;
-	margin:0 auto;
+	margin: 0 auto;
 }
- 
+
 /*加号和减号*/
-.stepper text {
+.pageBody .stepper text {
 	width: 19px;
 	line-height: 26px;
 	text-align: center;
 	float: left;
 }
- 
+
 /*数值*/
-.stepper input {
+.pageBody .stepper input {
 	width: 40px;
 	height: 26px;
 	float: left;
@@ -84,13 +137,43 @@ swiper{
 	border-left: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 }
- 
+
 /*普通样式*/
-.stepper .normal{
+.pageBody .stepper .normal {
 	color: black;
 }
- 
+
 /*禁用样式*/
-.stepper .disabled{
+.pageBody .stepper .disabled {
 	color: #ccc;
+}
+
+.operation_buttons {
+	width: 718rpx;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	padding: 16rpx;
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.btn_opt {
+	width: 44.5%;
+	border: 1rpx solid #CCCCCC;
+	padding: 20rpx 14rpx 24rpx 14rpx;
+	border-radius: 8rpx;
+	font-size: 32rpx;
+	text-decoration: underline;
+	color: #fff;
+	font-family: "Microsoft YaHei";
+}
+
+.btn_trick {
+	background-color: #D76F60;
+}
+
+.btn_flow {
+	background-color: #59C396;
 }

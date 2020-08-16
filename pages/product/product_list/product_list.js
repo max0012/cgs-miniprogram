@@ -1,19 +1,12 @@
 // 导入封装的request请求.js
 const app = getApp();
 const { get, post } = app.require('utils/network.js');
+const util = app.require('utils/util.js');
 
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         data_list: [],
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad(options) {
         //设置页面顶部titile
         let data_name = options.data_name
@@ -22,10 +15,12 @@ Page({
         //上个页面传递的id
         get('/product/byCategoryId/' + options.data_id).then(res => {
             //将获取到的数据，存在名字叫data_list的这个数组中
+			res
+				.filter(item => !util.isNull(item.netWorthTime))
+				.forEach(item => item.netWorthTime = util.formatDateTime(item.netWorthTime, 'yyyy-MM-dd'));
             this.setData({
 				data_list: res,
-			}),
-            console.log(res);
+			});
         }).catch(err => {
             console.log(err)
         })

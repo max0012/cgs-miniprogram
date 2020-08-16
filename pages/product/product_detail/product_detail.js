@@ -110,47 +110,47 @@ Page({
         })
         /** 页面一加载就加载商品详情 */
         //营销小提示分页数据，当前页面只需要两条
-        var tipsParams = {
+        let tipsParams = {
             PageSize: 2,
             PageIndex: 1,
         }
         //上个页面传递的id 
-        var data_id = e.data_id
+        let data_id = e.data_id
         this.setData({
             data_id: data_id
         })
-        var detailUrl = '/product/' + data_id + '/withDetails'
-        var tipsUrl = '/productTips/byProductId/' + data_id
+        let detailUrl = '/product/' + data_id + '/withDetails';
+        let tipsUrl = '/productTips/byProductId/' + data_id;
 
         //获取产品详情方法
         get(detailUrl).then(res => {
-                //将获取到的数据，存在名字叫detail的这个对象中 
-                this.setData({
-                        detail: res,
-                    }),
-                    console.log(res);
-                //产品详情中的图片路径（为html,需要在这里转换）
-                var description = res.description;
-                WxParse.wxParse('description', 'html', description, this, 5);
-            }).catch(err => {
-                console.log(err)
-            }),
+			//将获取到的数据，存在名字叫detail的这个对象中 
+			this.setData({
+				detail: res,
+			}),
+			console.log(res);
+			//产品详情中的图片路径（为html,需要在这里转换）
+			let description = res.description;
+			WxParse.wxParse('description', 'html', description, this, 5);
+		}).catch(err => {
+			console.log(err)
+		})
 
-            //加载营销小提示方法
-            get(detailUrl, tipsParams).then(res => {
-                this.setData({
-                        productTips: res.items,
-                    }),
-                    console.log("productTips====" + res.items);
-            }).catch(err => {
-                console.log(err)
-            })
+		//加载营销小提示方法
+		/* get(detailUrl, tipsParams).then(res => {
+			this.setData({
+				productTips: res.items,
+			})
+			console.log("productTips====" + res.items);
+		}).catch(err => {
+			console.log(err)
+		}) */
     },
 
     //查看营销小技巧事件
     tipsClick(e) {
         //得到页面数据
-        var data_id = e.currentTarget.dataset.id
+        let data_id = e.currentTarget.dataset.id
         app.navToPage("product_tips", `data_id=${data_id}`);
     },
 
@@ -210,19 +210,19 @@ Page({
      */
     isAllSelect() {
         console.log("进入allSelect方法")
-        var radioValue = this.data.radioValue
-        var coverageIdIndex = this.data.coverageIdIndex
-        var yearIdIndex = this.data.yearIdIndex
-        var birthday = this.data.birthday
+        let radioValue = this.data.radioValue
+        let coverageIdIndex = this.data.coverageIdIndex
+        let yearIdIndex = this.data.yearIdIndex
+        let birthday = this.data.birthday
         if (radioValue && coverageIdIndex && yearIdIndex && birthday) {
-            var coverageId = this.data.coverageId[coverageIdIndex].value
-            var yearId = this.data.yearId[yearIdIndex].value
+            let coverageId = this.data.coverageId[coverageIdIndex].value
+            let yearId = this.data.yearId[yearIdIndex].value
 
             console.log("四个下拉框都有值")
             console.log("radioValue:" + radioValue + "   birthday:" + birthday + "   coverageId:" + coverageId + "    yearId:" + yearId)
             //调用接口计算保费和推广佣金
-            var url = "/product/calculateInsurance"
-            var jsonParams = {
+            let url = "/product/calculateInsurance"
+            let jsonParams = {
                 productId: this.data.data_id,
                 coverageId: coverageId,
                 yearId: yearId,
@@ -245,11 +245,11 @@ Page({
      */
     btnContactClick(e) {
         //页面数据
-        var commissionText = e.currentTarget.dataset.commissiontext
-        var name = e.currentTarget.dataset.name
-        var coverUrl = e.currentTarget.dataset.coverurl
-        var receiverManagerId = e.currentTarget.dataset.receiverManagerId
-        var product = {
+        let commissionText = e.currentTarget.dataset.commissiontext
+        let name = e.currentTarget.dataset.name
+        let coverUrl = e.currentTarget.dataset.coverurl
+        let receiverManagerId = e.currentTarget.dataset.receiverManagerId
+        let product = {
             productId: this.data.data_id,
             commissionText: commissionText,
             name: name,
@@ -268,7 +268,7 @@ Page({
     //显示对话框
     showModal: function() {
         // 显示遮罩层
-        var animation = wx.createAnimation({
+        let animation = wx.createAnimation({
             duration: 200,
             timingFunction: "linear",
             delay: 0
@@ -289,7 +289,7 @@ Page({
     //隐藏对话框
     hideModal: function() {
         // 隐藏遮罩层
-        var animation = wx.createAnimation({
+        let animation = wx.createAnimation({
             duration: 200,
             timingFunction: "linear",
             delay: 0
@@ -310,7 +310,7 @@ Page({
 
     /* 点击减号 */
     bindMinus: function() {
-        var num = this.data.num;
+        let num = this.data.num;
         // 如果大于1时，才可以减
         if (num > 1) {
             num--;
@@ -322,7 +322,7 @@ Page({
             })
         }
         // 减号，只有大于一件的时候，才能normal状态，否则disable状态
-        var minusStatus = num <= 1 ? 'disabled' : 'normal';
+        let minusStatus = num <= 1 ? 'disabled' : 'normal';
         // 将数值与状态写回
         this.setData({
             num: num,
@@ -331,8 +331,8 @@ Page({
     },
     /* 点击加号 */
     bindPlus: function() {
-        var num = this.data.num;
-        var inventory = this.data.detail.inventory
+        let num = this.data.num;
+        let inventory = this.data.detail.inventory
         // 数量不超过库存
         if (num < inventory) {
             num++;
@@ -344,7 +344,7 @@ Page({
             })
         }
         // 加号，只有小于库存的时候，才能normal状态，否则disable状态
-        var plusStatus = num >= inventory ? 'disabled' : 'normal';
+        let plusStatus = num >= inventory ? 'disabled' : 'normal';
         // 将数值与状态写回
         this.setData({
             num: num,
@@ -353,8 +353,8 @@ Page({
     },
     /* 输入框事件 */
     bindManual: function(e) {
-        var num = e.detail.value;
-        var inventory = this.data.detail.inventory
+        let num = e.detail.value;
+        let inventory = this.data.detail.inventory
         if (num > inventory) {
             wx.showToast({
                 title: '数量超过范围！',
@@ -364,9 +364,9 @@ Page({
             num = inventory;
         }
         // 减号，只有大于一件的时候，才能normal状态，否则disable状态
-        var minusStatus = num <= 1 ? 'disabled' : 'normal';
+        let minusStatus = num <= 1 ? 'disabled' : 'normal';
         // 加号，只有小于库存的时候，才能normal状态，否则disable状态
-        var plusStatus = num >= inventory ? 'disabled' : 'normal';
+        let plusStatus = num >= inventory ? 'disabled' : 'normal';
         // 将数值与状态写回
         this.setData({
             num: num,
@@ -379,7 +379,7 @@ Page({
      * 进入下单页面
      */
     clickOrder(e){
-        var detail = {
+        let detail = {
             productId: this.data.data_id,  //产品id
             coverUrl: this.data.detail.coverUrl, //封面图
             name: this.data.detail.name,  //产品名称

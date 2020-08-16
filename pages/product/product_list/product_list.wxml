@@ -1,87 +1,75 @@
 <!--购物页列表-->
 <view>
-    <view class="pageBody">
-        <view class="list" wx:for="{{data_list}}" data-id="{{item.id}}" bindtap="divClick">
-            <view class="mainImg">
-                <image src=" {{item.coverUrl}}" mode="aspectFit" />
-            </view>
-            <view class="prd_title">
-                <!-- <image src=" {{item.productBrand.coverUrl}}" /> -->
-                <text>{{item.name}}</text>
-            </view>
-            <view class="prd_price_row">
-                <text class="prd_price_prefix">保费金额:</text>
-				<text class="prd_price">{{item.price}}</text>
-            </view>
-            <view class="prd_price_row">
-                <text class="prd_price_prefix">营销佣金:</text>
-				<text class="prd_price">{{item.earning}}</text>
-            </view>
-            <view class="prd_intro">
-                <text>{{item.intro}}</text>
-            </view>
-            <!--              通过类型判断如何显示                 --->
-            <!-- Tuiguang, Daikuan, Simu, Baoxian, Gouwu, Chexian  -->
-            <view wx:if="{{item.productCategory.type==='Gouwu'}}">
-                <view class="div3">
-                    <view>
-                        <text class="redText">{{item.upperPrice}}元</text>
-                    </view>
-                    <text>商品价格</text>
-                </view>
-                <view class="div3">
-                    <view>
-                        <text class="redText">{{item.commissionText}}</text>
-                    </view>
-                    <text>营销佣金</text>
-                </view>
-                <view class="div3">
-                    <button class="btn">立即营销</button>
-                </view>
-            </view>
-            <!--------------------   Simu私募类型  -------------------------->
-            <view wx:if="{{item.productCategory.type==='Simu'}}">
-                <view class="div3">
-                    <view>
-                        <text class="redText">{{item.earning}}</text>
-                    </view>
-                    <text>累计收益</text>
-                </view>
-                <view class="div3">
-                    <view>
-                        <text class="redText">{{item.netWorth}}</text>
-                    </view>
-                    <text>最新净值{{item.netWorthTime}}</text>
-                </view>
-                <view class="div3">
-                    <view>
-                        <text class="redText">{{item.commissionText}}</text>
-                    </view>
-                    <text>营销佣金</text>
-                </view>
-            </view>
-            <!----------------------- Tuiguang推广类型  -------------------------->
-            <view wx:if="{{item.productCategory.type==='Tuiguang'}}">
-                <view class="div3">
-                    <view>
-                        <text class="redText">{{item.price}}</text>
-                    </view>
-                    <text>商品价格</text>
-                </view>
-                <view class="div3">
-                    <view>
-                        <text class="redText">{{item.commissionText}}</text>
-                    </view>
-                    <text>营销佣金</text>
-                </view>
-                <view class="div3">
-                    <button class="btn">立即营销</button>
-                </view>
-            </view>
+	<view class="pageBody">
+		<view class="list" wx:for="{{data_list}}" data-id="{{item.id}}" bindtap="divClick" wx:key="id">
+			<view class="mainImg">
+				<image src=" {{item.coverUrl}}" mode="aspectFit" />
+			</view>
+			<view class="prd_title">
+				<text>{{item.name}}</text>
+			</view>
+			<view class="prd_desc">
+				<!--  通过类型判断如何显示:Tuiguang, Daikuan, Simu, Baoxian, Gouwu  -->
+				<!--  Baoxian 保险类型  -->
+				<view wx:if="{{item.productCategory.type==='Daikuan'}}" class="loan">
+					<view class="prd_price_row">
+						<text class="prd_price_prefix">最高额度:</text>
+						<text class="prd_price">{{item.earning}}</text>
+					</view>
+					<view class="prd_price_row">
+						<text class="prd_price_prefix">综合年化利率:</text>
+						<text class="prd_price">{{item.netWorth}}</text>
+					</view>
+					<view class="prd_price_row">
+						<text class="prd_price_prefix">营销佣金:</text>
+						<text class="prd_price">{{item.commissionText}}</text>
+					</view>
+				</view>
+				<!--  Baoxian 保险类型  -->
+				<view wx:if="{{item.productCategory.type==='Baoxian'}}" class="insurance">
+					<view class="prd_price_row">
+						<text class="prd_price_prefix">保费金额:</text>
+						<text class="prd_price">{{item.price}}</text>
+					</view>
+					<view class="prd_price_row">
+						<text class="prd_price_prefix">营销佣金:</text>
+						<text class="prd_price">{{item.commissionText}}</text>
+					</view>
+				</view>
+				<!--  Gouwu 购物类型 & Tuiguang 推广类型  -->
+				<view wx:if="{{item.productCategory.type==='Gouwu' || item.productCategory.type==='Tuiguang'}}">
+					<view class="prd_price_row">
+						<text class="prd_price_prefix">商品价格:</text>
+						<text class="prd_price">{{item.price}}</text>
+					</view>
+					<view class="prd_price_row">
+						<text class="prd_price_prefix">营销佣金:</text>
+						<text class="prd_price">{{item.commissionText}}</text>
+					</view>
+				</view>
+				<!-- Simu 私募类型 -->
+				<view wx:if="{{item.productCategory.type==='Simu'}}">
+					<view class="prd_price_row">
+						<text class="prd_price_prefix">累计收益:</text>
+						<text class="prd_price">{{item.earning}}</text>
+					</view>
+					<view class="prd_price_row">
+						<text class="prd_price_prefix">最新净值({{item.netWorthTime}}):</text>
+						<text class="prd_price">{{item.netWorth}}</text>
+					</view>
+					<view class="prd_price_row">
+						<text class="prd_price_prefix">营销佣金:</text>
+						<text class="prd_price">{{item.commissionText}}</text>
+					</view>
+				</view>
+			</view>
+			<view class="prd_intro">
+				<text>{{item.intro}}</text>
+			</view>
 			<view class="operation_buttons">
 				<view class="btn_opt btn_trick">营销技巧</view>
 				<view class="btn_opt btn_flow">操作流程</view>
 			</view>
 		</view>
-    </view>
+	</view>
 </view>
