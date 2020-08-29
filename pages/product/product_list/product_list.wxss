@@ -2,7 +2,8 @@
 	background-color: #F7F7F7;
 	border-top: 1px solid #B2B2B2;
 	border-bottom: 1px solid #B2B2B2;
-	font-family: "Microsoft JhengHei";
+	font-family: "STHeiti";
+	/* font-family: "Microsoft JhengHei"; */
 }
 
 .list {

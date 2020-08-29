@@ -1,4 +1,12 @@
-.pageBody .container {
+@import "/assets/css/common.wxss";
+@import "/assets/css/icon.wxss";
+.pageBody {
+	font-family: "STHeiti";
+	/* font-family: "Microsoft YaHei"; */
+	background-color: #F7F7F7;
+}
+
+.pageBody .swiper_banner {
 	width: 100%;
 }
 
@@ -14,6 +22,8 @@
 
 .product_desc {
 	padding: 30rpx;
+	border-bottom: 1px solid #EBEBEB;
+	background-color: #fff;
 }
 
 .product_desc .company {
@@ -34,10 +44,9 @@
 }
 
 .product_desc .prd_title {
-	margin: 24rpx 0;
+	margin: 24rpx 0 16rpx 0;
 	font-size: 35rpx;
 	font-weight: bold;
-	font-family: "Microsoft YaHei";
 }
 
 .product_desc .prd_sale_count {
@@ -52,10 +61,98 @@
 .product_desc .prd_intro {
 	background-color: #F8F8F8;
 	border-radius: 5rpx;
-	margin-top: 28rpx;
+	margin-top: 20rpx;
 	padding: 20rpx;
 	color: #ADADAD;
 	font-size: 26rpx;
+}
+
+
+.text-bold {
+	font-weight: 700
+}
+.category_criterias {
+	padding-left: 30rpx;
+	padding-right: 15rpx;
+	background-color: #fff;
+}
+.category_criterias .criteria_item {
+	/* padding: 40rpx 0; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 110rpx;
+	border-bottom: 1px solid #EDEDED;
+	font-size: 28rpx;
+}
+.category_criterias .criteria_item:last-of-type,.viewers .criteria_item:last-of-type {
+	border-bottom: none;
+}
+.category_criterias .criteria_item.special_item {
+	padding: 30rpx 0;
+	height: auto;
+	display: block;
+}
+.category_criterias .criteria_item .item_content {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.category_criterias .criteria_item.special_item .content_title {
+	font-weight: 700;
+}
+.category_criterias .criteria_item.special_item .content_desc {
+	font-size: 24rpx;
+	margin-top: 10rpx;
+	color: #ABABAB;
+}
+.category_criterias .criteria_item.special_item .content_price {
+	font-size: 30rpx;
+	color: #D2403D;
+	font-weight: 700;
+}
+.category_criterias .criteria_item .criteria_title {
+	color: #495566;
+	font-weight: 500;
+}
+.category_criterias .criteria_item .item_content .item_content_val {
+	color: #C9C9CE;
+	padding-right: 15rpx;
+}
+.category_criterias .criteria_item .item_content .item_content_val:after {
+	color: #C9C9CE;
+	padding: 0 15rpx 0 15rpx;
+	font-family: "cuIcon";
+	content: "\e6a3";
+}
+.category_criterias .criteria_item .item_content radio {
+	transform: scale(0.1);
+	width: 32rpx;
+}
+.category_criterias .criteria_item .item_content .btn_gender {
+	color: #AAAAAA;
+	background-color: #F3F3F3;
+	padding: 12rpx 50rpx 14rpx 50rpx;
+	border-radius: 120rpx;
+	text-decoration: underline;
+	display: inline-block;
+}
+
+.viewers {
+	background-color: #fff;
+	margin-top: 16rpx;
+}
+
+.product_detail_content {
+	margin-top: 16rpx;
+	background-color: #fff;
+	padding: 0 30rpx 148rpx 30rpx;
+}
+.product_detail_content .detail_title {
+	padding: 30rpx 0;
+	font-size: 26rpx;
+	font-weight: 700;
 }
 
 /*分割线样式*/
@@ -149,6 +246,7 @@
 }
 
 .operation_buttons {
+	background-color: #fff;
 	width: 718rpx;
 	position: fixed;
 	bottom: 0;

@@ -43,11 +43,11 @@ Page({
         premium: null,
         //性别
         radios: [{
-                value: true,
+                value: 1,
                 name: '男'
             },
             {
-                value: false,
+                value: 2,
                 name: '女'
             },
         ],

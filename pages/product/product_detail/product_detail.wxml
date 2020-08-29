@@ -2,7 +2,7 @@
 <import src="../../../wxParse/wxParse.wxml" />
 <view class="pageBody">
 	<block wx:if="{{detail.imageUrls.length > 1}}">
-		<scroll-view class="container">
+		<scroll-view class="swiper_banner">
 			<swiper indicator-dots="{{indicatordots}}" indicator-color="{{indicatorcolor}}">
 				<block wx:for="{{detail.imageUrls}}">
 					<swiper-item>
@@ -17,8 +17,8 @@
 	</block>
 	<view class="product_desc">
 		<view class="company">
-			<image src=" {{detail.productBrand.coverUrl}}" class="logo" mode="aspectFit" />
-			<view class="company_name">信泰保险</view>
+			<image src="{{detail.productBrand.coverUrl}}" class="logo" mode="aspectFit" />
+			<view class="company_name">{{detail.productBrand.name}}</view>
 		</view>
 		<view class="prd_title">
 			<text>{{detail.name}}</text>
@@ -29,8 +29,84 @@
 		<view class="prd_intro">
 			<text>{{detail.intro}}</text>
 		</view>
+	</view>
+	<view class="category_criterias">
 		<!--  通过类型判断如何显示   -->
 		<!-- Tuiguang, Daikuan, Simu, Baoxian, Gouwu, Chexian  -->
+		<!--  Baoxian保险类型  -->
+		<view wx:if="{{detail.productCategory.type==='Baoxian'}}">
+			<view class="criteria_item">
+				<view class="item_content">
+					<text class="text-bold">被保人出生日期</text>
+					<picker mode="date" bindchange="bindBirthdayChange" value="{{birthday}}">
+						<text class="item_content_val" wx:if="{{birthdayFlag}}">请选择</text>
+						<text class="item_content_val" style="color:black;" wx:if="{{birthday}}">{{birthday}}</text>
+					</picker>
+				</view>
+			</view>
+			<view class="criteria_item">
+				<view class="item_content">
+					<text class="criteria_title">性别</text>
+					<radio-group bindchange="radioChange" class="flex-row">
+						<label class="flex-row justify-start" wx:for="{{radios}}" wx:key="value" >
+							<radio value="{{item.value}}" class="no-visible"/>
+							<text class="text-26 btn_gender" style="color:{{radioValue==item.value?'#D2403D':''}}">{{item.name}}</text>
+						</label>
+					</radio-group>
+				</view>
+			</view>
+			<view class="criteria_item">
+				<view class="item_content">
+					<text class="criteria_title">保障额度</text>
+					<picker bindchange="bindCoverageIdChange" value="{{coverageId[coverageIdIndex].value}}" range-key="{{'label'}}"
+					 range="{{coverageId}}">
+						<view class="picker">
+							<text class="item_content_val" wx:if="{{coverageIdFlag}}">请选择</text>
+							<text class="item_content_val" style="color:black;" wx:else>{{coverageId[coverageIdIndex].label}}</text>
+						</view>
+					</picker>
+				</view>
+			</view>
+			<view class="criteria_item">
+				<view class="item_content">
+					<text class="criteria_title">保障年期</text>
+					<picker bindchange="bindYearIdChange" value="{{yearId[yearIdIndex].value}}" range-key="{{'label'}}" range="{{yearId}}">
+						<view class="picker">
+							<text class="item_content_val" wx:if="{{yearIdFlag}}">请选择</text>
+							<text class="item_content_val" style="color:black;" wx:else>{{yearId[yearIdIndex].label}}</text>
+						</view>
+					</picker>
+				</view>
+			</view>
+			<view class="criteria_item special_item">
+				<view class="margin-bottom-20"><text class="criteria_title">保险金额与佣金</text></view>
+				<view class="item_content">
+					<view>
+						<view class="content_title">保费预估</view>
+						<view class="content_desc">以实际合同与准</view>
+					</view>
+					<text class="content_price" wx:if="{{premium === null}}">0.00元</text>
+					<text class="content_price text-black" wx:else>{{premium[0]}}元</text>
+				</view>
+			</view>
+			<view class="criteria_item special_item">
+				<view class="item_content">
+					<view>
+						<view class="content_title">推广费率:{{detail.commissionText}}</view>
+						<view class="content_desc">本单现金收入(税前)</view>
+					</view>
+					<text class="content_price" wx:if="{{premium === null}}">0.00元</text>
+					<text class="content_price" wx:else>{{premium[1]}}元</text>
+				</view>
+			</view>
+			<view class="criteria_item">
+				<view class="item_content">
+					<text class="criteria_title">操作说明</text>
+					<text class="item_content_val" style="color: #E29068;">必读详细操作流程</text>
+				</view>
+			</view>
+		</view>
+		
 		<view wx:if="{{detail.productCategory.type==='Gouwu'}}">
 			<!-- 分割线 -->
 			<view class="divLine"></view>
@@ -54,84 +130,28 @@
 			<view class="divLine"></view>
 			<view>商品价格：{{detail.price}}</view>
 		</view>
-		<!--  Baoxian保险类型  -->
-		<view wx:if="{{detail.productCategory.type==='Baoxian'}}">
-			<view>
-				<text>被保人出生日期</text>
-				<picker mode="date" bindchange="bindBirthdayChange" value="{{birthday}}">
-					<text wx:if="{{birthdayFlag}}"> 请选择 > </text>
-					<text wx:if="{{birthday}}">{{birthday}}</text>
-				</picker>
-			</view>
-			<view class="divLine"></view>
-			<view>
-				<text>性别</text>
-				<radio-group bindchange="radioChange">
-					<label class="weui-cell weui-check__label" wx:for="{{radios}}" wx:key="value" >
-						<view class="weui-cell__hd">
-							<radio value="{{item.value}}" />
-						</view>
-						<view class="weui-cell__bd">{{item.name}}</view>
-					</label>
-				</radio-group>
-			</view>
-			<view class="divLine"></view>
-			<view>
-				<text>保障额度</text>
-				<picker bindchange="bindCoverageIdChange" value="{{coverageId[coverageIdIndex].value}}" range-key="{{'label'}}"
-				 range="{{coverageId}}">
-					<view class="picker">
-						<text wx:if="{{coverageIdFlag}}"> 请选择 ></text>{{coverageId[coverageIdIndex].label}}
-					</view>
-				</picker>
-			</view>
-			<view class="divLine"></view>
-			<view>
-				<text>保障年期</text>
-				<picker bindchange="bindYearIdChange" value="{{yearId[yearIdIndex].value}}" range-key="{{'label'}}" range="{{yearId}}">
-					<view class="picker">
-						<text wx:if="{{yearIdFlag}}"> 请选择 > </text>{{yearId[yearIdIndex].label}}
-					</view>
-				</picker>
-			</view>
-			<view class="divLine"></view>
-			<view>
-				<view>
-					<text>保险金额与佣金</text>
-				</view>
-				<view>
-					<text>保费预估 以实际合同与准</text>
-					<text wx:if="{{premium === null}}">0.00元</text>
-					<text wx:if="{{premium !== null}}">{{premium[0]}}元</text>
-				</view>
-			</view>
-			<view>
-				<view>
-					<text>推广费率:{{detail.commissionText}}</text>
-					<text wx:if="{{premium === null}}">本单现金收入(税前) 0.00元</text>
-					<text wx:if="{{premium !== null}}">本单现金收入(税前) {{premium[1]}}元</text>
-				</view>
-			</view>
-		</view>
-
-
-		<!-- 下面是相同模块 -->
-		<!-- 分割线 -->
-		<view class="divLine"></view>
+		
+	</view>
+	<view class="viewers category_criterias">
 		<!-- 保险类型不显示佣金 -->
 		<view wx:if="{{detail.productCategory.type != 'Baoxian'}}">营销佣金：
 			<text>{{detail.commissionText}}</text>
 			<text> (佣金结算快至1天到账)</text>
 		</view>
-		<!-- 分割线2 -->
-		<view class="divLine2"></view>
-		<view>匹配用户 ></view>
-		<view class="divLine"></view>
-		<view>已浏览用户 ></view>
-		<!-- 分割线2 -->
-		<view class="divLine2"></view>
+		<view class="criteria_item">
+			<view class="item_content">
+				<text class="criteria_title">匹配用户</text>
+				<text class="item_content_val"> </text>
+			</view>
+		</view>
+		<view class="criteria_item">
+			<view class="item_content">
+				<text class="criteria_title">已浏览用户</text>
+				<text class="item_content_val"> </text>
+			</view>
+		</view>
 		<!--  营销小提示板块  -->
-		<view wx:if="{{productTips.length!=0}}">
+		<view wx:if="{{productTips.length!=0}}" class="no-render">
 			<view data-id="{{detail.id}}" bindtap="tipsClick">营销小技巧 查看更多></view>
 			<view class="divLine"></view>
 			<view wx:for="{{productTips}}">
@@ -140,11 +160,6 @@
 					<image src="{{item.imageUrls}}"></image>
 				</view>
 			</view>
-		</view>
-		<!-- 产品详情板块 -->
-		<view>产品详情</view>
-		<view>
-			<template is="wxParse" data="{{wxParseData:description.nodes}}" />
 		</view>
 		<!-- 根据类型显示不同按钮 -->
 		<view>
@@ -156,7 +171,7 @@
 			<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
 			<!--弹出框  -->
 			<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
-
+		
 				<view class="comment_li_name">商品数量（库存{{detail.inventory}}件）</view>
 				<view class="stepper">
 					<!-- 减号 -->
@@ -171,9 +186,16 @@
 				</view>
 			</view>
 		</view>
-		<view class="operation_buttons">
-			<view class="btn_opt btn_trick">联系产品顾问</view>
-			<view class="btn_opt btn_flow">分享给客户</view>
+	</view>
+	<view class="product_detail_content">
+		<!-- 产品详情板块 -->
+		<view class="detail_title">产品详情</view>
+		<view>
+			<template is="wxParse" data="{{wxParseData:description.nodes}}" />
 		</view>
+	</view>
+	<view class="operation_buttons">
+		<view class="btn_opt btn_trick">联系产品顾问</view>
+		<view class="btn_opt btn_flow">分享给客户</view>
 	</view>
 </view>
