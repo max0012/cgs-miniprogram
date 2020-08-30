@@ -48,7 +48,7 @@
 
 .recommend, .train {
     padding: 35rpx 30rpx;
-    margin-top: 15rpx;
+    margin-top: 175rpx;
     background-color: #fff;
 }
 
