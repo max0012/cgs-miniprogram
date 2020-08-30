@@ -111,6 +111,7 @@
 	font-size: 30rpx;
 	color: #D2403D;
 	font-weight: 700;
+	padding-right: 18rpx;
 }
 .category_criterias .criteria_item .criteria_title {
 	color: #495566;
@@ -118,7 +119,6 @@
 }
 .category_criterias .criteria_item .item_content .item_content_val {
 	color: #C9C9CE;
-	padding-right: 15rpx;
 }
 .category_criterias .criteria_item .item_content .item_content_val:after {
 	color: #C9C9CE;
